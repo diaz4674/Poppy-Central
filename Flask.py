@@ -1,5 +1,6 @@
 from flask import Flask
 from flask import send_file
+from flask import request
 from PyPDF2 import PdfFileWriter, PdfFileReader
 from reportlab.pdfgen import canvas
 from reportlab.lib.pagesizes import letter
@@ -8,26 +9,43 @@ from reportlab.pdfbase.ttfonts import TTFont
 import io
 import os
 import sys
-
+from flask_cors import CORS
+import json
 
 app = Flask(__name__)
+CORS(app)
+
+# @app.route('/users/<user_id>', methods = ['GET', 'POST', 'DELETE'])
+
+# app.run(debug=True)
 
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST', 'DELETE'])
 def generateSigCard():
+    my_bytes_value = request.data
+
+    # Decode UTF-8 bytes to Unicode, and convert single quotes
+    # to double quotes to make it valid JSON
+    my_json = my_bytes_value.decode('utf8').replace("'", '"')
+    # print(my_json)
+    # print('- ' * 20)
+
+    # Load the JSON to a Python list & dump it back out as formatted JSON
+    data = json.loads(my_json)
+    print(data["BeneficiaryDetails"])
     AccountInfo = {
-        "Type": "Business",
-        "Ownership": "CCorp",
-        "Benificiary": "",
-        "BeneficiaryDetails": "",
-        "totalSigners": 3,
-        "BusinessName": "Disney",
-        "DBA": "",
-        "EIN": "12-2344564",
-        "Street": "1313 Disneyland Dr",
-        "City": "Anaheim, CA 92802",
-        "AccountType1": "Business Checking",
-        "AccountNumber1": "01-1005345-1"
+        "Type": data["Type"],
+        "Ownership": data["Ownership"],
+        "Benificiary": data["Benificiary"],
+        "BeneficiaryDetails": data["BeneficiaryDetails"],
+        "totalSigners": data["totalSigners"],
+        "BusinessName": data["BusinessName"],
+        "DBA": data["DBA"],
+        "EIN": data["EIN"],
+        "Street": data["Street"],
+        "City": data["City"],
+        "AccountType1": data["AccountType1"],
+        "AccountNumber1": data["AccountNumber1"]
     }
 
     signer1 = {

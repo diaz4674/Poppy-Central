@@ -1,7 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
+
 import React, { Component } from "react";
-import jsonFile from "../../signerData.json";
+import axios from "axios"
 
 let AccountInfo = {
     "Type": "Business",
@@ -9,10 +10,10 @@ let AccountInfo = {
     "Benificiary": "",
     "BeneficiaryDetails": "",
     "totalSigners": 3,
-    "BusinessName": "Walt Dis LLC",
+    "BusinessName": "Diney Corp.",
     "DBA": "",
     "EIN": "12-2344564",
-    "Street": "1313 Disneyland Dr",
+    "Street": "420 Disneyland Dr",
     "City": "Anaheim, CA 92802",
     "AccountType1": "Business Checking",
     "AccountNumber1": "01-1005345-1"
@@ -23,37 +24,21 @@ class App extends Component {
 
     updateCardHandler = () => {
 
+        axios.post("https://5000-c85a660f-3dbe-4fc9-9c8c-83ea85769df5.ws-us02.gitpod.io/", AccountInfo)
+            .then(res => {
+                console.log(res.data)
+                const file = new Blob(
+                    [res.data],
+                    { type: 'application/pdf' });
+                const fileURL = URL.createObjectURL(file);
+                window.open(fileURL)
 
-        // Creating a XHR object 
-        let xhr = new XMLHttpRequest();
-        let url = jsonFile;
+                console.log(res)
+                return res
+            })
+            .catch(error => console.log(error));
 
-        // open a connection 
-        xhr.open("POST", url, true);
-
-        // Set the request header i.e. which type of content you are sending 
-        xhr.setRequestHeader("Content-Type", "application/json");
-
-        // Create a state change callback 
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-
-                // Print received data from server 
-                result.innerHTML = this.responseText;
-
-            }
-        };
-
-        // Converting JSON data to string 
-        // var data = JSON.stringify({ "name": name.value, "email": email.value });
-
-        // Sending data with the request 
-        xhr.send(data);
-
-
-
-
-
+        console.log('hi')
 
     }
 
