@@ -70,11 +70,15 @@ class App extends Component {
             prefixClass: "",
             addLineClass: "",
             inputBoxes: ""
-        }
+        },
+        loading: false
     };
 
     updateCardHandler = () => {
-        console.log(this.state)
+        this.setState({
+            ...this.state,
+            loading: true
+        })
         axios
             .post(
                 // "https://5000-c85a660f-3dbe-4fc9-9c8c-83ea85769df5.ws-us02.gitpod.io/",
@@ -98,12 +102,17 @@ class App extends Component {
             )
             .then((res) => {
                 download(res.data, "Resolution", res.content);
-
+                this.setState({ ...this.state, loading: false })
                 console.log(res);
                 return res;
             })
-            .catch((error) => console.log(error));
-        console.log("hi");
+            .catch((error) => (
+                alert('Oops! Something funny happened. Try again or contact the admin.'),
+                this.setState({ ...this.state, loading: false })));
+        this.setState({
+            ...this.state,
+            loading: true
+        })
     };
     handleCheckboxChange = (e) => {
         this.state.toggleCheckboxes[e.target.name] = !this.state.toggleCheckboxes[e.target.name];
@@ -160,16 +169,14 @@ class App extends Component {
         // JSON.stringify(stateName)
 
         this.state.AccountInfo[e.target.name] = e.target.value;
-        let { AccountInfo } = this.state
-        console.log(this.state)
+        let { AccountInfo } = this.state;
         this.setState({ AccountInfo });
-        console.log(this.state);
     };
     render() {
         let { prefixClass, inputBoxes, prefix, addLineOption, addLine, addLineClass } = this.state.toggleCheckboxes
         return (
             <div className="InputBox">
-                <div style={{ display: 'flex', justifyContent: "center", width: "100%" }}>
+                <div style={{ display: 'flex', justifyContent: "center", width: "100%", margin: "0 0 30px" }}>
                     <img src={logo} className="logo" />
                 </div>
                 <div>
@@ -298,11 +305,16 @@ class App extends Component {
                     <Button
                         variant="contained"
                         color="default"
-                        onClick={() => console.log(this.state)}
+                        onClick={this.updateCardHandler}
                         className="submitButton"
                     >
-                        Generate Docs
-					</Button>
+                        {this.state.loading ? <div class="load-3">
+                            <div class="line"></div>
+                            <div class="line"></div>
+                            <div class="line"></div>
+                        </div> : "Generate Docs"}
+
+                    </Button>
                 </div>
             </div >
         );
