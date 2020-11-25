@@ -1,5 +1,48 @@
-.App {
+.InputBox {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  width: 500px;
+  margin: 100px auto;
+    background: #FFFFFF;
+    box-shadow: 0px 3px 15px #E1E9F1;
+    border-radius: 10px;
+    padding: 35px 0;
+}
+
+.logo {
+    width: 50px;
+}
+.formContainer {
+    width: 500px;
+    margin: 0 auto !important;
+    text-align: center;
+    display: flex  !important;;
+    flex-direction: column;
+    justify-content: center  !important;;
+    align-content: center  !important;;
+}
+
+.buttonContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.submitButton {
+    color: white !important;
+    background: #fd8204 !important;
+    width: 250px;
+}
+.submitButton:hover {
+    background: #f7bc15 !important;
+}
+
+.inputBoxes {
+    margin: 10px 0 !important;
+    width: 400px;
 }
 
 .App-logo {
