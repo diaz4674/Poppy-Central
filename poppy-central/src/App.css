@@ -13,7 +13,41 @@
 }
 
 .logo {
-    width: 50px;
+    width: 60px;
+    border-radius: 10%;
+}
+.noShow {
+    opacity: 0;
+    z-index: -1;
+    transition: .2s ease;
+    position: absolute !important;
+}
+.addLineOption {
+    transition: .4s ease;
+    opacity: 1;
+    z-index: 0;
+    position: relative !important;
+}
+.addLineClass {
+    transition: .4s ease;
+    opacity: 1;
+    z-index: 0;
+    padding-left: 8px !important;
+    position: relative !important;
+}
+.prefix {
+    transition: .4s ease;
+    opacity: 1;
+    z-index: 0;
+    position: relative !important;
+}
+
+.MuiIconButton-colorSecondary {
+    color: #fd8204 !important;
+}
+
+.MuiInput-underline:after {
+    border-bottom: 2px solid #fd8204 !important;
 }
 .formContainer {
     width: 500px;
