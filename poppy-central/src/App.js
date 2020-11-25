@@ -22,31 +22,18 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-let AccountInfo = {
-	Type: "Business",
-	Ownership: "CCorp",
-	Benificiary: "",
-	BeneficiaryDetails: "",
-	totalSigners: 3,
-	BusinessName: "Disney LLC",
-	DBA: "",
-	EIN: "12-2344564",
-	Street: "420 Disneyland Dr",
-	City: "Anaheim, CA 92802",
-	AccountType1: "Business Checking",
-	AccountNumber1: "01-1005345-1",
-};
-
 class App extends Component {
 	state = {
 		AccountInfo: {
-			Type: "Consumer",
+			Type: "Business",
 			Ownership: "CCorp",
 			Benificiary: "",
 			BeneficiaryDetails: "",
 			totalSigners: 3,
 			BusinessName: "",
-			DBA: "",
+			Prefix: "",
+			PrefixName: "",
+			AnotherName: "Welltower Redmond",
 			Street: "",
 			City: "",
 			EIN: "",
@@ -56,7 +43,7 @@ class App extends Component {
 	};
 
 	updateCardHandler = () => {
-		let stringed = JSON.stringify(this.state.AccountInfo);
+		console.log(this.state)
 		axios
 			.post(
 				// "https://5000-c85a660f-3dbe-4fc9-9c8c-83ea85769df5.ws-us02.gitpod.io/",
@@ -80,7 +67,9 @@ class App extends Component {
 		// console.log(stateName)
 		// JSON.stringify(stateName)
 
-		AccountInfo[e.target.name] = e.target.value;
+		this.state.AccountInfo[e.target.name] = e.target.value;
+		let {AccountInfo} = this.state
+		console.log(this.state)
 		this.setState({ AccountInfo });
 		console.log(this.state);
 	};
@@ -100,9 +89,27 @@ class App extends Component {
 					/>
 					<TextField
 						id="outlined-basic"
-						label="DBA"
-						name="DBA"
-						value={this.state.DBA}
+						label="Prefix"
+						name="Prefix"
+						value={this.state.Prefix}
+						onChange={this.handleChange}
+						variant="outlined"
+						className="inputBoxes"
+					/>
+					<TextField
+						id="outlined-basic"
+						label="PrefixName"
+						name="PrefixName"
+						value={this.state.PrefixName}
+						onChange={this.handleChange}
+						variant="outlined"
+						className="inputBoxes"
+					/>
+					<TextField
+						id="outlined-basic"
+						label="Add Another Name"
+						name="AnotherName"
+						value={this.state.AnotherName}
 						onChange={this.handleChange}
 						variant="outlined"
 						className="inputBoxes"
@@ -111,6 +118,9 @@ class App extends Component {
 						id="outlined-basic"
 						label="Street"
 						multiline
+						name="Street"
+						value={this.state.Street}
+						onChange={this.handleChange}
 						placeholder="123 Happy St."
 						variant="outlined"
 						className="inputBoxes"
@@ -118,6 +128,9 @@ class App extends Component {
 					<TextField
 						id="outlined-basic"
 						label="City"
+						name="City"
+						value={this.state.City}
+						onChange={this.handleChange}
 						multiline
 						placeholder="Santa Rosa, CA 94949"
 						variant="outlined"
@@ -125,6 +138,9 @@ class App extends Component {
 					/>
 					<TextField
 						id="outlined-basic"
+						name="EIN"
+						value={this.state.EIN}
+						onChange={this.handleChange}
 						label="EIN"
 						variant="outlined"
 						className="inputBoxes"
@@ -132,12 +148,18 @@ class App extends Component {
 					<TextField
 						id="outlined-basic"
 						label="Account Type"
+						name={"AccountType1"}
+						value={this.state.AccountType1}
+						onChange={this.handleChange}
 						variant="outlined"
 						className="inputBoxes"
 					/>
 					<TextField
 						id="outlined-basic"
 						label="Account Number"
+						name={"AccountNumber1"}
+						value={this.state.AccountType1}
+						onChange={this.handleChange}
 						multiline
 						variant="outlined"
 						placeholder="Business Checking"

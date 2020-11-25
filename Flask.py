@@ -41,7 +41,8 @@ def generateSigCard():
         "BeneficiaryDetails": data["BeneficiaryDetails"],
         "totalSigners": data["totalSigners"],
         "BusinessName": data["BusinessName"],
-        "DBA": data["DBA"],
+        "Prefix": data["Prefix"],
+        "PrefixName": data["PrefixName"],
         "EIN": data["EIN"],
         "Street": data["Street"],
         "City": data["City"],
@@ -194,8 +195,8 @@ def generateSigCard():
     # Business Account Titling Box
     if AccountInfo["Type"] == "Business":
         can.drawString(299, 66.5, AccountInfo["BusinessName"])
-        if AccountInfo["DBA"] != "":
-            can.drawString(299, 76, f'DBA {AccountInfo["DBA"]}')
+        if AccountInfo["Prefix"] != "":
+            can.drawString(299, 76, f'{AccountInfo["Prefix"]} {AccountInfo["PrefixName"]}')
             can.drawString(299, 86, AccountInfo["Street"])
             can.drawString(299, 96, AccountInfo["City"])
         else:
@@ -346,6 +347,7 @@ def generateSigCard():
         page2.drawString(188, 614, signer4["SSN"])
 
     page2.drawString(423, 442.5, AccountInfo["EIN"])
+    print(AccountInfo["EIN"])
     page2.drawString(299, 227, AccountInfo["AccountType1"])
     page2.drawString(393, 227, AccountInfo["AccountNumber1"])
 
