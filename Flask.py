@@ -1,4 +1,5 @@
-from flask import Flask
+from flask import Flask, request, render_template, send_from_directory, make_response
+import codecs
 from flask import send_file
 from flask import request
 from PyPDF2 import PdfFileWriter, PdfFileReader
@@ -32,7 +33,7 @@ def generateSigCard():
 
     # Load the JSON to a Python list & dump it back out as formatted JSON
     data = json.loads(my_json)
-    print(data["BeneficiaryDetails"])
+    # print(data["Type"], "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAaaa")
     AccountInfo = {
         "Type": data["Type"],
         "Ownership": data["Ownership"],
@@ -152,7 +153,7 @@ def generateSigCard():
     # create a new PDF with Reportlab
     can = canvas.Canvas(packet, pagesize=(612, 792), bottomup=0)
     can.setFont('Arial', 7.98)
-
+    print(AccountInfo["Type"], "BEFOOOOOREEEEEEEEEEEEEEEEEEEEEEEEEEEEEeee")
     # Account Titling Box
     if AccountInfo["Type"] == "Consumer":
         can.drawString(299, 66.5, signer1["Name"])
@@ -189,7 +190,7 @@ def generateSigCard():
                 can.drawString(299, 116, signer1["City"])
 
     can.drawString(364, 41, AccountInfo["AccountNumber1"])
-
+    print(AccountInfo["Type"])
     # Business Account Titling Box
     if AccountInfo["Type"] == "Business":
         can.drawString(299, 66.5, AccountInfo["BusinessName"])
@@ -371,4 +372,9 @@ def generateSigCard():
     outputStream = open("newSigCard.pdf", "rb+")
     output.write(outputStream)
 
-    return send_file("newSigCard.pdf")
+    # response = make_response("newSigCard.pdf")
+    # response.headers['Content-Type'] = 'application/pdf'
+    # response.headers['Content-Disposition'] = \
+    #     'inline; filename=%s.pdf' % 'yourfilename'
+
+    return send_file('newSigCard.pdf', attachment_filename='ohhey.pdf')
