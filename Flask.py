@@ -43,6 +43,7 @@ def generateSigCard():
         "BusinessName": data["BusinessName"],
         "Prefix": data["Prefix"],
         "PrefixName": data["PrefixName"],
+        "AnotherName": data["AnotherName"],
         "EIN": data["EIN"],
         "Street": data["Street"],
         "City": data["City"],
@@ -196,9 +197,15 @@ def generateSigCard():
     if AccountInfo["Type"] == "Business":
         can.drawString(299, 66.5, AccountInfo["BusinessName"])
         if AccountInfo["Prefix"] != "":
-            can.drawString(299, 76, f'{AccountInfo["Prefix"]} {AccountInfo["PrefixName"]}')
-            can.drawString(299, 86, AccountInfo["Street"])
-            can.drawString(299, 96, AccountInfo["City"])
+            can.drawString(
+                299, 76, f'{AccountInfo["Prefix"]} {AccountInfo["PrefixName"]}')
+            if AccountInfo["AnotherName"] == "":
+                can.drawString(299, 86, AccountInfo["Street"])
+                can.drawString(299, 96, AccountInfo["City"])
+            else:
+                can.drawString(299, 86, AccountInfo["AnotherName"])
+                can.drawString(299, 96, AccountInfo["Street"])
+                can.drawString(299, 106, AccountInfo["City"])
         else:
             can.drawString(299, 76.5, AccountInfo["Street"])
             can.drawString(299, 86, AccountInfo["City"])
@@ -379,4 +386,235 @@ def generateSigCard():
     # response.headers['Content-Disposition'] = \
     #     'inline; filename=%s.pdf' % 'yourfilename'
 
-    return send_file('newSigCard.pdf', attachment_filename='ohhey.pdf')
+    return send_file('newSigCard.pdf', attachment_filename='newSigCard.pdf')
+
+
+@app.route('/resolution', methods=['GET', 'POST', 'DELETE'])
+def generateResolution():
+    my_bytes_value = request.data
+
+    # Decode UTF-8 bytes to Unicode, and convert single quotes
+    # to double quotes to make it valid JSON
+    my_json = my_bytes_value.decode('utf8').replace("'", '"')
+    # print(my_json)
+    # print('- ' * 20)
+
+    # Load the JSON to a Python list & dump it back out as formatted JSON
+    data = json.loads(my_json)
+    # print(data["Type"], "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAaaa")
+
+    AccountInfo = {
+        "Type": data["Type"],
+        "Ownership": data["Ownership"],
+        "Benificiary": data["Benificiary"],
+        "BeneficiaryDetails": data["BeneficiaryDetails"],
+        "totalSigners": data["totalSigners"],
+        "BusinessName": data["BusinessName"],
+        "Prefix": data["Prefix"],
+        "PrefixName": data["PrefixName"],
+        "AnotherName": data["AnotherName"],
+        "EIN": data["EIN"],
+        "Street": data["Street"],
+        "City": data["City"],
+        "AccountType1": data["AccountType1"],
+        "AccountNumber1": data["AccountNumber1"]
+    }
+
+    signer1 = {
+        "Name": 'Bobby Brown',
+        "Relationship": 'Owners',
+        "Position": "COO",
+        "Street": "123 Happy Dr",
+        "City": "Petaluma, CA 94952",
+        "MailingAddress": "PO Box 123, Petaluma CA 94954",
+        "PrimaryIDType": "Drivers License",
+        "Number": "D234354 CA",
+        "IssueDate1": "10/07/2017",
+        "ExpirationDate1": "10/18/2022",
+        "OtherID": "Credit Card",
+        "OtherDesc": "Visa",
+        "Expires": "02/28/2023",
+        "Employer": "Poppy Bank",
+        "Title": "New Accounts/CSR-Poppy Bank",
+        "email": "diaz1234@gmail.com",
+        "WorkPhone": "",
+        "HomePhone": "(707) 778-7756",
+        "Cell": "(123) 456-7890",
+        "DOB": "10/18/1991",
+        "SSN": "123-34-2134"
+    }
+
+    signer2 = {
+        "Name": 'James Brown',
+        "Relationship": 'Owners',
+        "Position": "COO",
+        "Street": "123 Happy Dr",
+        "City": "Petaluma, CA 94952",
+        "MailingAddress": "PO Box 123, Petaluma CA 94954",
+        "PrimaryIDType": "Drivers License",
+        "Number": "D234354 CA",
+        "IssueDate1": "10/07/2017",
+        "ExpirationDate1": "10/18/2022",
+        "OtherID": "Credit Card",
+        "OtherDesc": "Visa",
+        "Expires": "02/28/2023",
+        "Employer": "Poppy Bank",
+        "Title": "New Accounts/CSR-Poppy Bank",
+        "email": "diaz1234@gmail.com",
+        "WorkPhone": "(707) 778-7756",
+        "HomePhone": "(707) 778-7756",
+        "Cell": "(123) 456-7890",
+        "DOB": "10/18/1991",
+        "SSN": "123-34-2134"
+    }
+
+    signer3 = {
+        "Name": 'Jimmy Neutron',
+        "Relationship": 'Owners',
+        "Position": "COO",
+        "Street": "123 Happy Dr",
+        "City": "Petaluma, CA 94952",
+        "MailingAddress": "PO Box 123, Petaluma CA 94954",
+        "PrimaryIDType": "Drivers License",
+        "Number": "D234354 CA",
+        "IssueDate1": "10/07/2017",
+        "ExpirationDate1": "10/18/2022",
+        "OtherID": "Credit Card",
+        "OtherDesc": "Visa",
+        "Expires": "02/28/2023",
+        "Employer": "Poppy Bank",
+        "Title": "New Accounts/CSR-Poppy Bank",
+        "email": "diaz1234@gmail.com",
+        "WorkPhone": "(707) 778-7756",
+        "HomePhone": "(707) 778-7756",
+        "Cell": "(123) 456-7890",
+        "DOB": "10/18/1991",
+        "SSN": "123-34-2134"
+    }
+    signer4 = {
+        "Name": 'Timmy Turner',
+        "Relationship": 'Owners',
+        "Street": "123 Happy Dr",
+        "Position": "COO",
+        "City": "Petaluma, CA 94952",
+        "MailingAddress": "PO Box 123, Petaluma CA 94954",
+        "PrimaryIDType": "Drivers License",
+        "Number": "D234354 CA",
+        "IssueDate1": "10/07/2017",
+        "ExpirationDate1": "10/18/2022",
+        "OtherID": "Credit Card",
+        "OtherDesc": "Visa",
+        "Expires": "02/28/2023",
+        "Employer": "Poppy Bank",
+        "Title": "New Accounts/CSR-Poppy Bank",
+        "email": "diaz1234@gmail.com",
+        "WorkPhone": "(707) 778-7756",
+        "HomePhone": "(707) 778-7756",
+        "Cell": "(123) 456-7890",
+        "DOB": "10/18/1991",
+        "SSN": "123-34-2134"
+
+    }
+    # BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+    # reportlab.rl_config.TTFSearchPath.append(str(settings.BASE_DIR) + '/app/lib/reportlabs/fonts')
+    # pdfmetrics.registerFont(TTFont('Copperplate', 'Copperplate-Gothic-Bold.ttf'))
+
+    pdfmetrics.registerFont(TTFont('Courier New Regular', 'cour.ttf'))
+
+    #  Font mapping
+    packet = io.BytesIO()
+    packet2 = io.BytesIO()
+    # create a new PDF with Reportlab
+    can = canvas.Canvas(packet, pagesize=(612, 792), bottomup=0)
+    can.setFont('Courier New Regular', 7.98)
+
+    # Business Account Titling Box
+    if AccountInfo["Type"] == "Business":
+        if AccountInfo["Prefix"] == "FBO":
+            can.drawString(312.5, 61.5, AccountInfo["PrefixName"])
+            can.drawString(312, 72, AccountInfo["Street"])
+            can.drawString(312, 82, AccountInfo["City"])
+        else:
+            can.drawString(312.5, 61.5, AccountInfo["BusinessName"])
+            can.drawString(312, 72, AccountInfo["Street"])
+            can.drawString(312, 82, AccountInfo["City"])
+    #  Manger field
+    can.drawString(38, 173, signer1["Name"])
+
+    #  EIN Field
+    can.drawString(172, 196.5, AccountInfo["EIN"])
+
+    # Name FIeld in Paragraph
+    if AccountInfo["Prefix"] == "FBO":
+        can.drawString(27.5, 208, AccountInfo["PrefixName"])
+    else:
+        can.drawString(312.5, 61.5, AccountInfo["BusinessName"])
+
+    # Adding Signers & Titles
+    can.drawString(41, 350, f'{signer1["Name"]}-{signer1["Position"]}')
+    if signer2 != {}:
+        can.drawString(41, 392, f'{signer2["Name"]}-{signer2["Position"]}')
+
+    if signer3 != {}:
+        can.drawString(41, 433, f'{signer3["Name"]}-{signer3["Position"]}')
+
+    # Checking Ownership Type
+    if AccountInfo["Ownership"] == "Joint":
+        can.drawString(17, 382.5, "X")
+    if AccountInfo["Ownership"] == "LLC":
+        can.drawString(17, 448, "X")
+    if AccountInfo["Ownership"] == "CCorp":
+        can.drawString(17, 459, "X")
+    if AccountInfo["Ownership"] == "SCorp":
+        can.drawString(91.5, 459, "X")
+
+    #  Beneficiary Info
+    if AccountInfo["Benificiary"] == "POD":
+        can.drawString(138.5, 518.5, "X")
+        can.drawString(26, 576, AccountInfo["BeneficiaryDetails"])
+
+    can.save()
+
+    page2 = canvas.Canvas(packet2, pagesize=(612, 792), bottomup=0)
+    page2.setFont('Courier New Regular', 7.98)
+
+    #  Signer 2 Information Box
+    minSigners = str(chr(ord('@')+1))
+    maxSigners = str(chr(ord('@')+AccountInfo["totalSigners"]))
+
+    totalSigners = f'{minSigners}-{maxSigners}'
+
+    page2.drawString(32, 114, totalSigners)
+
+    page2.save()
+    # move to the beginning of the StringIO buffer
+    packet.seek(0)
+    packet2.seek(0)
+
+    new_pdf = PdfFileReader(packet)
+    new_pdf2 = PdfFileReader(packet2)
+    # read your existing PDF
+    existing_pdf = PdfFileReader('OGResolution.pdf', "rb+")
+    output = PdfFileWriter()
+    # add the "watermark" (which is the new pdf) on the existing page
+    page = existing_pdf.getPage(0)
+    page.mergePage(new_pdf.getPage(0))
+    page2 = existing_pdf.getPage(1)
+    page2.mergePage(new_pdf2.getPage(0))
+
+    output.addPage(page)
+    output.addPage(page2)
+    output.addPage(existing_pdf.getPage(3))
+    # output.addPage(existing_pdf.getPage(4))
+
+    # finally, write "output" to a real file
+    outputStream = open("NewResolution.pdf", "rb+")
+    output.write(outputStream)
+
+    # response = make_response("newSigCard.pdf")
+    # response.headers['Content-Type'] = 'application/pdf'
+    # response.headers['Content-Disposition'] = \
+    #     'inline; filename=%s.pdf' % 'yourfilename'
+
+    return send_file('NewResolution.pdf', attachment_filename='NewResolution.pdf')

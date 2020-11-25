@@ -22,6 +22,23 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
+		// AccountInfo: {
+		// 	Type: "Business",
+		// 	Ownership: "CCorp",
+		// 	Benificiary: "",
+		// 	BeneficiaryDetails: "",
+		// 	totalSigners: 3,
+		// 	BusinessName: "",
+		// 	Prefix: "",
+		// 	PrefixName: "",
+		// 	AnotherName: "Welltower Redmond",
+		// 	Street: "",
+		// 	City: "",
+		// 	EIN: "",
+		// 	AccountType1: "",
+		// 	AccountNumber1: "",
+		// },
+
 class App extends Component {
 	state = {
 		AccountInfo: {
@@ -30,15 +47,15 @@ class App extends Component {
 			Benificiary: "",
 			BeneficiaryDetails: "",
 			totalSigners: 3,
-			BusinessName: "",
-			Prefix: "",
-			PrefixName: "",
-			AnotherName: "Welltower Redmond",
-			Street: "",
-			City: "",
-			EIN: "",
-			AccountType1: "",
-			AccountNumber1: "",
+			BusinessName: "Netlix",
+			Prefix: "DBA",
+			PrefixName: "Hulu",
+			AnotherName: "",
+			Street: "123 Main St",
+			City: "Santa Rosa, CA 94949",
+			EIN: "12-345676",
+			AccountType1: "Business Checking",
+			AccountNumber1: "01-1000088-8",
 		},
 	};
 
@@ -58,7 +75,20 @@ class App extends Component {
 				return res;
 			})
 			.catch((error) => console.log(error));
+		axios
+			.post(
+				// "https://5000-c85a660f-3dbe-4fc9-9c8c-83ea85769df5.ws-us02.gitpod.io/",
+				"http://127.0.0.1:5000/resolution",
+				this.state.AccountInfo,
+				{ responseType: "blob" } // had to add this one here
+			)
+			.then((res) => {
+				download(res.data, "Resolution", res.content);
 
+				console.log(res);
+				return res;
+			})
+			.catch((error) => console.log(error));
 		console.log("hi");
 	};
 
