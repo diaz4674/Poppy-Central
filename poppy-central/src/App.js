@@ -175,148 +175,150 @@ class App extends Component {
     render() {
         let { prefixClass, inputBoxes, prefix, addLineOption, addLine, addLineClass } = this.state.toggleCheckboxes
         return (
-            <div className="InputBox">
-                <div style={{ display: 'flex', justifyContent: "center", width: "100%", margin: "0 0 30px" }}>
-                    <img src={logo} className="logo" />
-                </div>
-                <div>
-                    <TextField
-                        id="outlined-basic"
-                        value={this.state.BusinessName}
-                        name="BusinessName"
-                        onChange={this.handleChange}
-                        label="Business Name"
-                        variant="outlined"
-
-                        className="inputBoxes"
-                    />
-                    {/* Prefix Check  */}
-                    <FormGroup aria-label="position" className="checkBoxDiv" row style={{ padding: "0 35px" }}>
-                        <FormControlLabel
-                            value={prefix}
-                            control={<Checkbox />}
-                            style={{ color: "grey" }}
-                            label="Prefix"
-                            name="prefix"
-                            onChange={this.handleCheckboxChange}
-                            labelPlacement="start"
-                            className="checkBox"
-                        />
-                        <Select
-                            labelId="demo-simple-select-label"
-                            id="demo-simple-select"
-                            name="Prefix"
-                            value={this.state.Prefix}
+            <div className="container">
+                <div className="InputBox">
+                    <div style={{ display: 'flex', justifyContent: "center", width: "100%", margin: "0 0 30px" }}>
+                        <img src={logo} className="logo" />
+                    </div>
+                    <div>
+                        <TextField
+                            id="outlined-basic"
+                            value={this.state.BusinessName}
+                            name="BusinessName"
                             onChange={this.handleChange}
-                            style={{ width: "150px", marginLeft: "25px" }}
-                            className={`noShow ${prefixClass}`}
-                        >
-                            <MenuItem value={"DBA"}>DBA</MenuItem>
-                            <MenuItem value={"FBO"}>FBO</MenuItem>
-                        </Select>
-                    </FormGroup>
+                            label="Business Name"
+                            variant="outlined"
 
-                    <TextField
-                        id="outlined-basic"
-                        label="Prefix Name"
-                        name="PrefixName"
-                        value={this.state.PrefixName}
-                        onChange={this.handleChange}
-                        variant="outlined"
-                        className={`noShow ${prefixClass} ${inputBoxes}`}
-                    />
-                    <FormGroup aria-label="position" className="checkBoxDiv" row style={{ display: 'flex', justifyContent: "flex-start", padding: "0 35px" }}>
-                        <FormControlLabel
-                            value={addLine}
-                            control={<Checkbox />}
-                            name="addLine"
-                            style={{ color: "grey" }}
-                            onChange={this.handleCheckboxChange}
-                            label="Add Line"
-                            labelPlacement="start"
-                            row
-                            className={`noShow ${addLineOption}`}
+                            className="inputBoxes"
+                        />
+                        {/* Prefix Check  */}
+                        <FormGroup aria-label="position" className="checkBoxDiv" row style={{ padding: "0 35px" }}>
+                            <FormControlLabel
+                                value={prefix}
+                                control={<Checkbox />}
+                                style={{ color: "grey" }}
+                                label="Prefix"
+                                name="prefix"
+                                onChange={this.handleCheckboxChange}
+                                labelPlacement="start"
+                                className="checkBox"
+                            />
+                            <Select
+                                labelId="demo-simple-select-label"
+                                id="demo-simple-select"
+                                name="Prefix"
+                                value={this.state.Prefix}
+                                onChange={this.handleChange}
+                                style={{ width: "150px", marginLeft: "25px" }}
+                                className={`noShow ${prefixClass}`}
+                            >
+                                <MenuItem value={"DBA"}>DBA</MenuItem>
+                                <MenuItem value={"FBO"}>FBO</MenuItem>
+                            </Select>
+                        </FormGroup>
+
+                        <TextField
+                            id="outlined-basic"
+                            label="Prefix Name"
+                            name="PrefixName"
+                            value={this.state.PrefixName}
+                            onChange={this.handleChange}
+                            variant="outlined"
+                            className={`noShow ${prefixClass} ${inputBoxes}`}
+                        />
+                        <FormGroup aria-label="position" className="checkBoxDiv" row style={{ display: 'flex', justifyContent: "flex-start", padding: "0 35px" }}>
+                            <FormControlLabel
+                                value={addLine}
+                                control={<Checkbox />}
+                                name="addLine"
+                                style={{ color: "grey" }}
+                                onChange={this.handleCheckboxChange}
+                                label="Add Line"
+                                labelPlacement="start"
+                                row
+                                className={`noShow ${addLineOption}`}
+                            />
+                            <TextField
+                                id="outlined-basic"
+                                label="Add Another Name"
+                                name="AnotherName"
+                                value={this.state.AnotherName}
+                                onChange={this.handleChange}
+                                style={{ width: "280px", paddingLeft: "18px !important" }}
+                                variant="outlined"
+                                className={`noShow ${addLineClass} ${inputBoxes}`}
+                            />
+                        </FormGroup>
+                        <TextField
+                            id="outlined-basic"
+                            name="EIN"
+                            value={this.state.EIN}
+                            onChange={this.handleChange}
+                            label="EIN"
+                            variant="outlined"
+                            className="inputBoxes"
                         />
                         <TextField
                             id="outlined-basic"
-                            label="Add Another Name"
-                            name="AnotherName"
-                            value={this.state.AnotherName}
+                            label="Account Number"
+                            name={"AccountNumber1"}
+                            value={this.state.AccountType1}
                             onChange={this.handleChange}
-                            style={{ width: "280px", paddingLeft: "18px !important" }}
+                            multiline
                             variant="outlined"
-                            className={`noShow ${addLineClass} ${inputBoxes}`}
+                            className="inputBoxes"
                         />
-                    </FormGroup>
-                    <TextField
-                        id="outlined-basic"
-                        name="EIN"
-                        value={this.state.EIN}
-                        onChange={this.handleChange}
-                        label="EIN"
-                        variant="outlined"
-                        className="inputBoxes"
-                    />
-                    <TextField
-                        id="outlined-basic"
-                        label="Account Number"
-                        name={"AccountNumber1"}
-                        value={this.state.AccountType1}
-                        onChange={this.handleChange}
-                        multiline
-                        variant="outlined"
-                        className="inputBoxes"
-                    />
-                    <TextField
-                        id="outlined-basic"
-                        label="Account Type"
-                        name={"AccountType1"}
-                        placeholder="Business Checking"
-                        value={this.state.AccountType1}
-                        onChange={this.handleChange}
-                        variant="outlined"
-                        className="inputBoxes"
-                    />
-                    <TextField
-                        id="outlined-basic"
-                        label="Street"
-                        multiline
-                        name="Street"
-                        value={this.state.Street}
-                        onChange={this.handleChange}
-                        placeholder="123 Happy St."
-                        variant="outlined"
-                        className="inputBoxes"
-                    />
-                    <TextField
-                        id="outlined-basic"
-                        label="City"
-                        name="City"
-                        value={this.state.City}
-                        onChange={this.handleChange}
-                        multiline
-                        placeholder="Santa Rosa, CA 94949"
-                        variant="outlined"
-                        className="inputBoxes"
-                    />
-                </div>
-                {/* <button onClick={this.updateCardHandler}>Change Sigs</button> */}
-                <div className="buttonContainer">
-                    <Button
-                        variant="contained"
-                        color="default"
-                        onClick={this.updateCardHandler}
-                        className="submitButton"
-                    >
-                        {this.state.loading ? <div class="load-3">
-                            <div class="line"></div>
-                            <div class="line"></div>
-                            <div class="line"></div>
-                        </div> : "Generate Docs"}
+                        <TextField
+                            id="outlined-basic"
+                            label="Account Type"
+                            name={"AccountType1"}
+                            placeholder="Business Checking"
+                            value={this.state.AccountType1}
+                            onChange={this.handleChange}
+                            variant="outlined"
+                            className="inputBoxes"
+                        />
+                        <TextField
+                            id="outlined-basic"
+                            label="Street"
+                            multiline
+                            name="Street"
+                            value={this.state.Street}
+                            onChange={this.handleChange}
+                            placeholder="123 Happy St."
+                            variant="outlined"
+                            className="inputBoxes"
+                        />
+                        <TextField
+                            id="outlined-basic"
+                            label="City"
+                            name="City"
+                            value={this.state.City}
+                            onChange={this.handleChange}
+                            multiline
+                            placeholder="Santa Rosa, CA 94949"
+                            variant="outlined"
+                            className="inputBoxes"
+                        />
+                    </div>
+                    {/* <button onClick={this.updateCardHandler}>Change Sigs</button> */}
+                    <div className="buttonContainer">
+                        <Button
+                            variant="contained"
+                            color="default"
+                            onClick={this.updateCardHandler}
+                            className="submitButton"
+                        >
+                            {this.state.loading ? <div class="load-3">
+                                <div class="line"></div>
+                                <div class="line"></div>
+                                <div class="line"></div>
+                            </div> : "Generate Docs"}
 
-                    </Button>
-                </div>
-            </div >
+                        </Button>
+                    </div>
+                </div >
+            </div>
         );
     }
 }
