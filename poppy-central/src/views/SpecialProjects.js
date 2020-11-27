@@ -18,6 +18,7 @@ import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import OMG from "./OMG"
 import Signers from "./Signers"
+import { withRouter } from 'react-router-dom'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -50,9 +51,9 @@ class SpecialProjects extends Component {
                 <div className="InputBox">
                     <div style={{
                         width: "100%", display: 'flex',
-                        justifyContent: "center"
+                        justifyContent: "center",
                     }}>
-                        <img src={logo} className="logo" />
+                        <img src={logo} className="logo" onClick={() => this.props.history.push('/')} />
                     </div>
                     <h1 style={{ fontFamily: 'Roboto sans-serif', color: "#595a59" }}>Oakmont Management Group</h1>
                     <Signers />

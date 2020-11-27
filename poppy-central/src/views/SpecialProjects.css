@@ -17,6 +17,9 @@ body{
     transition: .1s ease;
 }
 
+.home {
+    width: 30px;
+}
 .grayCircle {
     background: gray;
     border-radius: 60%;
@@ -86,6 +89,7 @@ body{
     border-radius: 10%;
     display: flex;
     justify-content: center;
+    cursor: pointer;
 }
 
 .Line {

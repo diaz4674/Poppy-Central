@@ -72,7 +72,7 @@ class Home extends Component {
                         <div className="SpecialProjects">
                             <p className="mediumTitle" style={{ color: "#595a59" }}>Special Projects:</p>
                             <div className="specialBox">
-                                <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}>
+                                <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center" }} onClick={() => this.props.history.push('/app-main/omg')} >
                                     <ListItem>
                                         <ListItemText primary="Oakmont Management Group" secondary="Signer Changes" />
                                     </ListItem>
