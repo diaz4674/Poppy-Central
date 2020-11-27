@@ -87,7 +87,7 @@ class Home extends Component {
                         <div className="SpecialProjects">
                             <p className="mediumTitle" style={{ color: "#595a59" }}>Completed Pending Items</p>
                             <div className="specialBox">
-                                <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}>
+                                <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center" }} onClick={() => this.props.history.push('/app-main/completedproject')}>
                                     <img src={checkmark} alt="checkmark" style={{ width: "25px" }} />
                                     <ListItem>
                                         <ListItemText primary="Nordby Construction" secondary="Signer Changes" />
