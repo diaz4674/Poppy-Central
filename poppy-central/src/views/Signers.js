@@ -64,11 +64,14 @@ class Signers extends Component {
                     <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}>
                         <p className="mediumTitle" style={{ color: "#595a59", paddingRight: "15px" }}>Team Members Involved:</p>
                         <div onMouseEnter={() => this.setState({ ...this.state, toggleSigners: true })} onMouseLeave={() => this.setState({ ...this.state, toggleSigners: false })}>
-                            {this.state.toggleSigners ? <div className="showSigners">
-                                {this.state.TeamMembers.map(member => {
-                                    return <p>{member.name} </p>
-                                })}
-                            </div> : null}
+                            {this.state.toggleSigners ?
+                                <div className="teamMemberBox">
+                                    <div className="showSigners">
+                                        {this.state.TeamMembers.map(member => {
+                                            return <p>{member.name} </p>
+                                        })}
+                                    </div>
+                                </div> : null}
                             <AvatarGroup max={4}>
                                 <Avatar alt="Sarah Lincoln" src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" />
                                 <Avatar alt="Miguel Smallz" src="https://images.pexels.com/photos/2830332/pexels-photo-2830332.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" />
