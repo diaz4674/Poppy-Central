@@ -33,22 +33,6 @@ const useStyles = makeStyles((theme) => ({
 
 class SpecialProjects extends Component {
     state = {
-        AccountInfo: {
-            Type: "Business",
-            Ownership: "CCorp",
-            Benificiary: "",
-            BeneficiaryDetails: "",
-            totalSigners: 3,
-            BusinessName: "Netlix",
-            Prefix: "",
-            PrefixName: "Hulu",
-            AnotherName: "",
-            Street: "123 Main St",
-            City: "Santa Rosa, CA 94949",
-            EIN: "12-345676",
-            AccountType1: "Business Checking",
-            AccountNumber1: "01-1000088-8",
-        },
         toggleCheckboxes: {
             prefix: false,
             addLine: false,
@@ -70,8 +54,8 @@ class SpecialProjects extends Component {
                     }}>
                         <img src={logo} className="logo" />
                     </div>
-                    <Signers />
                     <h1 style={{ fontFamily: 'Roboto sans-serif', color: "#595a59" }}>Oakmont Management Group</h1>
+                    <Signers />
                     <OMG />
                 </div >
             </div>
