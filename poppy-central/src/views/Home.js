@@ -119,12 +119,16 @@ class Home extends Component {
 									</ListItem>
 									<AvatarGroup max={4}>
 										<Avatar
-											alt="Remy Sharp"
+											alt="Sarah Lincoln"
 											src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
 										/>
 										<Avatar
-											alt="Travis Howard"
+											alt="Miguel Smallz"
 											src="https://images.pexels.com/photos/2830332/pexels-photo-2830332.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+										/>
+										<Avatar
+											alt="Tina Smith"
+											src="https://images.pexels.com/photos/1858175/pexels-photo-1858175.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
 										/>
 									</AvatarGroup>
 								</div>

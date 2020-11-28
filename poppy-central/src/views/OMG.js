@@ -31,22 +31,117 @@ const useStyles = makeStyles((theme) => ({
 
 class OMG extends Component {
 	state = {
-		AccountInfo: {
-			Type: "Business",
-			Ownership: "CCorp",
-			Benificiary: "",
-			BeneficiaryDetails: "",
-			totalSigners: 3,
-			BusinessName: "Netlix",
-			Prefix: "",
-			PrefixName: "Hulu",
-			AnotherName: "",
-			Street: "123 Main St",
-			City: "Santa Rosa, CA 94949",
-			EIN: "12-345676",
-			AccountType1: "Business Checking",
-			AccountNumber1: "01-1000088-8",
-		},
+		AccountChanges: [
+			{
+				Type: "Business",
+				Ownership: "CCorp",
+				Benificiary: "",
+				BeneficiaryDetails: "",
+				totalSigners: 3,
+				BusinessName: "Oakmont Management Group Agent",
+				Prefix: "",
+				PrefixName: "",
+				AnotherName: "",
+				Street: "123 Main St",
+				City: "Santa Rosa, CA 94949",
+				EIN: "12-345676",
+				AccountType1: "",
+				AccountNumber1: "",
+			},
+			{
+				Name: "Billy Bob",
+				Relationship: "Owners",
+				Street: "123 Happy Dr",
+				Position: "COO",
+				City: "Petaluma, CA 94952",
+				MailingAddress: "PO Box 123, Petaluma CA 94954",
+				PrimaryIDType: "Drivers License",
+				Number: "D234354 CA",
+				IssueDate1: "10/07/2017",
+				ExpirationDate1: "10/18/2022",
+				OtherID: "Credit Card",
+				OtherDesc: "Visa",
+				Expires: "02/28/2023",
+				Employer: "Poppy Bank",
+				Title: "New Accounts/CSR-Poppy Bank",
+				email: "diaz1234@gmail.com",
+				WorkPhone: "",
+				HomePhone: "(707) 778-7756",
+				Cell: "(123) 456-7890",
+				DOB: "10/18/1991",
+				SSN: "123-34-2134",
+			},
+			{
+				Name: "James Brown",
+				Relationship: "Owners",
+				Street: "123 Happy Dr",
+				Position: "COO",
+				City: "Petaluma, CA 94952",
+				MailingAddress: "PO Box 123, Petaluma CA 94954",
+				PrimaryIDType: "Drivers License",
+				Number: "D234354 CA",
+				IssueDate1: "10/07/2017",
+				ExpirationDate1: "10/18/2022",
+				OtherID: "Credit Card",
+				OtherDesc: "Visa",
+				Expires: "02/28/2023",
+				Employer: "Poppy Bank",
+				Title: "New Accounts/CSR-Poppy Bank",
+				email: "diaz1234@gmail.com",
+				WorkPhone: "(707) 778-7756",
+				HomePhone: "(707) 778-7756",
+				Cell: "(123) 456-7890",
+				DOB: "10/18/1991",
+				SSN: "123-34-2134",
+			},
+			{
+				Name: "Jimmy Neutron",
+				Relationship: "Owners",
+				Street: "123 Happy Dr",
+				Position: "COO",
+				City: "Petaluma, CA 94952",
+				MailingAddress: "PO Box 123, Petaluma CA 94954",
+				PrimaryIDType: "Drivers License",
+				Number: "D234354 CA",
+				IssueDate1: "10/07/2017",
+				ExpirationDate1: "10/18/2022",
+				OtherID: "Credit Card",
+				OtherDesc: "Visa",
+				Expires: "02/28/2023",
+				Employer: "Poppy Bank",
+				Title: "New Accounts/CSR-Poppy Bank",
+				email: "diaz1234@gmail.com",
+				WorkPhone: "(707) 778-7756",
+				HomePhone: "(707) 778-7756",
+				Cell: "(123) 456-7890",
+				DOB: "10/18/1991",
+				SSN: "123-34-2134",
+			},
+			{
+				Name: "Timmy Turner",
+				Relationship: "Owners",
+				Street: "123 Happy Dr",
+				Position: "COO",
+				City: "Petaluma, CA 94952",
+				MailingAddress: "PO Box 123, Petaluma CA 94954",
+				PrimaryIDType: "Drivers License",
+				Number: "D234354 CA",
+				IssueDate1: "10/07/2017",
+				ExpirationDate1: "10/18/2022",
+				OtherID: "Credit Card",
+				OtherDesc: "Visa",
+				Expires: "02/28/2023",
+				Employer: "Poppy Bank",
+				Title: "New Accounts/CSR-Poppy Bank",
+				email: "diaz1234@gmail.com",
+				WorkPhone: "(707) 778-7756",
+				HomePhone: "(707) 778-7756",
+				Cell: "(123) 456-7890",
+				DOB: "10/18/1991",
+				SSN: "123-34-2134",
+			},
+		],
+
 		toggleCheckboxes: {
 			prefix: false,
 			addLine: false,
@@ -57,22 +152,26 @@ class OMG extends Component {
 		loading: false,
 	};
 
+	componentDidMount() {
+		console.log(this.state.AccountChanges);
+	}
 	updateCardHandler = () => {
 		this.setState({
-			...this.state,
+			...this.state.AccountChanges,
 			loading: true,
 		});
+		console.log(this.state.AccountChanges);
 		axios
 			.post(
 				// "https://5000-c85a660f-3dbe-4fc9-9c8c-83ea85769df5.ws-us02.gitpod.io/",
 				"http://127.0.0.1:5000/",
-				this.state.AccountInfo,
+				this.state.AccountChanges,
 				{ responseType: "blob" } // had to add this one here
 			)
 			.then((res) => {
 				download(
 					res.data,
-					`${this.state.AccountInfo.BusinessName} - Sig Card`,
+					`${this.state.AccountChanges[0].BusinessName} - Sig Card`,
 					res.content
 				);
 
@@ -84,13 +183,13 @@ class OMG extends Component {
 			.post(
 				// "https://5000-c85a660f-3dbe-4fc9-9c8c-83ea85769df5.ws-us02.gitpod.io/",
 				"http://127.0.0.1:5000/resolution",
-				this.state.AccountInfo,
+				this.state.AccountChanges,
 				{ responseType: "blob" } // had to add this one here
 			)
 			.then((res) => {
 				download(
 					res.data,
-					`${this.state.AccountInfo.BusinessName} - Resolution`,
+					`${this.state.AccountChanges[0].BusinessName} - Resolution`,
 					res.content
 				);
 				this.setState({ ...this.state, loading: false });
@@ -100,14 +199,14 @@ class OMG extends Component {
 			.catch(
 				(error) => (
 					alert(
-						"Oops! Something funny hOMGened. Try again or contact the admin."
+						"Oops! Something funny happened. Try again or contact the admin."
 					),
 					this.setState({ ...this.state, loading: false })
 				)
 			);
 		this.setState({
 			...this.state,
-			loading: true,
+			loading: false,
 		});
 	};
 	handleCheckboxChange = (e) => {
@@ -115,13 +214,17 @@ class OMG extends Component {
 			e.target.name
 		];
 		let { toggleCheckboxes } = this.state;
+		if (this.state.toggleCheckboxes.prefix === false) {
+			this.state.AccountChanges[0]["PrefixName"] = "";
+			let { AccountInfo } = this.state.AccountChanges[0];
+			this.setState({ ...this.state, AccountInfo });
+		}
+		this.setState({ ...this.state, toggleCheckboxes });
 
-		this.setState({ toggleCheckboxes });
-		console.log(toggleCheckboxes);
 		if (e.target.name === "prefix") {
 			if (toggleCheckboxes.prefix) {
 				this.setState({
-					// ...this.state.toggleCheckboxes,
+					...this.state,
 					toggleCheckboxes: {
 						...this.state.toggleCheckboxes,
 						prefixClass: "prefix",
@@ -131,7 +234,7 @@ class OMG extends Component {
 				});
 			} else {
 				this.setState({
-					// ...this.state.toggleCheckboxes,
+					...this.state,
 					toggleCheckboxes: {
 						prefixClass: "",
 					},
@@ -140,7 +243,7 @@ class OMG extends Component {
 		} else {
 			if (toggleCheckboxes.addLine) {
 				this.setState({
-					// ...this.state.toggleCheckboxes,
+					...this.state,
 					toggleCheckboxes: {
 						...this.state.toggleCheckboxes,
 						addLineClass: "addLineClass",
@@ -149,7 +252,7 @@ class OMG extends Component {
 				});
 			} else {
 				this.setState({
-					// ...this.state.toggleCheckboxes,
+					...this.state,
 					toggleCheckboxes: {
 						...this.state.toggleCheckboxes,
 						addLineClass: "",
@@ -161,12 +264,8 @@ class OMG extends Component {
 	};
 
 	handleChange = (e) => {
-		// let stateName = e.target.name
-		// console.log(stateName)
-		// JSON.stringify(stateName)
-
-		this.state.AccountInfo[e.target.name] = e.target.value;
-		let { AccountInfo } = this.state;
+		this.state.AccountChanges[0][e.target.name] = e.target.value;
+		let { AccountInfo } = this.state.AccountChanges[0];
 		this.setState({ AccountInfo });
 	};
 	render() {
@@ -183,7 +282,7 @@ class OMG extends Component {
 				<div>
 					<TextField
 						id="outlined-basic"
-						value={this.state.BusinessName}
+						value={this.state.AccountChanges[0].BusinessName}
 						name="BusinessName"
 						onChange={this.handleChange}
 						label="Business Name"
@@ -211,7 +310,7 @@ class OMG extends Component {
 							labelId="demo-simple-select-label"
 							id="demo-simple-select"
 							name="Prefix"
-							value={this.state.Prefix}
+							value={this.state.AccountChanges[0].Prefix}
 							onChange={this.handleChange}
 							style={{ width: "150px", marginLeft: "25px" }}
 							className={`noShow ${prefixClass}`}
@@ -225,7 +324,7 @@ class OMG extends Component {
 						id="outlined-basic"
 						label="Prefix Name"
 						name="PrefixName"
-						value={this.state.PrefixName}
+						value={this.state.AccountChanges[0].PrefixName}
 						onChange={this.handleChange}
 						variant="outlined"
 						className={`noShow ${prefixClass} ${inputBoxes}`}
@@ -255,7 +354,7 @@ class OMG extends Component {
 							id="outlined-basic"
 							label="Add Another Name"
 							name="AnotherName"
-							value={this.state.AnotherName}
+							value={this.state.AccountChanges[0].AnotherName}
 							onChange={this.handleChange}
 							style={{ width: "280px", paddingLeft: "18px !important" }}
 							variant="outlined"
@@ -265,7 +364,7 @@ class OMG extends Component {
 					<TextField
 						id="outlined-basic"
 						name="EIN"
-						value={this.state.EIN}
+						value={this.state.AccountChanges[0].EIN}
 						onChange={this.handleChange}
 						label="EIN"
 						variant="outlined"
@@ -275,7 +374,7 @@ class OMG extends Component {
 						id="outlined-basic"
 						label="Account Number"
 						name={"AccountNumber1"}
-						value={this.state.AccountType1}
+						value={this.state.AccountChanges[0].AccountNumber1}
 						onChange={this.handleChange}
 						multiline
 						variant="outlined"
@@ -286,7 +385,7 @@ class OMG extends Component {
 						label="Account Type"
 						name={"AccountType1"}
 						placeholder="Business Checking"
-						value={this.state.AccountType1}
+						value={this.state.AccountChanges[0].AccountType1}
 						onChange={this.handleChange}
 						variant="outlined"
 						className="inputBoxes"
@@ -296,7 +395,7 @@ class OMG extends Component {
 						label="Street"
 						multiline
 						name="Street"
-						value={this.state.Street}
+						value={this.state.AccountChanges[0].Street}
 						onChange={this.handleChange}
 						placeholder="123 Happy St."
 						variant="outlined"
@@ -306,7 +405,7 @@ class OMG extends Component {
 						id="outlined-basic"
 						label="City"
 						name="City"
-						value={this.state.City}
+						value={this.state.AccountChanges[0].City}
 						onChange={this.handleChange}
 						multiline
 						placeholder="Santa Rosa, CA 94949"
