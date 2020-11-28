@@ -155,7 +155,7 @@ def generateSigCard():
     # create a new PDF with Reportlab
     can = canvas.Canvas(packet, pagesize=(612, 792), bottomup=0)
     can.setFont('Arial', 7.98)
-    
+
     # Account Titling Box
     if AccountInfo["Type"] == "Consumer":
         can.drawString(299, 66.5, signer1["Name"])
@@ -560,19 +560,19 @@ def generateResolution():
         can.drawString(41, 433, f'{signer3["Name"]}-{signer3["Position"]}')
 
     # Checking Ownership Type
-    if AccountInfo["Ownership"] == "Joint":
-        can.drawString(17, 382.5, "X")
-    if AccountInfo["Ownership"] == "LLC":
-        can.drawString(17, 448, "X")
-    if AccountInfo["Ownership"] == "CCorp":
-        can.drawString(17, 459, "X")
-    if AccountInfo["Ownership"] == "SCorp":
-        can.drawString(91.5, 459, "X")
+    # if AccountInfo["Ownership"] == "Joint":
+    #     can.drawString(17, 382.5, "X")
+    # if AccountInfo["Ownership"] == "LLC":
+    #     can.drawString(17, 448, "X")
+    # if AccountInfo["Ownership"] == "CCorp":
+    #     can.drawString(17, 459, "X")
+    # if AccountInfo["Ownership"] == "SCorp":
+    #     can.drawString(91.5, 459, "X")
 
-    #  Beneficiary Info
-    if AccountInfo["Benificiary"] == "POD":
-        can.drawString(138.5, 518.5, "X")
-        can.drawString(26, 576, AccountInfo["BeneficiaryDetails"])
+    # #  Beneficiary Info
+    # if AccountInfo["Benificiary"] == "POD":
+    #     can.drawString(138.5, 518.5, "X")
+    #     can.drawString(26, 576, AccountInfo["BeneficiaryDetails"])
 
     can.save()
 
