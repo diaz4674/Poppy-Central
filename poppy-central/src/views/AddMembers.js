@@ -44,6 +44,10 @@ class SwitchesGroup extends React.Component {
 
 	handleChange = (e) => {
 		this.setState({ ...this.state, [e.target.name]: e.target.checked });
+		// resets member state to parent if no members to project option selected
+		if (this.state.addMembers) {
+			this.props.getMembers([]);
+		}
 	};
 	updateMembers = (name) => {
 		this.props.getMembers(name);

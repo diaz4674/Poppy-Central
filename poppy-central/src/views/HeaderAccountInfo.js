@@ -14,7 +14,6 @@ import { withStyles } from "@material-ui/styles";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import AddMembers from "./AddMembers";
-import AddMembersInput from "./AddMembersInput";
 
 const useStyles = makeStyles((theme) => ({
 	formControl: {
@@ -30,14 +29,20 @@ class FormControlLabelPlacement extends React.Component {
 	state = {
 		signers: "",
 		ProjectName: "",
+		type: "",
 	};
 
-	handleChange = (event) => {
-		this.setState({ signers: event.target.value });
+	handleChange = (e) => {
+		let change = (this.state[e.target.name] = e.target.value);
+		this.setState({ ...this.state, change });
 	};
 
 	getMembers = (members) => {
 		this.setState({ ...this.state, teamMembers: members });
+	};
+
+	handleChangeRadio = (e) => {
+		this.setState({ ...this.state, type: e.target.value });
 	};
 
 	render() {
@@ -62,14 +67,18 @@ class FormControlLabelPlacement extends React.Component {
 						>
 							<FormControlLabel
 								value="Personal"
+								name="Personal"
 								control={<Radio color="primary" />}
 								label="Personal"
+								onChange={this.handleChangeRadio}
 								labelPlacement="top"
 							/>
 							<FormControlLabel
 								value="Business"
 								control={<Radio color="primary" />}
 								label="Business"
+								name="Business"
+								onChange={this.handleChangeRadio}
 								labelPlacement="top"
 							/>
 						</RadioGroup>
@@ -88,7 +97,7 @@ class FormControlLabelPlacement extends React.Component {
 								<MenuItem value={1}>1</MenuItem>
 								<MenuItem value={2}>2</MenuItem>
 								<MenuItem value={3}>3</MenuItem>
-								<MenuItem value={3}>4</MenuItem>
+								<MenuItem value={4}>4</MenuItem>
 							</Select>
 						</FormControl>
 					</div>
