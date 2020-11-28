@@ -155,7 +155,7 @@ def generateSigCard():
     # create a new PDF with Reportlab
     can = canvas.Canvas(packet, pagesize=(612, 792), bottomup=0)
     can.setFont('Arial', 7.98)
-    print(AccountInfo["Type"], "BEFOOOOOREEEEEEEEEEEEEEEEEEEEEEEEEEEEEeee")
+    
     # Account Titling Box
     if AccountInfo["Type"] == "Consumer":
         can.drawString(299, 66.5, signer1["Name"])
