@@ -152,9 +152,6 @@ class OMG extends Component {
 		loading: false,
 	};
 
-	componentDidMount() {
-		console.log(this.state.AccountChanges);
-	}
 	updateCardHandler = () => {
 		this.setState({
 			...this.state.AccountChanges,
