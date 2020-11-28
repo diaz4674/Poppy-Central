@@ -16,7 +16,7 @@ class AddMembersInput extends React.Component {
 	};
 	handleChange = (selectedOptions) => {
 		this.setState({ selectedOptions });
-		console.log(this.state.selectedOptions);
+		this.props.updateMembers(selectedOptions);
 	};
 	render() {
 		return (
@@ -29,10 +29,6 @@ class AddMembersInput extends React.Component {
 						isMulti
 					/>
 				</div>
-				<button onClick={() => console.log(this.state.selectedOptions)}>
-					{" "}
-					clcik
-				</button>
 			</>
 		);
 	}

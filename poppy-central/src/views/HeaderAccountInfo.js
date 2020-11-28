@@ -36,6 +36,10 @@ class FormControlLabelPlacement extends React.Component {
 		this.setState({ signers: event.target.value });
 	};
 
+	getMembers = (members) => {
+		this.setState({ ...this.state, teamMembers: members });
+	};
+
 	render() {
 		return (
 			<div style={{ padding: "15px", height: "auto" }}>
@@ -88,12 +92,12 @@ class FormControlLabelPlacement extends React.Component {
 							</Select>
 						</FormControl>
 					</div>
-					<AddMembers />
+					<AddMembers getMembers={this.getMembers} />
 					<div className="buttonContainer">
 						<Button
 							variant="contained"
 							color="default"
-							// onClick={this.updateCardHandler}
+							onClick={() => console.log(this.state)}
 							className="submitButton"
 						>
 							Next

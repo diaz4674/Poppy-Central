@@ -41,6 +41,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 class SignerChanges extends Component {
+	updateMembers = (member) => {
+		console.log(member);
+	};
 	render() {
 		return (
 			<div className="container">
@@ -71,7 +74,7 @@ class SignerChanges extends Component {
 						<h1 style={{ fontFamily: "Roboto sans-serif", color: "#595a59" }}>
 							Information
 						</h1>
-						<HeaderAccountInfo />
+						<HeaderAccountInfo updateMembers={this.updateMembers} />
 					</div>
 				</div>
 			</div>

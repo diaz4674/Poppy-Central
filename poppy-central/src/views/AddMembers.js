@@ -35,12 +35,18 @@ const PurpleSwitch = withStyles({
 })(Switch);
 
 class SwitchesGroup extends React.Component {
-	state = {
-		addMembers: false,
-	};
+	constructor(props) {
+		super(props);
+		this.state = {
+			addMembers: false,
+		};
+	}
 
 	handleChange = (e) => {
 		this.setState({ ...this.state, [e.target.name]: e.target.checked });
+	};
+	updateMembers = (name) => {
+		this.props.getMembers(name);
 	};
 
 	render() {
@@ -59,7 +65,9 @@ class SwitchesGroup extends React.Component {
 						label="Add Team Members to Project"
 					/>
 				</FormGroup>
-				{this.state.addMembers ? <AddMembersInput /> : null}
+				{this.state.addMembers ? (
+					<AddMembersInput updateMembers={this.updateMembers} />
+				) : null}
 			</FormControl>
 		);
 	}
