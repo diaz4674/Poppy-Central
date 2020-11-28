@@ -26,6 +26,7 @@ import checkmark from "./check.svg";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import contract from "./contract.svg";
 import ImageIcon from "@material-ui/icons/Image";
+import Toaster from "./Toaster";
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -40,10 +41,18 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 class Home extends Component {
+	state = {
+		newItem: false,
+	};
+
+	componentDidMount() {
+		this.setState({ newItem: true });
+	}
 	render() {
 		return (
 			<div className="container">
 				<div className="InputBox">
+					<Toaster />
 					<div
 						style={{
 							display: "flex",

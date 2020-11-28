@@ -10,6 +10,7 @@ import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/styles";
 import AddMembersInput from "./AddMembersInput";
 import "./switch.css";
+
 const useStyles = makeStyles((theme) => ({
 	formControl: {
 		margin: theme.spacing(1),
