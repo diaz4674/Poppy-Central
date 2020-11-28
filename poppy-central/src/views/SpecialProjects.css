@@ -53,6 +53,7 @@ body {
 	box-shadow: 0px 3px 15px #e1e9f1;
 	border-radius: 10px;
 	padding: 25px 0;
+	height: auto;
 	-webkit-animation: fadein 1.8s; /* Safari, Chrome and Opera > 12.1 */
 	-moz-animation: fadein 1.8s; /* Firefox < 16 */
 	-ms-animation: fadein 1.8s; /* Internet Explorer */
