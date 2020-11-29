@@ -3,7 +3,6 @@ import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
-import FormLabel from "@material-ui/core/FormLabel";
 import "./HeaderAccount.css";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -14,6 +13,7 @@ import { withStyles } from "@material-ui/styles";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import AddMembers from "./AddMembers";
+import { withRouter } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
 	formControl: {
@@ -106,7 +106,9 @@ class FormControlLabelPlacement extends React.Component {
 						<Button
 							variant="contained"
 							color="default"
-							onClick={() => console.log(this.state)}
+							onClick={() =>
+								this.props.history.push("/app-main/InputSignerData")
+							}
 							className="submitButton"
 						>
 							Next
@@ -122,4 +124,4 @@ FormControlLabelPlacement.propTypes = {
 	classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(useStyles)(FormControlLabelPlacement);
+export default withRouter(withStyles(useStyles)(FormControlLabelPlacement));

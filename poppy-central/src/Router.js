@@ -6,6 +6,7 @@ import Home from "./views/Home";
 import SpecialProjects from "./views/SpecialProjects";
 import CompletedProjects from "./views/CompletedProjects";
 import SignerChanges from "./views/SignerChanges";
+import InputSignerData from "./views/InputSignerData";
 
 export default () => (
 	<Router>
@@ -17,5 +18,6 @@ export default () => (
 			exact
 			component={CompletedProjects}
 		/>
+		<Route path="/app-main/InputSignerData" exact component={InputSignerData} />
 	</Router>
 );
