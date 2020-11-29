@@ -24,11 +24,12 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-const signers = 4;
+let totalSigners = 4;
 
 export default function ControlledAccordions() {
 	const classes = useStyles();
 	const [expanded, setExpanded] = React.useState("panel1");
+	const [signers, setSigners] = React.useState([]);
 
 	const handleChange = (panel) => (event, isExpanded) => {
 		setExpanded(isExpanded ? panel : false);
@@ -51,58 +52,22 @@ export default function ControlledAccordions() {
 				</AccordionSummary>
 				<BusinesInputs />
 			</Accordion>
-			<Accordion
-				expanded={expanded === "panel2"}
-				onChange={handleChange("panel2")}
-			>
-				<AccordionSummary
-					expandIcon={<ExpandMoreIcon />}
-					aria-controls="panel2bh-content"
-					id="panel2bh-header"
+			{Array.from(Array(totalSigners)).map((x, index) => (
+				<Accordion
+					key={index}
+					expanded={expanded === `panel${index + 2}`}
+					onChange={handleChange(`panel${index + 2}`)}
 				>
-					<Typography>Users</Typography>
-				</AccordionSummary>
-				<SignerInput />
-			</Accordion>
-			<Accordion
-				expanded={expanded === "panel3"}
-				onChange={handleChange("panel3")}
-			>
-				<AccordionSummary
-					expandIcon={<ExpandMoreIcon />}
-					aria-controls="panel3bh-content"
-					id="panel3bh-header"
-				>
-					<Typography className={classes.heading}>Advanced settings</Typography>
-					<Typography className={classes.secondaryHeading}>
-						Filtering has been entirely disabled for whole web server
-					</Typography>
-				</AccordionSummary>
-				<AccordionDetails>
-					<Typography>
-						Nunc vitae orci ultricies, auctor nunc in, volutpat nisl. Integer
-						sit amet egestas eros, vitae egestas augue. Duis vel est augue.
-					</Typography>
-				</AccordionDetails>
-			</Accordion>
-			<Accordion
-				expanded={expanded === "panel4"}
-				onChange={handleChange("panel4")}
-			>
-				<AccordionSummary
-					expandIcon={<ExpandMoreIcon />}
-					aria-controls="panel4bh-content"
-					id="panel4bh-header"
-				>
-					<Typography className={classes.heading}>Personal data</Typography>
-				</AccordionSummary>
-				<AccordionDetails>
-					<Typography>
-						Nunc vitae orci ultricies, auctor nunc in, volutpat nisl. Integer
-						sit amet egestas eros, vitae egestas augue. Duis vel est augue.
-					</Typography>
-				</AccordionDetails>
-			</Accordion>
+					<AccordionSummary
+						expandIcon={<ExpandMoreIcon />}
+						aria-controls={`panel${index + 2}bh-content`}
+						id={`panel${index + 2}bh-header`}
+					>
+						<Typography>Signer {index + 1}</Typography>
+					</AccordionSummary>
+					<SignerInput />
+				</Accordion>
+			))}
 		</div>
 	);
 }
