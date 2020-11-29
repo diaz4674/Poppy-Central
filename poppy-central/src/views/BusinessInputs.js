@@ -183,14 +183,22 @@ class OMG extends Component {
 			addLine,
 			addLineClass,
 		} = this.state.toggleCheckboxes;
+
+		const { classes } = this.props;
 		return (
-			<div className="container">
-				<div>
+			<div className="container" style={{ margin: "0 0 15px" }}>
+				<div
+					className="rows"
+					style={{
+						margin: "10px 0",
+						justifyContent: "center",
+						padding: "0 20px",
+					}}
+				>
 					<FormGroup
-						aria-label="position"
-						className="checkBoxDiv"
+						className={classes.formControl}
 						row
-						style={{ padding: "0 52px" }}
+						style={{ width: "263px", padding: "15px 23px 0" }}
 					>
 						<InputLabel id="demo-simple-select-label">
 							Ownership Type
@@ -217,7 +225,7 @@ class OMG extends Component {
 						onChange={this.handleChange}
 						label="Business Name"
 						variant="outlined"
-						className="inputBoxes"
+						style={{ width: "216px" }}
 					/>
 					{/* Prefix Check  */}
 					<FormGroup
@@ -249,7 +257,16 @@ class OMG extends Component {
 							<MenuItem value={"FBO"}>FBO</MenuItem>
 						</Select>
 					</FormGroup>
+				</div>
 
+				<div
+					className="rows"
+					style={{
+						margin: "10px 0",
+						justifyContent: "center",
+						padding: "0 20px",
+					}}
+				>
 					<TextField
 						id="outlined-basic"
 						label="Prefix Name"
@@ -258,6 +275,7 @@ class OMG extends Component {
 						onChange={this.handleChange}
 						variant="outlined"
 						className={`noShow ${prefixClass} ${inputBoxes}`}
+						style={{ width: "250px" }}
 					/>
 					<FormGroup
 						aria-label="position"
@@ -291,6 +309,16 @@ class OMG extends Component {
 							className={`noShow ${addLineClass} ${inputBoxes}`}
 						/>
 					</FormGroup>
+				</div>
+
+				<div
+					className="rows"
+					style={{
+						margin: "10px 0",
+						justifyContent: "space-around",
+						padding: "0 20px",
+					}}
+				>
 					<TextField
 						id="outlined-basic"
 						name="EIN"
@@ -299,6 +327,7 @@ class OMG extends Component {
 						label="EIN"
 						variant="outlined"
 						className="inputBoxes"
+						style={{ width: "200px" }}
 					/>
 					<TextField
 						id="outlined-basic"
@@ -309,6 +338,7 @@ class OMG extends Component {
 						multiline
 						variant="outlined"
 						className="inputBoxes"
+						style={{ width: "200px" }}
 					/>
 					<TextField
 						id="outlined-basic"
@@ -319,7 +349,17 @@ class OMG extends Component {
 						onChange={this.handleChange}
 						variant="outlined"
 						className="inputBoxes"
+						style={{ width: "200px" }}
 					/>
+				</div>
+				<div
+					className="rows"
+					style={{
+						margin: "10px 0",
+						justifyContent: "space-around",
+						padding: "0 20px",
+					}}
+				>
 					<TextField
 						id="outlined-basic"
 						label="Street"

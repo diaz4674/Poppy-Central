@@ -24,6 +24,8 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
+const signers = 4;
+
 export default function ControlledAccordions() {
 	const classes = useStyles();
 	const [expanded, setExpanded] = React.useState("panel1");
@@ -47,8 +49,7 @@ export default function ControlledAccordions() {
 						Business Information
 					</Typography>
 				</AccordionSummary>
-				{/* <BusinesInputs /> */}
-				<SignerInput />
+				<BusinesInputs />
 			</Accordion>
 			<Accordion
 				expanded={expanded === "panel2"}
@@ -59,18 +60,9 @@ export default function ControlledAccordions() {
 					aria-controls="panel2bh-content"
 					id="panel2bh-header"
 				>
-					<Typography className={classes.heading}>Users</Typography>
-					<Typography className={classes.secondaryHeading}>
-						You are currently not an owner
-					</Typography>
+					<Typography>Users</Typography>
 				</AccordionSummary>
-				<AccordionDetails>
-					<Typography>
-						Donec placerat, lectus sed mattis semper, neque lectus feugiat
-						lectus, varius pulvinar diam eros in elit. Pellentesque convallis
-						laoreet laoreet.
-					</Typography>
-				</AccordionDetails>
+				<SignerInput />
 			</Accordion>
 			<Accordion
 				expanded={expanded === "panel3"}
