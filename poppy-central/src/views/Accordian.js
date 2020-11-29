@@ -7,6 +7,7 @@ import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import BusinesInputs from "./BusinessInputs";
 import SignerInput from "./SignerInput";
+import Button from "@material-ui/core/Button";
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -29,12 +30,15 @@ let totalSigners = 4;
 export default function ControlledAccordions() {
 	const classes = useStyles();
 	const [expanded, setExpanded] = React.useState("panel1");
-	const [signers, setSigners] = React.useState([]);
+	const [loading, setLoading] = React.useState(false);
 
 	const handleChange = (panel) => (event, isExpanded) => {
 		setExpanded(isExpanded ? panel : false);
 	};
-
+	const updateCardHandler = () => {
+		// setLoading(true);
+		console.log("hi");
+	};
 	return (
 		<div className={classes.root}>
 			<Accordion
@@ -68,6 +72,24 @@ export default function ControlledAccordions() {
 					<SignerInput />
 				</Accordion>
 			))}
+			<div className="buttonContainer">
+				<Button
+					variant="contained"
+					color="default"
+					onClick={updateCardHandler}
+					className="submitButton"
+				>
+					{loading ? (
+						<div class="load-3">
+							<div class="line"></div>
+							<div class="line"></div>
+							<div class="line"></div>
+						</div>
+					) : (
+						"Submit"
+					)}
+				</Button>
+			</div>
 		</div>
 	);
 }
