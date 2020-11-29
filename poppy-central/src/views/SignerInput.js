@@ -9,6 +9,9 @@ import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
 import InputLabel from "@material-ui/core/InputLabel";
 import DateToggler from "./DateToggler";
+import FormGroup from "@material-ui/core/FormGroup";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Checkbox from "@material-ui/core/Checkbox";
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -50,6 +53,8 @@ class SignerInput extends Component {
 		Cell: "",
 		DOB: "",
 		SSN: "",
+		emailClient: "",
+		prefix: false,
 
 		toggleCheckboxes: {
 			prefix: false,
@@ -142,7 +147,35 @@ class SignerInput extends Component {
 		return (
 			<div className="container">
 				<div>
-					<div
+					<FormGroup
+						aria-label="position"
+						className="checkBoxDiv"
+						row
+						style={{ padding: "0 35px", margin: "25px 0" }}
+					>
+						<FormControlLabel
+							value={prefix}
+							control={<Checkbox />}
+							style={{ color: "grey" }}
+							label="Email Client"
+							name="prefix"
+							onChange={this.handleCheckboxChange}
+							labelPlacement="start"
+							className="checkBox"
+						/>
+						<TextField
+							labelId="demo-simple-select-label"
+							id="demo-simple-select"
+							name="emailClient"
+							label="Email"
+							value={this.state.emailClient}
+							onChange={this.handleChange}
+							style={{ width: "150px", marginLeft: "25px" }}
+							className={`noShow ${prefixClass}`}
+						/>
+					</FormGroup>
+                    {this.state.prefix ? null: 
+                    <div
 						className="rows"
 						style={{
 							// margin: "10px 0",
@@ -383,6 +416,8 @@ class SignerInput extends Component {
 							className="twoRows"
 						/>
 					</div>
+                    }
+					
 				</div>
 			</div>
 		);
