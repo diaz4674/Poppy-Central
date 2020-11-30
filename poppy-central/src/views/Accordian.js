@@ -86,7 +86,7 @@ export default function ControlledAccordions() {
 							<div class="line"></div>
 						</div>
 					) : (
-						"Submit"
+						"Save Project"
 					)}
 				</Button>
 			</div>

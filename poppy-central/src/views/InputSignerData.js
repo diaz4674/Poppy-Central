@@ -75,7 +75,10 @@ class InputSignerData extends React.Component {
 	render() {
 		return (
 			<div className="container">
-				<div className="InputBox" style={{ padding: "0 20px", width: "900px" }}>
+				<div
+					className="InputBox"
+					style={{ padding: "35px 20px", width: "900px" }}
+				>
 					<div
 						style={{
 							display: "flex",
@@ -83,7 +86,7 @@ class InputSignerData extends React.Component {
 							alignContent: "center",
 							justifyContent: "center",
 							width: "100%",
-							margin: "0 0 30px",
+							margin: "0",
 						}}
 					>
 						<div
