@@ -166,7 +166,6 @@ class OMG extends Component {
 				});
 			}
 		}
-		// console.log(this.state.toggleCheckboxes)
 	};
 
 	handleChange = (e) => {
@@ -232,7 +231,7 @@ class OMG extends Component {
 						aria-label="position"
 						className="checkBoxDiv"
 						row
-						style={{ padding: "0 35px" }}
+						// style={{ padding: "0 61px !important" }}
 					>
 						<FormControlLabel
 							value={prefix}
@@ -250,12 +249,22 @@ class OMG extends Component {
 							name="Prefix"
 							value={this.state.AccountChanges[0].Prefix}
 							onChange={this.handleChange}
-							style={{ width: "150px", marginLeft: "25px" }}
+							style={{ width: "150px" }}
 							className={`noShow ${prefixClass}`}
 						>
 							<MenuItem value={"DBA"}>DBA</MenuItem>
 							<MenuItem value={"FBO"}>FBO</MenuItem>
 						</Select>
+						<TextField
+							id="outlined-basic"
+							label="Prefix EIN"
+							name="PrefixEIN"
+							value={this.state.AccountChanges[0].PrefixEIN}
+							onChange={this.handleChange}
+							variant="outlined"
+							className={`noShow ${prefixClass} ${inputBoxes}`}
+							style={{ width: "200px", marginRight: "35px" }}
+						/>
 					</FormGroup>
 				</div>
 

@@ -41,6 +41,7 @@ class OMG extends Component {
 				BusinessName: "Oakmont Management Group Agent",
 				Prefix: "",
 				PrefixName: "",
+				PrefixEIN: "",
 				AnotherName: "",
 				Street: "123 Main St",
 				City: "Santa Rosa, CA 94949",
@@ -315,6 +316,16 @@ class OMG extends Component {
 							<MenuItem value={"DBA"}>DBA</MenuItem>
 							<MenuItem value={"FBO"}>FBO</MenuItem>
 						</Select>
+						<TextField
+							id="outlined-basic"
+							label="Prefix EIN"
+							name="PrefixEIN"
+							value={this.state.AccountChanges[0].PrefixEIN}
+							onChange={this.handleChange}
+							variant="outlined"
+							className={`noShow ${prefixClass} ${inputBoxes}`}
+							style={{ width: "200px" }}
+						/>
 					</FormGroup>
 
 					<TextField
