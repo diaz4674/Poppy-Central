@@ -12,6 +12,12 @@ import os
 import sys
 from flask_cors import CORS
 import json
+import pygame
+import reportlab 
+from pathlib import Path
+
+relative = Path("fonts/Cour.ttf")
+absolute = relative.absolute()  #
 
 app = Flask(__name__)
 CORS(app)
@@ -30,10 +36,15 @@ def generateSigCard():
     my_json = my_bytes_value.decode('utf8').replace("'", '"')
     # print(my_json)
     # print('- ' * 20)
-
     # Load the JSON to a Python list & dump it back out as formatted JSON
-    data = json.loads(my_json)
+    data = json.loads(my_json)[0]
+    
+    # print(data, "DAAATTTTTAAAAAAAAAAAAAAAAAAAA")
     # print(data["Type"], "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAaaa")
+	    # print("String could not be converted to JSON")
+    # print(my_json)
+    # print('- ' * 20)
+    # Load the JSON to a Python list & dump it back out as formatted JSON\
     AccountInfo = {
         "Type": data["Type"],
         "Ownership": data["Ownership"],
@@ -193,7 +204,9 @@ def generateSigCard():
 
     can.drawString(364, 41, AccountInfo["AccountNumber1"])
     print(AccountInfo["Type"])
-    # Business Account Titling Box
+
+
+    # BUSINESS Account Titling Box
     if AccountInfo["Type"] == "Business":
         can.drawString(299, 66.5, AccountInfo["BusinessName"])
         if AccountInfo["Prefix"] != "":
@@ -398,11 +411,16 @@ def generateResolution():
     my_json = my_bytes_value.decode('utf8').replace("'", '"')
     # print(my_json)
     # print('- ' * 20)
-
     # Load the JSON to a Python list & dump it back out as formatted JSON
-    data = json.loads(my_json)
+    print(my_json, "JSSSSSSSSSSSSOOOOOOOOOOOOOOOOOOOn")
+    data = json.loads(my_json)[0]
+    
+    # print(data, "DAAATTTTTAAAAAAAAAAAAAAAAAAAA")
     # print(data["Type"], "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAaaa")
-
+	    # print("String could not be converted to JSON")
+    # print(my_json)
+    # print('- ' * 20)
+    # Load the JSON to a Python list & dump it back out as formatted JSON\
     AccountInfo = {
         "Type": data["Type"],
         "Ownership": data["Ownership"],
@@ -519,15 +537,20 @@ def generateResolution():
 
     # reportlab.rl_config.TTFSearchPath.append(str(settings.BASE_DIR) + '/app/lib/reportlabs/fonts')
     # pdfmetrics.registerFont(TTFont('Copperplate', 'Copperplate-Gothic-Bold.ttf'))
-
-    pdfmetrics.registerFont(TTFont('Courier New Regular', 'cour.ttf'))
+    # BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath('Cour.ttf')))
+    # reportlab.rl_config.TTFSearchPath.append(str(settings.BASE_DIR) + '/app/lib/reportlabs/fonts')
+    pdfmetrics.registerFont(TTFont('Courier New Regular', absolute, 'Cour.ttf'))
+# pdfmetrics.registerFont(TTFont('Calibri', FONT_DIR + '/fonts/Calibri.ttf'))
+    # CourierFont = pdfmetrics.registerFont(TTFont(absolute, 'Cour.ttf'))
+    # CourierFont = absolute
 
     #  Font mapping
     packet = io.BytesIO()
     packet2 = io.BytesIO()
     # create a new PDF with Reportlab
+    
     can = canvas.Canvas(packet, pagesize=(612, 792), bottomup=0)
-    can.setFont('Courier New Regular', 7.98)
+    can.setFont("Courier New Regular", 7.98)
 
     # Business Account Titling Box
     if AccountInfo["Type"] == "Business":
