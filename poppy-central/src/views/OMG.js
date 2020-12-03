@@ -16,6 +16,7 @@ import FormLabel from "@material-ui/core/FormLabel";
 import FormGroup from "@material-ui/core/FormGroup";
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
+import InputLabel from '@material-ui/core/InputLabel';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -25,6 +26,11 @@ const useStyles = makeStyles((theme) => ({
         },
         button: {
             margin: theme.spacing(1),
+        },
+        formControl: {
+            margin: theme.spacing(1),
+            minWidth: 120,
+            maxWidth: 300,
         },
     },
 }));
@@ -275,6 +281,8 @@ class OMG extends Component {
             addLine,
             addLineClass,
         } = this.state.toggleCheckboxes;
+
+        const { classes } = this.props;
         return (
             <div className="container">
                 <div>
@@ -292,7 +300,7 @@ class OMG extends Component {
                         aria-label="position"
                         className="checkBoxDiv"
                         row
-                        style={{ padding: "0 35px" }}
+                        style={{ padding: "0 53px" }}
                     >
                         <FormControlLabel
                             value={prefix}
@@ -304,18 +312,21 @@ class OMG extends Component {
                             labelPlacement="start"
                             className="checkBox"
                         />
-                        <Select
-                            labelId="demo-simple-select-label"
-                            id="demo-simple-select"
-                            name="Prefix"
-                            value={this.state.AccountChanges[0].Prefix}
-                            onChange={this.handleChange}
-                            style={{ width: "150px", marginLeft: "25px" }}
-                            className={`noShow ${prefixClass}`}
-                        >
-                            <MenuItem value={"DBA"}>DBA</MenuItem>
-                            <MenuItem value={"FBO"}>FBO</MenuItem>
-                        </Select>
+                        <FormControl className={classes.formControl} id="prefixContainer">
+                            <InputLabel className={`noShow ${prefixClass}`} id="prefixLabel">Prefix Type</InputLabel>
+                            <Select
+                                labelId="demo-simple-select-label"
+                                id="demo-simple-select"
+                                name="Prefix"
+                                value={this.state.AccountChanges[0].Prefix}
+                                onChange={this.handleChange}
+                                style={{ width: "150px", marginLeft: "25px" }}
+                                className={`noShow ${prefixClass}`}
+                            >
+                                <MenuItem value={"DBA"}>DBA</MenuItem>
+                                <MenuItem value={"FBO"}>FBO</MenuItem>
+                            </Select>
+                        </FormControl>
                         <TextField
                             id="outlined-basic"
                             label="Prefix EIN"
@@ -323,8 +334,8 @@ class OMG extends Component {
                             value={this.state.AccountChanges[0].PrefixEIN}
                             onChange={this.handleChange}
                             variant="outlined"
-                            className={`noShow ${prefixClass} ${inputBoxes}`}
-                            style={{ width: "200px" }}
+                            className={`noShow ${prefixClass} ${inputBoxes} prefixEIN`}
+                            style={{ width: "200px", marginLeft: "20px" }}
                         />
                     </FormGroup>
 
@@ -367,6 +378,7 @@ class OMG extends Component {
                             style={{ width: "280px", paddingLeft: "18px !important" }}
                             variant="outlined"
                             className={`noShow ${addLineClass} ${inputBoxes}`}
+
                         />
                     </FormGroup>
                     <TextField
