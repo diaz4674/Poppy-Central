@@ -40,7 +40,6 @@ def generateSigCard():
     
     data = json.loads(my_json)
     totalSigners = len(data) - 1
-
     AccountInfo = data[0]
 
     signer1 = data[1]
