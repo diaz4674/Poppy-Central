@@ -381,7 +381,10 @@ def generateSigCard():
         page2.drawString(55, 614, signer4["DOB"])
         page2.drawString(188, 614, signer4["SSN"])
 
-    page2.drawString(423, 442.5, AccountInfo["PrefixEIN"])
+    if AccountInfo["PrefixEIN"] != "":
+        page2.drawString(423, 442.5, AccountInfo["PrefixEIN"])
+    else: 
+        page2.drawString(423, 442.5, AccountInfo["EIN"])
     page2.drawString(370, 35, AccountInfo["BusinessName"])
     page2.drawString(314, 188, AccountInfo["EIN"])
     page2.drawString(299, 227, AccountInfo["AccountType1"])
