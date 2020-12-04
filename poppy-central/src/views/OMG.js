@@ -56,7 +56,7 @@ class OMG extends Component {
                 AccountNumber1: "",
             },
             {
-                Name: "Billy Bob",
+                Name: "Kevin Tyler",
                 Relationship: "Owners",
                 Street: "123 Happy Dr",
                 Position: "COO",
@@ -79,7 +79,7 @@ class OMG extends Component {
                 SSN: "123-34-2134",
             },
             {
-                Name: "James Brown",
+                Name: "Courtney Siegel",
                 Relationship: "Owners",
                 Street: "123 Happy Dr",
                 Position: "COO",
@@ -102,7 +102,7 @@ class OMG extends Component {
                 SSN: "123-34-2134",
             },
             {
-                Name: "Jimmy Neutron",
+                Name: "Matthew Stevenson",
                 Relationship: "Owners",
                 Street: "123 Happy Dr",
                 Position: "COO",
@@ -125,7 +125,7 @@ class OMG extends Component {
                 SSN: "123-34-2134",
             },
             {
-                Name: "Timmy Turner",
+                Name: "James Meek",
                 Relationship: "Owners",
                 Street: "123 Happy Dr",
                 Position: "COO",
@@ -164,10 +164,10 @@ class OMG extends Component {
             ...this.state.AccountChanges,
             loading: true,
         });
-        console.log(this.state.AccountChanges);
+        console.log(this.state);
         axios
             .post(
-                "https://5000-c45aac54-67ca-425c-8f36-9dba830f8ed3.ws-us02.gitpod.io/",
+                "https://5000-a0c79e47-400e-4d9e-946c-62986cf10498.ws-us03.gitpod.io/",
                 // "http://127.0.0.1:5000/",
                 this.state.AccountChanges,
                 { responseType: "blob" } // had to add this one here
@@ -185,7 +185,7 @@ class OMG extends Component {
             .catch((error) => console.log(error));
         axios
             .post(
-                "https://5000-c45aac54-67ca-425c-8f36-9dba830f8ed3.ws-us02.gitpod.io/resolution",
+                "https://5000-a0c79e47-400e-4d9e-946c-62986cf10498.ws-us03.gitpod.io/resolution",
                 // "http://127.0.0.1:5000/resolution",
                 this.state.AccountChanges,
                 { responseType: "blob" } // had to add this one here
@@ -221,7 +221,9 @@ class OMG extends Component {
         if (this.state.toggleCheckboxes.prefix === false) {
             this.state.AccountChanges[0]["PrefixName"] = "";
             let { AccountInfo } = this.state.AccountChanges[0];
-            this.setState({ ...this.state, AccountInfo });
+            this.setState({
+                ...this.state, AccountInfo
+            });
         }
         this.setState({ ...this.state, toggleCheckboxes });
 
@@ -237,11 +239,16 @@ class OMG extends Component {
                     },
                 });
             } else {
+                this.state.AccountChanges[0]["Prefix"] = "";
+                this.state.AccountChanges[0]["PrefixName"] = "";
+                this.state.AccountChanges[0]["PrefixEIN"] = "";
+                let { AccountInfo } = this.state.AccountChanges[0];
                 this.setState({
                     ...this.state,
                     toggleCheckboxes: {
                         prefixClass: "",
                     },
+                    AccountInfo
                 });
             }
         } else {
