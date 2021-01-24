@@ -12,6 +12,12 @@ import os
 import sys
 from flask_cors import CORS
 import json
+import pygame
+import reportlab
+from pathlib import Path
+
+relative = Path("fonts/Cour.ttf")
+absolute = relative.absolute()  #
 
 app = Flask(__name__)
 CORS(app)
@@ -30,11 +36,10 @@ def generateSigCard():
     my_json = my_bytes_value.decode('utf8').replace("'", '"')
     # print(my_json)
     # print('- ' * 20)
-
     # Load the JSON to a Python list & dump it back out as formatted JSON
+
     data = json.loads(my_json)
     totalSigners = len(data) - 1
-
     AccountInfo = data[0]
 
     signer1 = data[1]
@@ -49,22 +54,26 @@ def generateSigCard():
     if totalSigners > 3:
         signer4 = data[4]
     # print(data["Type"], "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAaaa")
+        # print("String could not be converted to JSON")
+    # print(my_json)
+    # print('- ' * 20)
+    # Load the JSON to a Python list & dump it back out as formatted JSON\
     # AccountInfo = {
-    #     "Type": "Business",
-    #     "Ownership": "CCorp",
-    #     "Benificiary": "",
-    #     "BeneficiaryDetails": "",
-    #     "totalSigners": 4,
-    #     "BusinessName":  "Oakmont Management Group Agent",
-    #     "Prefix": "FBO",
-    #     "PrefixName": "Oakmont of Varenna",
-    #     "AnotherName": "",
-    #     "PrefixEIN": "11-111111",
-    #     "EIN": "12-344556",
-    #     "Street": "123 Main St",
-    #     "City":  "Santa Rosa, CA 94949",
-    #     "AccountType1": "Business Checking",
-    #     "AccountNumber1": "01-200003-2"
+    #     "Type": data["Type"],
+    #     "Ownership": data["Ownership"],
+    #     "Benificiary": data["Benificiary"],
+    #     "BeneficiaryDetails": data["BeneficiaryDetails"],
+    #     "totalSigners": data["totalSigners"],
+    #     "BusinessName": data["BusinessName"],
+    #     "Prefix": data["Prefix"],
+    #     "PrefixName": data["PrefixName"],
+    #     "PrefixEIN": data["PrefixEIN"],
+    #     "AnotherName": data["AnotherName"],
+    #     "EIN": data["EIN"],
+    #     "Street": data["Street"],
+    #     "City": data["City"],
+    #     "AccountType1": data["AccountType1"],
+    #     "AccountNumber1": data["AccountNumber1"]
     # }
 
     # signer1 = {
@@ -208,8 +217,9 @@ def generateSigCard():
                 can.drawString(299, 116, signer1["City"])
 
     can.drawString(364, 41, AccountInfo["AccountNumber1"])
+    print(AccountInfo["Type"])
 
-    # Business Account Titling Box
+    # BUSINESS Account Titling Box
     if AccountInfo["Type"] == "Business":
         can.drawString(299, 66.5, AccountInfo["BusinessName"])
         if AccountInfo["Prefix"] != "":
@@ -229,8 +239,10 @@ def generateSigCard():
     #  Signer 1 Information Box
     can.drawString(83.5, 159, signer1["Name"])
     can.drawString(83.5, 171, signer1["Relationship"])
-    can.drawString(83.5, 189, f'{signer1["Street"]}, {signer1["City"]}')
-    can.drawString(83.5, 213, signer1["MailingAddress"])
+    can.drawString(83.5, 183, signer1["Street"])
+    can.drawString(83.5, 193, signer1["City"])
+    can.drawString(83.5, 207, signer1["MailingStreet"])
+    can.drawString(83.5, 217, signer1["MailingCity"])
     can.drawString(83.5, 232, signer1["PrimaryIDType"])
     can.drawString(188, 231, "Issued:")
     can.drawString(228, 231, signer1["IssueDate1"])
@@ -306,8 +318,10 @@ def generateSigCard():
     if signer2 != {}:
         page2.drawString(83.5, 35, signer2["Name"])
         page2.drawString(83.5, 46.5, signer2["Relationship"])
-        page2.drawString(83.5, 64.6, f'{signer2["Street"]}, {signer2["City"]}')
-        page2.drawString(83.5, 87.6, signer2["MailingAddress"])
+        page2.drawString(83.5, 60.5, signer2["Street"])
+        page2.drawString(83.5, 69.5, signer2["City"])
+        page2.drawString(83.5, 83.5, signer2["MailingStreet"])
+        page2.drawString(83.5, 93.5, signer2["MailingCity"])
         page2.drawString(83.5, 107, signer2["PrimaryIDType"])
         page2.drawString(188, 107, "Issued:")
         page2.drawString(228, 107, signer2["IssueDate1"])
@@ -331,8 +345,10 @@ def generateSigCard():
     if signer3 != {}:
         page2.drawString(83.5, 236, signer3["Name"])
         page2.drawString(83.5, 248, signer3["Relationship"])
-        page2.drawString(83.5, 266, f'{signer3["Street"]}, {signer3["City"]}')
-        page2.drawString(83.5, 290, signer3["MailingAddress"])
+        page2.drawString(83.5, 260.5, signer3["Street"])
+        page2.drawString(83.5, 270.5, signer3["City"])
+        page2.drawString(83.5, 284.5, signer3["MailingStreet"])
+        page2.drawString(83.5, 294.5, signer3["MailingCity"])
         page2.drawString(83.5, 307.5, signer3["PrimaryIDType"])
         page2.drawString(188, 307.5, "Issued:")
         page2.drawString(228, 307.5, signer3["IssueDate1"])
@@ -355,9 +371,11 @@ def generateSigCard():
     #  Signer 4 Information Box
     if signer4 != {}:
         page2.drawString(83.5, 437.5, signer4["Name"])
-        page2.drawString(83.5, 449, signer4["Relationship"])
-        page2.drawString(83.5, 467, f'{signer4["Street"]}, {signer4["City"]}')
-        page2.drawString(83.5, 491, signer4["MailingAddress"])
+        page2.drawString(83.5, 450, signer4["Relationship"])
+        page2.drawString(83.5, 462, signer4["Street"])
+        page2.drawString(83.5, 472, signer4["City"])
+        page2.drawString(83.5, 483.5, signer4["MailingStreet"])
+        page2.drawString(83.5, 493.5, signer4["MailingCity"])
         page2.drawString(83.5, 509, signer4["PrimaryIDType"])
         page2.drawString(188, 509, "Issued:")
         page2.drawString(228, 509, signer4["IssueDate1"])
@@ -377,10 +395,12 @@ def generateSigCard():
         page2.drawString(55, 614, signer4["DOB"])
         page2.drawString(188, 614, signer4["SSN"])
 
-    if AccountInfo["Prefix"] == "FBO":
+    if AccountInfo["PrefixEIN"] != "":
         page2.drawString(423, 442.5, AccountInfo["PrefixEIN"])
     else:
         page2.drawString(423, 442.5, AccountInfo["EIN"])
+    page2.drawString(370, 35, AccountInfo["BusinessName"])
+    page2.drawString(314, 188, AccountInfo["EIN"])
     page2.drawString(299, 227, AccountInfo["AccountType1"])
     page2.drawString(393, 227, AccountInfo["AccountNumber1"])
 
@@ -424,12 +444,11 @@ def generateResolution():
     my_json = my_bytes_value.decode('utf8').replace("'", '"')
     # print(my_json)
     # print('- ' * 20)
-
     # Load the JSON to a Python list & dump it back out as formatted JSON
     data = json.loads(my_json)
-    AccountInfo = data[0]
-
     totalSigners = len(data) - 1
+    print(totalSigners, "TOTAAAAAAAAAAAAAAAAL")
+    AccountInfo = data[0]
 
     signer1 = data[1]
     signer2 = {}
@@ -442,21 +461,27 @@ def generateResolution():
         signer3 = data[3]
     if totalSigners > 3:
         signer4 = data[4]
+    # print(data, "DAAATTTTTAAAAAAAAAAAAAAAAAAAA")
+    # print(data["Type"], "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAaaa")
+        # print("String could not be converted to JSON")
+    # print(my_json)
+    # print('- ' * 20)
+    # Load the JSON to a Python list & dump it back out as formatted JSON\
     # AccountInfo = {
-    #     "Type": BusinessInfo["Type"],
-    #     "Ownership": BusinessInfo["Ownership"],
-    #     "Benificiary": BusinessInfo["Benificiary"],
-    #     "BeneficiaryDetails": BusinessInfo["BeneficiaryDetails"],
-    #     "totalSigners": BusinessInfo["totalSigners"],
-    #     "BusinessName": BusinessInfo["BusinessName"],
-    #     "Prefix": BusinessInfo["Prefix"],
-    #     "PrefixName": BusinessInfo["PrefixName"],
-    #     "AnotherName": BusinessInfo["AnotherName"],
-    #     "EIN": BusinessInfo["EIN"],
-    #     "Street": BusinessInfo["Street"],
-    #     "City": BusinessInfo["City"],
-    #     "AccountType1": BusinessInfo["AccountType1"],
-    #     "AccountNumber1": BusinessInfo["AccountNumber1"]
+    #     "Type": data["Type"],
+    #     "Ownership": data["Ownership"],
+    #     "Benificiary": data["Benificiary"],
+    #     "BeneficiaryDetails": data["BeneficiaryDetails"],
+    #     "totalSigners": data["totalSigners"],
+    #     "BusinessName": data["BusinessName"],
+    #     "Prefix": data["Prefix"],
+    #     "PrefixName": data["PrefixName"],
+    #     "AnotherName": data["AnotherName"],
+    #     "EIN": data["EIN"],
+    #     "Street": data["Street"],
+    #     "City": data["City"],
+    #     "AccountType1": data["AccountType1"],
+    #     "AccountNumber1": data["AccountNumber1"]
     # }
 
     # signer1 = {
@@ -558,39 +583,46 @@ def generateResolution():
 
     # reportlab.rl_config.TTFSearchPath.append(str(settings.BASE_DIR) + '/app/lib/reportlabs/fonts')
     # pdfmetrics.registerFont(TTFont('Copperplate', 'Copperplate-Gothic-Bold.ttf'))
-
-    pdfmetrics.registerFont(TTFont('Courier New Regular', 'cour.ttf'))
+    # BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath('Cour.ttf')))
+    # reportlab.rl_config.TTFSearchPath.append(str(settings.BASE_DIR) + '/app/lib/reportlabs/fonts')
+    pdfmetrics.registerFont(
+        TTFont('Courier New Regular', absolute, 'Cour.ttf'))
+# pdfmetrics.registerFont(TTFont('Calibri', FONT_DIR + '/fonts/Calibri.ttf'))
+    # CourierFont = pdfmetrics.registerFont(TTFont(absolute, 'Cour.ttf'))
+    # CourierFont = absolute
 
     #  Font mapping
     packet = io.BytesIO()
     packet2 = io.BytesIO()
     # create a new PDF with Reportlab
+
     can = canvas.Canvas(packet, pagesize=(612, 792), bottomup=0)
-    can.setFont('Courier New Regular', 7.98)
+    can.setFont("Courier New Regular", 7.98)
 
     # Business Account Titling Box
     if AccountInfo["Type"] == "Business":
         if AccountInfo["Prefix"] == "FBO":
-            can.drawString(312.5, 61.5, AccountInfo["PrefixName"])
+            can.drawString(312.5, 61, AccountInfo["PrefixName"])
             can.drawString(312, 72, AccountInfo["Street"])
             can.drawString(312, 82, AccountInfo["City"])
         else:
-            can.drawString(312.5, 61.5, AccountInfo["BusinessName"])
+            can.drawString(312.5, 61, AccountInfo["BusinessName"])
             can.drawString(312, 72, AccountInfo["Street"])
             can.drawString(312, 82, AccountInfo["City"])
     #  Manager field
     can.drawString(38, 173, signer1["Name"])
 
     #  EIN Field
-    can.drawString(172, 196.5, AccountInfo["EIN"])
+    if AccountInfo["PrefixEIN"] != "":
+        can.drawString(172, 196.5, AccountInfo["PrefixEIN"])
+    else:
+        can.drawString(172, 196.5, AccountInfo["EIN"])
 
     # Name Field in Paragraph
     print(AccountInfo["Prefix"])
     if AccountInfo["Prefix"] == "FBO":
         can.drawString(27.5, 208, AccountInfo["PrefixName"])
-    if AccountInfo["Prefix"] == "DBA":
-        can.drawString(27.5, 208, AccountInfo["PrefixName"])
-    if AccountInfo["PrefixName"] == "":
+    else:
         can.drawString(27.5, 208, AccountInfo["BusinessName"])
 
     # Adding Signers & Titles
@@ -600,7 +632,8 @@ def generateResolution():
 
     if signer3 != {}:
         can.drawString(41, 433, f'{signer3["Name"]}-{signer3["Position"]}')
-
+    if signer4 != {}:
+        can.drawString(41, 474, f'{signer4["Name"]}-{signer4["Position"]}')
     # Checking Ownership Type
     # if AccountInfo["Ownership"] == "Joint":
     #     can.drawString(17, 382.5, "X")
@@ -623,7 +656,7 @@ def generateResolution():
 
     #  Signer 2 Information Box
     minSigners = str(chr(ord('@')+1))
-    maxSigners = str(chr(ord('@')+AccountInfo["totalSigners"]))
+    maxSigners = str(chr(ord('@')+totalSigners))
 
     totalSigners = f'{minSigners}-{maxSigners}'
 

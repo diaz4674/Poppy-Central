@@ -18,6 +18,7 @@ body {
 	transition: 0.1s ease;
 }
 
+
 @media only screen and (max-width: 1460px) {
 	body {
 		background-size: 200%;
@@ -75,6 +76,9 @@ body {
 	position: relative !important;
 }
 
+#prefixLabel {
+    padding-top: 25px;
+}
 .MuiIconButton-colorSecondary {
 	color: #fd8204 !important;
 }
@@ -91,7 +95,13 @@ body {
 	justify-content: center !important;
 	align-content: center !important;
 }
-
+#prefixContainer {
+    padding-left: 25px;
+    padding-bottom: 30px;
+}
+label + .MuiInput-formControl{
+    margin: 0 !important;
+}
 .buttonContainer {
 	width: 100%;
 	display: flex;
