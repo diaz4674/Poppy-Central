@@ -1,22 +1,22 @@
-import logo from "./logo-mobile.svg";
-import "./OMG.css";
-import PropTypes from "prop-types";
-import { withStyles } from "@material-ui/styles";
-import React, { Component } from "react";
-import axios from "axios";
-import { makeStyles } from "@material-ui/core/styles";
-import TextField from "@material-ui/core/TextField";
-import CloudUploadIcon from "@material-ui/icons/CloudUpload";
-import Button from "@material-ui/core/Button";
-import download from "downloadjs";
-import Checkbox from "@material-ui/core/Checkbox";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import FormControl from "@material-ui/core/FormControl";
-import FormLabel from "@material-ui/core/FormLabel";
-import FormGroup from "@material-ui/core/FormGroup";
-import Select from "@material-ui/core/Select";
-import MenuItem from "@material-ui/core/MenuItem";
-import InputLabel from "@material-ui/core/InputLabel";
+import logo from "./logo-mobile.svg"
+import "./OMG.css"
+import PropTypes from "prop-types"
+import { withStyles } from "@material-ui/styles"
+import React, { Component } from "react"
+import axios from "axios"
+import { makeStyles } from "@material-ui/core/styles"
+import TextField from "@material-ui/core/TextField"
+import CloudUploadIcon from "@material-ui/icons/CloudUpload"
+import Button from "@material-ui/core/Button"
+import download from "downloadjs"
+import Checkbox from "@material-ui/core/Checkbox"
+import FormControlLabel from "@material-ui/core/FormControlLabel"
+import FormControl from "@material-ui/core/FormControl"
+import FormLabel from "@material-ui/core/FormLabel"
+import FormGroup from "@material-ui/core/FormGroup"
+import Select from "@material-ui/core/Select"
+import MenuItem from "@material-ui/core/MenuItem"
+import InputLabel from "@material-ui/core/InputLabel"
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
 			margin: theme.spacing(1),
 		},
 	},
-}));
+}))
 
 class OMG extends Component {
 	state = {
@@ -59,18 +59,18 @@ class OMG extends Component {
 			inputBoxes: "",
 		},
 		loading: false,
-	};
+	}
 
 	updateCardHandler = () => {
 		this.setState({
 			...this.state.AccountChanges,
 			loading: true,
-		});
-		console.log(this.state.AccountChanges);
+		})
+		console.log(this.state.AccountChanges)
 		axios
 			.post(
 				// "https://5000-c85a660f-3dbe-4fc9-9c8c-83ea85769df5.ws-us02.gitpod.io/",
-				"http://127.0.0.1:5000/",
+				"http://127.0.0.1:5000/signatureCard",
 				this.state.AccountChanges,
 				{ responseType: "blob" } // had to add this one here
 			)
@@ -79,12 +79,12 @@ class OMG extends Component {
 					res.data,
 					`${this.state.AccountChanges[0].BusinessName} - Sig Card`,
 					res.content
-				);
+				)
 
-				console.log(res);
-				return res;
+				console.log(res)
+				return res
 			})
-			.catch((error) => console.log(error));
+			.catch((error) => console.log(error))
 		axios
 			.post(
 				// "https://5000-c85a660f-3dbe-4fc9-9c8c-83ea85769df5.ws-us02.gitpod.io/",
@@ -97,10 +97,10 @@ class OMG extends Component {
 					res.data,
 					`${this.state.AccountChanges[0].BusinessName} - Resolution`,
 					res.content
-				);
-				this.setState({ ...this.state, loading: false });
-				console.log(res);
-				return res;
+				)
+				this.setState({ ...this.state, loading: false })
+				console.log(res)
+				return res
 			})
 			.catch(
 				(error) => (
@@ -109,23 +109,23 @@ class OMG extends Component {
 					),
 					this.setState({ ...this.state, loading: false })
 				)
-			);
+			)
 		this.setState({
 			...this.state,
 			loading: false,
-		});
-	};
+		})
+	}
 	handleCheckboxChange = (e) => {
 		this.state.toggleCheckboxes[e.target.name] = !this.state.toggleCheckboxes[
 			e.target.name
-		];
-		let { toggleCheckboxes } = this.state;
+		]
+		let { toggleCheckboxes } = this.state
 		if (this.state.toggleCheckboxes.prefix === false) {
-			this.state.AccountChanges[0]["PrefixName"] = "";
-			let { AccountInfo } = this.state.AccountChanges[0];
-			this.setState({ ...this.state, AccountInfo });
+			this.state.AccountChanges[0]["PrefixName"] = ""
+			let { AccountInfo } = this.state.AccountChanges[0]
+			this.setState({ ...this.state, AccountInfo })
 		}
-		this.setState({ ...this.state, toggleCheckboxes });
+		this.setState({ ...this.state, toggleCheckboxes })
 
 		if (e.target.name === "prefix") {
 			if (toggleCheckboxes.prefix) {
@@ -137,14 +137,14 @@ class OMG extends Component {
 						inputBoxes: "inputBoxes",
 						addLineOption: "addLineOption",
 					},
-				});
+				})
 			} else {
 				this.setState({
 					...this.state,
 					toggleCheckboxes: {
 						prefixClass: "",
 					},
-				});
+				})
 			}
 		} else {
 			if (toggleCheckboxes.addLine) {
@@ -155,7 +155,7 @@ class OMG extends Component {
 						addLineClass: "addLineClass",
 						inputBoxes: "inputBoxes",
 					},
-				});
+				})
 			} else {
 				this.setState({
 					...this.state,
@@ -163,16 +163,16 @@ class OMG extends Component {
 						...this.state.toggleCheckboxes,
 						addLineClass: "",
 					},
-				});
+				})
 			}
 		}
-	};
+	}
 
 	handleChange = (e) => {
-		this.state.AccountChanges[0][e.target.name] = e.target.value;
-		let { AccountInfo } = this.state.AccountChanges[0];
-		this.setState({ AccountInfo });
-	};
+		this.state.AccountChanges[0][e.target.name] = e.target.value
+		let { AccountInfo } = this.state.AccountChanges[0]
+		this.setState({ AccountInfo })
+	}
 	render() {
 		let {
 			prefixClass,
@@ -181,9 +181,9 @@ class OMG extends Component {
 			addLineOption,
 			addLine,
 			addLineClass,
-		} = this.state.toggleCheckboxes;
+		} = this.state.toggleCheckboxes
 
-		const { classes } = this.props;
+		const { classes } = this.props
 		return (
 			<div className="container" style={{ margin: "0 0 15px" }}>
 				<div
@@ -393,12 +393,12 @@ class OMG extends Component {
 					/>
 				</div>
 			</div>
-		);
+		)
 	}
 }
 
 OMG.propTypes = {
 	classes: PropTypes.object.isRequired,
-};
+}
 
-export default withStyles(useStyles)(OMG);
+export default withStyles(useStyles)(OMG)

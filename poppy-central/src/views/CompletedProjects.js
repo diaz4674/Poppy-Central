@@ -1,24 +1,24 @@
-import logo from "./logo-mobile.svg";
-import "./CompletedProjects.css";
-import PropTypes from "prop-types";
-import { withStyles } from "@material-ui/styles";
-import React, { Component } from "react";
-import axios from "axios";
-import { makeStyles } from "@material-ui/core/styles";
-import TextField from "@material-ui/core/TextField";
-import CloudUploadIcon from "@material-ui/icons/CloudUpload";
-import Button from "@material-ui/core/Button";
-import download from "downloadjs";
-import Checkbox from "@material-ui/core/Checkbox";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import FormControl from "@material-ui/core/FormControl";
-import FormLabel from "@material-ui/core/FormLabel";
-import FormGroup from "@material-ui/core/FormGroup";
-import Select from "@material-ui/core/Select";
-import MenuItem from "@material-ui/core/MenuItem";
-import OMG from "./OMG";
-import Signers from "./Signers";
-import { withRouter } from "react-router-dom";
+import logo from "./logo-mobile.svg"
+import "./CompletedProjects.css"
+import PropTypes from "prop-types"
+import { withStyles } from "@material-ui/styles"
+import React, { Component } from "react"
+import axios from "axios"
+import { makeStyles } from "@material-ui/core/styles"
+import TextField from "@material-ui/core/TextField"
+import CloudUploadIcon from "@material-ui/icons/CloudUpload"
+import Button from "@material-ui/core/Button"
+import download from "downloadjs"
+import Checkbox from "@material-ui/core/Checkbox"
+import FormControlLabel from "@material-ui/core/FormControlLabel"
+import FormControl from "@material-ui/core/FormControl"
+import FormLabel from "@material-ui/core/FormLabel"
+import FormGroup from "@material-ui/core/FormGroup"
+import Select from "@material-ui/core/Select"
+import MenuItem from "@material-ui/core/MenuItem"
+import OMG from "./OMG"
+import Signers from "./Signers"
+import { withRouter } from "react-router-dom"
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -30,118 +30,123 @@ const useStyles = makeStyles((theme) => ({
 			margin: theme.spacing(1),
 		},
 	},
-}));
+}))
 
 class CompletedProjects extends Component {
 	state = {
 		AccountChanges: [
 			{
 				Type: "Business",
-				Ownership: "CCorp",
+				Ownership: "LLC",
 				Benificiary: "",
 				BeneficiaryDetails: "",
-				totalSigners: 3,
-				BusinessName: "Nordby Construction",
-				Prefix: "DBA",
-				PrefixName: "Curtain Project",
+				totalSigners: 4,
+				BusinessName: "Oakmont Management Group LLC",
+				Prefix: "",
+				PrefixName: "",
+				PrefixEIN: "",
 				AnotherName: "",
-				Street: "123 Main St",
-				City: "Santa Rosa, CA 94949",
-				EIN: "12-345676",
-				AccountType1: "01-100034-1",
-				AccountNumber1: "Business Checking",
+				Street: "9240 Old Redwood Hwy Ste 200",
+				City: "Windsor, CA 95492",
+				EIN: "46-1228206",
+				AccountType1: "OMG PAYROLL",
+				AccountNumber1: "01-1002451-9",
 			},
 			{
-				Name: "Billy Bob",
-				Relationship: "Owners",
-				Street: "123 Happy Dr",
-				Position: "COO",
-				City: "Petaluma, CA 94952",
-				MailingAddress: "PO Box 123, Petaluma CA 94954",
+				Name: "Kevin Tyler",
+				Relationship: "Auth Signer/Control Party",
+				Street: "572 Lucero Ave",
+				Position: "CFO & CIO",
+				City: "Pacific Palisades, CA 90272",
+				MailingStreet: "1920 Main St Ste 1200",
+				MailingCity: "Irvine, CA 92614",
 				PrimaryIDType: "Drivers License",
-				Number: "D234354 CA",
-				IssueDate1: "10/07/2017",
-				ExpirationDate1: "10/18/2022",
-				OtherID: "Credit Card",
-				OtherDesc: "Visa",
-				Expires: "02/28/2023",
-				Employer: "Poppy Bank",
-				Title: "New Accounts/CSR-Poppy Bank",
-				email: "diaz1234@gmail.com",
+				Number: "F3582765 CA",
+				IssueDate1: "01/26/2017",
+				ExpirationDate1: "01/19/2022",
+				OtherID: "Passport",
+				OtherDesc: "Passport",
+				Expires: "09/26/2021",
+				Employer: "Oakmont Management Group",
+				Title: "CFO",
+				email: "ktyler@oakmontmg.com",
 				WorkPhone: "",
-				HomePhone: "(707) 778-7756",
-				Cell: "(123) 456-7890",
-				DOB: "10/18/1991",
-				SSN: "123-34-2134",
+				HomePhone: "",
+				Cell: "(516) 353-7650",
+				DOB: "01/19/1981",
+				SSN: "071-66-8503",
 			},
 			{
-				Name: "James Brown",
-				Relationship: "Owners",
-				Street: "123 Happy Dr",
-				Position: "COO",
-				City: "Petaluma, CA 94952",
-				MailingAddress: "PO Box 123, Petaluma CA 94954",
+				Name: "Courtney Siegel",
+				Relationship: "Authorized Signer",
+				Street: "649 Regency Cir",
+				Position: "President & CEO",
+				City: "Sacramento, CA 95864",
+				MailingStreet: "1920 Main St Ste 1200",
+				MailingCity: "Irvine, CA 92614",
 				PrimaryIDType: "Drivers License",
-				Number: "D234354 CA",
-				IssueDate1: "10/07/2017",
-				ExpirationDate1: "10/18/2022",
+				Number: "B8862965 CA",
+				IssueDate1: "09/29/2017",
+				ExpirationDate1: "03/18/2022",
 				OtherID: "Credit Card",
 				OtherDesc: "Visa",
 				Expires: "02/28/2023",
-				Employer: "Poppy Bank",
-				Title: "New Accounts/CSR-Poppy Bank",
-				email: "diaz1234@gmail.com",
-				WorkPhone: "(707) 778-7756",
-				HomePhone: "(707) 778-7756",
-				Cell: "(123) 456-7890",
-				DOB: "10/18/1991",
-				SSN: "123-34-2134",
+				Employer: "Oakmont Management Group",
+				Title: "Presiden & CEO",
+				email: "courtney.siegel@oakmontmg.com",
+				WorkPhone: "(509) 979-7256",
+				HomePhone: "",
+				Cell: "",
+				DOB: "03/18/1983",
+				SSN: "564-85-8403",
 			},
 			{
-				Name: "Jimmy Neutron",
-				Relationship: "Owners",
-				Street: "123 Happy Dr",
+				Name: "Matthew Stevenson",
+				Relationship: "Authorized Signer",
+				Street: "12436 Altura Dr",
 				Position: "COO",
-				City: "Petaluma, CA 94952",
-				MailingAddress: "PO Box 123, Petaluma CA 94954",
+				City: "Rancho Cucamonga, CA 91739",
+				MailingStreet: "1920 Main St Ste 1200",
+				MailingCity: "Irvine, CA 92614",
 				PrimaryIDType: "Drivers License",
-				Number: "D234354 CA",
-				IssueDate1: "10/07/2017",
-				ExpirationDate1: "10/18/2022",
-				OtherID: "Credit Card",
-				OtherDesc: "Visa",
-				Expires: "02/28/2023",
+				Number: "B7218423 CA",
+				IssueDate1: "03/02/2020",
+				ExpirationDate1: "01/20/2025",
+				OtherID: "Passport",
+				OtherDesc: "Passport",
+				Expires: "09/26/2021",
 				Employer: "Poppy Bank",
-				Title: "New Accounts/CSR-Poppy Bank",
-				email: "diaz1234@gmail.com",
-				WorkPhone: "(707) 778-7756",
-				HomePhone: "(707) 778-7756",
-				Cell: "(123) 456-7890",
-				DOB: "10/18/1991",
-				SSN: "123-34-2134",
+				Title: "COO",
+				email: "matt.stevenson@oakmontmg.com",
+				WorkPhone: "",
+				HomePhone: "",
+				Cell: "(909) 210-1043",
+				DOB: "01/20/1981",
+				SSN: "613-32-6511",
 			},
 			{
-				Name: "Timmy Turner",
-				Relationship: "Owners",
-				Street: "123 Happy Dr",
+				Name: "James Nicholas Meek",
+				Relationship: "Authorized Signer",
+				Street: "11 Spring Harbor",
 				Position: "COO",
-				City: "Petaluma, CA 94952",
-				MailingAddress: "PO Box 123, Petaluma CA 94954",
+				City: "Aliso Viejo, CA 92656",
+				MailingStreet: "",
+				MailingCity: "",
 				PrimaryIDType: "Drivers License",
-				Number: "D234354 CA",
-				IssueDate1: "10/07/2017",
-				ExpirationDate1: "10/18/2022",
+				Number: "D8745399 CA",
+				IssueDate1: "04/27/2020",
+				ExpirationDate1: "06/17/2025",
 				OtherID: "Credit Card",
 				OtherDesc: "Visa",
-				Expires: "02/28/2023",
-				Employer: "Poppy Bank",
-				Title: "New Accounts/CSR-Poppy Bank",
-				email: "diaz1234@gmail.com",
-				WorkPhone: "(707) 778-7756",
-				HomePhone: "(707) 778-7756",
-				Cell: "(123) 456-7890",
-				DOB: "10/18/1991",
-				SSN: "123-34-2134",
+				Expires: "05/30/2025",
+				Employer: "Oakmont Management Group",
+				Title: "Controller",
+				email: "jmeek@oakmontmg.com",
+				WorkPhone: "",
+				HomePhone: "",
+				Cell: "(949) 302-2586",
+				DOB: "06/17/1982",
+				SSN: "645-28-6234",
 			},
 		],
 		toggleCheckboxes: {
@@ -152,18 +157,18 @@ class CompletedProjects extends Component {
 			inputBoxes: "",
 		},
 		loading: false,
-	};
+	}
 
 	updateCardHandler = () => {
 		this.setState({
 			...this.state.AccountChanges,
 			loading: true,
-		});
-		console.log(this.state.AccountChanges);
+		})
+		console.log(this.state.AccountChanges)
 		axios
 			.post(
 				// "https://5000-c85a660f-3dbe-4fc9-9c8c-83ea85769df5.ws-us02.gitpod.io/",
-				"http://127.0.0.1:5000/",
+				"http://127.0.0.1:5000/signatureCard",
 				this.state.AccountChanges,
 				{ responseType: "blob" } // had to add this one here
 			)
@@ -172,12 +177,12 @@ class CompletedProjects extends Component {
 					res.data,
 					`${this.state.AccountChanges[0].BusinessName} - Sig Card`,
 					res.content
-				);
+				)
 
-				console.log(res);
-				return res;
+				console.log(res)
+				return res
 			})
-			.catch((error) => console.log(error));
+			.catch((error) => console.log(error))
 		axios
 			.post(
 				// "https://5000-c85a660f-3dbe-4fc9-9c8c-83ea85769df5.ws-us02.gitpod.io/",
@@ -190,10 +195,10 @@ class CompletedProjects extends Component {
 					res.data,
 					`${this.state.AccountChanges[0].BusinessName} - Resolution`,
 					res.content
-				);
-				this.setState({ ...this.state, loading: false });
-				console.log(res);
-				return res;
+				)
+				this.setState({ ...this.state, loading: false })
+				console.log(res)
+				return res
 			})
 			.catch(
 				(error) => (
@@ -202,12 +207,12 @@ class CompletedProjects extends Component {
 					),
 					this.setState({ ...this.state, loading: false })
 				)
-			);
+			)
 		this.setState({
 			...this.state,
 			loading: false,
-		});
-	};
+		})
+	}
 
 	render() {
 		let {
@@ -217,7 +222,7 @@ class CompletedProjects extends Component {
 			addLineOption,
 			addLine,
 			addLineClass,
-		} = this.state.toggleCheckboxes;
+		} = this.state.toggleCheckboxes
 		return (
 			<div className="container">
 				<div className="InputBox">
@@ -258,12 +263,12 @@ class CompletedProjects extends Component {
 					</div>
 				</div>
 			</div>
-		);
+		)
 	}
 }
 
 CompletedProjects.propTypes = {
 	classes: PropTypes.object.isRequired,
-};
+}
 
-export default withStyles(useStyles)(CompletedProjects);
+export default withStyles(useStyles)(CompletedProjects)

@@ -8,12 +8,12 @@ from reportlab.lib.pagesizes import letter
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 import io
-# import os
-# import sys
+import os
+import sys
 from flask_cors import CORS
 import json
 # import pygame
-# import reportlab
+import reportlab
 from pathlib import Path
 
 relative = Path("fonts/Cour.ttf")
@@ -22,12 +22,13 @@ absolute = relative.absolute()  #
 app = Flask(__name__)
 CORS(app)
 
-# @app.route('/users/<user_id>', methods = ['GET', 'POST', 'DELETE'])
 
-# app.run(debug=True)
+@app.route('/')
+def index():
+    return "<h1>Welcome!</h1>"
 
 
-@app.route('/', methods=['GET', 'POST', 'DELETE'])
+@app.route('/signatureCard', methods=['GET', 'POST', 'DELETE'])
 def generateSigCard():
     my_bytes_value = request.data
 
