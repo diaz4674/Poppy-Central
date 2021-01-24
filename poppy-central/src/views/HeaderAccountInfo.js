@@ -29,6 +29,7 @@ class FormControlLabelPlacement extends React.Component {
 	state = {
 		signers: "",
 		ProjectName: "",
+		teamMembers: [],
 		type: "",
 	}
 

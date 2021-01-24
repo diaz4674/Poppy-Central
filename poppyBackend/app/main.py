@@ -1,5 +1,5 @@
 from flask import Flask, request, render_template, send_from_directory, make_response
-import codecs
+
 from flask import send_file
 from flask import request
 from PyPDF2 import PdfFileWriter, PdfFileReader
