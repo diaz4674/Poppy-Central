@@ -8,12 +8,12 @@ from reportlab.lib.pagesizes import letter
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 import io
-import os
-import sys
+# import os
+# import sys
 from flask_cors import CORS
 import json
-import pygame
-import reportlab
+# import pygame
+# import reportlab
 from pathlib import Path
 
 relative = Path("fonts/Cour.ttf")
@@ -613,10 +613,11 @@ def generateResolution():
     can.drawString(38, 173, signer1["Name"])
 
     #  EIN Field
-    if AccountInfo["PrefixEIN"] != "":
-        can.drawString(172, 196.5, AccountInfo["PrefixEIN"])
-    else:
-        can.drawString(172, 196.5, AccountInfo["EIN"])
+    # print(AccountInfo, "ACCCOUNTT")
+    # if AccountInfo["PrefixEIN"] != "":
+    #     can.drawString(172, 196.5, AccountInfo["PrefixEIN"])
+    # else:
+    #     can.drawString(172, 196.5, AccountInfo["EIN"])
 
     # Name Field in Paragraph
     print(AccountInfo["Prefix"])

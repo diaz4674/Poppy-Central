@@ -33,11 +33,7 @@ endobj
 /F1 35 0 R
 /F2+0 36 0 R
 >>
-<<<<<<< HEAD:poppyBackend/app/newSigCard.pdf
-/ProcSet [ /ImageB /Text /ImageI /ImageC /PDF ]
-=======
-/ProcSet [ /ImageI /PDF /ImageC /ImageB /Text ]
->>>>>>> c4fec049b83b1178cde4995f85f28176cc0e0f92:newSigCard.pdf
+/ProcSet [ /Text /PDF /ImageB /ImageI /ImageC ]
 >>
 /Rotate 0
 /Type /Page
@@ -65,11 +61,7 @@ endobj
 /F1 44 0 R
 /F2+0 45 0 R
 >>
-<<<<<<< HEAD:poppyBackend/app/newSigCard.pdf
-/ProcSet [ /ImageB /Text /ImageI /ImageC /PDF ]
-=======
-/ProcSet [ /ImageI /PDF /ImageC /ImageB /Text ]
->>>>>>> c4fec049b83b1178cde4995f85f28176cc0e0f92:newSigCard.pdf
+/ProcSet [ /Text /PDF /ImageB /ImageI /ImageC ]
 >>
 /Rotate 0
 /Type /Page
@@ -84,11 +76,7 @@ endobj
 endobj
 6 0 obj
 <<
-<<<<<<< HEAD:poppyBackend/app/newSigCard.pdf
-/Length 30120
-=======
 /Length 30260
->>>>>>> c4fec049b83b1178cde4995f85f28176cc0e0f92:newSigCard.pdf
 >>
 stream
 q
@@ -1418,11 +1406,7 @@ BT
 1 0 0 -1 364 41 Tm
 /F2+0 7.98 Tf
 9.576 TL
-<<<<<<< HEAD:poppyBackend/app/newSigCard.pdf
-(Business\040Checking) Tj
-=======
 (01\0551002451\0559) Tj
->>>>>>> c4fec049b83b1178cde4995f85f28176cc0e0f92:newSigCard.pdf
 T*
 ET
 BT
@@ -1436,44 +1420,28 @@ BT
 1 0 0 -1 299 76.5 Tm
 /F2+0 7.98 Tf
 9.576 TL
-<<<<<<< HEAD:poppyBackend/app/newSigCard.pdf
-(DBA\040Curtain\040Project) Tj
-=======
 (9240\040Old\040Redwood\040Hwy\040Ste\040200) Tj
->>>>>>> c4fec049b83b1178cde4995f85f28176cc0e0f92:newSigCard.pdf
 T*
 ET
 BT
 1 0 0 -1 299 86 Tm
 /F2+0 7.98 Tf
 9.576 TL
-<<<<<<< HEAD:poppyBackend/app/newSigCard.pdf
-(123\040Main\040St) Tj
-=======
 (Windsor\054\040CA\04095492) Tj
->>>>>>> c4fec049b83b1178cde4995f85f28176cc0e0f92:newSigCard.pdf
 T*
 ET
 BT
 1 0 0 -1 83.5 159 Tm
 /F2+0 7.98 Tf
 9.576 TL
-<<<<<<< HEAD:poppyBackend/app/newSigCard.pdf
-(Santa\040Rosa\054\040CA\04094949) Tj
-=======
 (Kevin\040Tyler) Tj
->>>>>>> c4fec049b83b1178cde4995f85f28176cc0e0f92:newSigCard.pdf
 T*
 ET
 BT
 1 0 0 -1 83.5 171 Tm
 /F2+0 7.98 Tf
 9.576 TL
-<<<<<<< HEAD:poppyBackend/app/newSigCard.pdf
-(Billy\040Bob) Tj
-=======
 (Auth\040Signer\057Control\040Party) Tj
->>>>>>> c4fec049b83b1178cde4995f85f28176cc0e0f92:newSigCard.pdf
 T*
 ET
 BT
@@ -1621,11 +1589,7 @@ BT
 1 0 0 -1 348 451 Tm
 /F2+0 7.98 Tf
 9.576 TL
-<<<<<<< HEAD:poppyBackend/app/newSigCard.pdf
-(Billy\040Bob) Tj
-=======
 (Kevin\040Tyler) Tj
->>>>>>> c4fec049b83b1178cde4995f85f28176cc0e0f92:newSigCard.pdf
 T*
 ET
 BT
@@ -2423,11 +2387,7 @@ endstream
 endobj
 40 0 obj
 <<
-<<<<<<< HEAD:poppyBackend/app/newSigCard.pdf
-/Length 38655
-=======
-/Length 38667
->>>>>>> c4fec049b83b1178cde4995f85f28176cc0e0f92:newSigCard.pdf
+/Length 38834
 >>
 stream
 q
@@ -4056,14 +4016,14 @@ BT
 1 0 0 -1 371 34.5 Tm
 /F2+0 7.98 Tf
 9.576 TL
-(Nordby\040Construction) Tj
+(Oakmont\040Management\040Group\040LLC) Tj
 T*
 ET
 BT
 1 0 0 -1 312 188 Tm
 /F2+0 7.98 Tf
 9.576 TL
-(12\055345676) Tj
+(46\0551228206) Tj
 T*
 ET
 BT
@@ -4529,9 +4489,6 @@ BT
 1 0 0 -1 423 442.5 Tm
 /F2+0 7.98 Tf
 9.576 TL
-<<<<<<< HEAD:poppyBackend/app/newSigCard.pdf
-(12\055345676) Tj
-=======
 (46\0551228206) Tj
 T*
 ET
@@ -4547,29 +4504,20 @@ BT
 /F2+0 7.98 Tf
 9.576 TL
 (46\0551228206) Tj
->>>>>>> c4fec049b83b1178cde4995f85f28176cc0e0f92:newSigCard.pdf
 T*
 ET
 BT
 1 0 0 -1 299 227 Tm
 /F2+0 7.98 Tf
 9.576 TL
-<<<<<<< HEAD:poppyBackend/app/newSigCard.pdf
-(01\055100034\0551) Tj
-=======
 (OMG\040PAYROLL) Tj
->>>>>>> c4fec049b83b1178cde4995f85f28176cc0e0f92:newSigCard.pdf
 T*
 ET
 BT
 1 0 0 -1 393 227 Tm
 /F2+0 7.98 Tf
 9.576 TL
-<<<<<<< HEAD:poppyBackend/app/newSigCard.pdf
-(Business\040Checking) Tj
-=======
 (01\0551002451\0559) Tj
->>>>>>> c4fec049b83b1178cde4995f85f28176cc0e0f92:newSigCard.pdf
 T*
 ET
 Q
@@ -4811,6 +4759,77 @@ MÂÜFÊãù÷ğ”8ïÑ9evç7¦¼‡Š*Ì–‹„«àZ6%¦mğ}-„Û‰}x—m¢CôQ oecß>‰³4tİsB&rÈCä
 õ™8ÉÓa»«¨Ræ&¸ˆ›D¸¿rgµ7ÜÙ‡«h_å5Ü¿“àN€ã¹‡ßï¹ß“›¹Óçp­ ·Ü	p¯‚ûœÈ†ß»ğ{‡{‡8¹·I!¸
 pkÁíwÜGàÌÜÛpU8TòÇ+ƒ+ÀqÜïàªp¿…bı®Nî-€ŞâŞ‚¬ız¸´¬è9¢…:ÉÒHÜ¾¢Qîß†?ÎŠÊ†šŠ:Î§“«I1Ÿ>œ5È/0\Şåş0¢F#û+gp¯‘!pää5Hù5¢‚«·\/8 7 zƒ‚Ûn?¸!p@epUÀ©ÜËà~	î2\\=8wj’å^Î©ôqÿÊıŒøã¯pÿ‚÷_r/áıÜOñşs¸§Âıeî¥áÔ©´Â{ß(pWà^ïMÜ?dº#•.îà.×BpàêÀ­w?8‘;Á¥wDÜÉqò²…@ÈaòŞŸ YHls$–½ Pe—ì¹W—}ê¾l.–ıĞ7á‘]²ï{  vÉ¾í^€Ø%ûK· Ä.Ùİ;b—ìÍ ±Köêµ ±Kv]@på¾{43'RZ·…ª•Nn`i`i`i¸]ìG>XŞ¾=œŸûV,š—<FŸ§ƒtğ1:ØIo¢ƒ·ĞÁr:xŒÒÁ0L¥ƒ1:xœÎTÒØ¡)e± |™şöÓÁl:˜E3é JKc£\ÚpM1Şªñ6RÉÜ¯º¸“KŒ¦Í§O8×WÁMàS©éZà`*»§äWhÏÓçõ@óy>|ªáò.8*è £ ’ '\+À­wÜGà&À‰:2~?^p-Wn-¸›Á}NÄì|#=z`ÆX¦õŒ×¸à—¿4.-–¢„•¨²˜¿?L©´.u"•+%>°l·Ëâ¥ö#ÿiÿÇÚ‰T)q÷q÷3ÖÍíÕï÷¬›><œ}<R™D¿AR <ZF²iÜç~|EÂv/!aîp/7ÃgÎáì‚È1ê`_‰|>ù <Êø~øxä7ê¨@‡#¯ƒÏD^ßùyá¨|Ï¥p;¦bĞçÂs"?|ƒŞ/¾5¹‰İD¾^ÙÆÚ‹ëúá)æŒ4d¯,†øªÂë#±~ˆóH¤"|]¤\5‹}s$2²ÕÀ|Èl^ÍHŸC‘Y+V”ÒM±óCæUæ:óls‘¹Àœf˜SÌ!³×â¶(‡Åf‘-‹h,œ…X¼l#d”m‡òŠ¸OíZ£D@XÁ=­œ¶Ó‹£\C†<ünIã|ºdèd;Y²^ºĞ˜1Jåå«‡Lóé{	YÒ4hNtÉ¨y¢a¨4ºdÈ\íªƒ”Ş×¾CÜ£”4­¥ÌëöĞ{;A˜ºnÿjˆİsoÿjK	øvV*ÜW»ÊV]á²N¿&ìœLSæ=´¤qÕğ¬§ŸN™ß2T„ğÄÀK†¾Ş¨®Yõı=W]õıvkYõ5ı[uóç¯®jiY2J›1Qé@8 ÿÀpÒ,Q-©Z¸oiá²à{—ÉnN’H†Ë’$'Pî`fuÕÁÌLã‡†é÷«‰a^Î‚0YYÆ7H^Æ0/ûY˜¡«1H8ARÃ„&“0	ÓdÒ<¤PrW<È]˜O'Ã„µ0öÓFûió9æ`¦şuÎFéÈ¼–ö5ÕÕë2ª;Á­ºgç¦ÀĞàzU=ØŞÂ^¨C|öºõí›Ø½­s¨%£³j¨=£J=8oÍ^¯a¯çeT$kª›V\ë¬›WÑVÕ2²¨¾¤tJZwÅÓ*©¿Bdõ,²–Ö¢Ò+¼.e¯±´JYZ¥,­E±E˜AR¯_uĞBæ·,X£İG8«d».”Ö2ß§ô^4</-pSèt]$ÖhË-cş{5­rZ%{M‹½r€·S¸i^Zè}R¥€·+c>‰ìèßAÕ]UÚ?ü×À†pííÿ¬?xW=k«ê dÉP~ã’¡Šå«W4›Áw+ÒĞ\ÃÏj­8©yNÏ¹Ì“çã™_9ó“$=àåõ¿C¿£¹‚Aîø¥ÒÒßÂ¥.iâ€#4­†²®Y½êt¬˜¬èoöÓ(í7âĞ³­&b7VfÃìĞ!ú]û>é7PÿcÈŠÆ16€Ñ":£kVU:øÙ|!"ü¸Oƒû4¸Á½ˆ/Œ¹³#<W‘,¥«\1‹U‘¸M…(ù_8nhn
 endstream
+endobj
+48 0 obj
+<<
+/Filter [ /FlateDecode ]
+/Length 705
+>>
+stream
+xœmÕÍja…ñ½W1Ë–.Ìÿ;Ìd‘¶4¹3©Ça4‹Ü}=iié€òïŒü\éÍÃíC¿94Óïã®}êÍzÓ¯Æn¿{Û®yé^7ıD´YmÚÃùîôİn—Ãdz|ùécè¶ız7™Íšéãáş0~4Ÿ§ëËbÜ,ßŸ?O¦ßÆU7nú×ÿ=½Ã[·íúCs1™Ï›U·>şøãrøºÜvÍôïçÿœ>]£§{!®İ­ºı°l»qÙ¿v“ÙÅÅ¼™Õı|Òõ«ÎD/ùÎËºı¹ÏÏ^¯ù±…-he+ÚØ†v¶£ƒèd'ºØ…¾d_¢¯ØWè{¾f_£oØ7è[ö-ú}‡¾gÿáLèø…~_èø…~_èø…~_èø…~_èø…~_èø…~_èø…~_èø…~_éWø•~…_éWø•~…_éWø•~…_éWø•~…_éWø•~…_éWø•~…_éWø•~…_éWø•~…ßè7ø~ƒßè7ø~ƒßè7ø~ƒßè7ø~ƒßè7ø~ƒßè7ø~ƒßè7ø~ƒßè7ø~ƒßéwø~‡ßéwø~‡ßéwø~‡ßéwø~‡ßéwø~‡ßéwø~‡ßéwø~‡ßéwø~‡?èøƒş€?èøƒş€?èøƒş€?èøƒş€?èøƒş€?èøƒş€?èøƒş€?èøƒş€?éOø“ş„?éOø“ş„?éOø“ş„?éOø“ş„?éOø“ş„?éOø“ş„?éOø“ş„?éOø“ş„¿è/ø‹ş‚¿è/ø‹ş‚¿è/ø‹ş‚¿è/ø‹ş‚¿è/ø‹ş‚¿è/ø‹ş‚¿è/ø‹ş‚¿è/ø‹şóBœ— [yû=@íû8·é´§áÁälúî÷L»oáó7œ
+endstream
+endobj
+xref
+0 49
+0000000000 65535 f 
+0000000009 00000 n 
+0000000074 00000 n 
+0000000114 00000 n 
+0000000475 00000 n 
+0000000825 00000 n 
+0000000874 00000 n 
+0000031187 00000 n 
+0000031271 00000 n 
+0000031409 00000 n 
+0000031435 00000 n 
+0000050785 00000 n 
+0000050860 00000 n 
+0000051143 00000 n 
+0000051228 00000 n 
+0000066563 00000 n 
+0000066882 00000 n 
+0000067323 00000 n 
+0000067605 00000 n 
+0000074267 00000 n 
+0000074762 00000 n 
+0000075035 00000 n 
+0000083639 00000 n 
+0000083949 00000 n 
+0000084202 00000 n 
+0000085977 00000 n 
+0000086376 00000 n 
+0000086658 00000 n 
+0000091393 00000 n 
+0000091824 00000 n 
+0000092098 00000 n 
+0000097739 00000 n 
+0000098202 00000 n 
+0000098447 00000 n 
+0000098794 00000 n 
+0000099054 00000 n 
+0000099162 00000 n 
+0000100253 00000 n 
+0000100478 00000 n 
+0000138202 00000 n 
+0000138984 00000 n 
+0000177872 00000 n 
+0000178313 00000 n 
+0000178586 00000 n 
+0000184226 00000 n 
+0000184334 00000 n 
+0000185425 00000 n 
+0000185650 00000 n 
+0000223374 00000 n 
+trailer
+<<
+/Size 49
+/Root 5 0 R
+/Info 2 0 R
+>>
+startxref
+224156
+%%EOF
+
 endobj
 48 0 obj
 <<

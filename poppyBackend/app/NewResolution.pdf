@@ -38,11 +38,7 @@ endobj
 /ColorSpace <<
 /CS0 40 0 R
 >>
-<<<<<<< HEAD:poppyBackend/app/NewResolution.pdf
-/ProcSet [ /ImageB /Text /ImageI /PDF /ImageC ]
-=======
-/ProcSet [ /ImageC /Text /ImageI /PDF /ImageB ]
->>>>>>> c4fec049b83b1178cde4995f85f28176cc0e0f92:NewResolution.pdf
+/ProcSet [ /PDF /ImageI /ImageC /Text /ImageB ]
 >>
 /Rotate 0
 /Type /Page
@@ -74,11 +70,7 @@ endobj
 /ColorSpace <<
 /CS0 40 0 R
 >>
-<<<<<<< HEAD:poppyBackend/app/NewResolution.pdf
-/ProcSet [ /ImageB /Text /ImageI /PDF /ImageC ]
-=======
-/ProcSet [ /ImageC /Text /ImageI /PDF /ImageB ]
->>>>>>> c4fec049b83b1178cde4995f85f28176cc0e0f92:NewResolution.pdf
+/ProcSet [ /PDF /ImageI /ImageC /Text /ImageB ]
 >>
 /Rotate 0
 /Type /Page
@@ -104,11 +96,7 @@ endobj
 endobj
 7 0 obj
 <<
-<<<<<<< HEAD:poppyBackend/app/NewResolution.pdf
-/Length 15058
-=======
-/Length 15209
->>>>>>> c4fec049b83b1178cde4995f85f28176cc0e0f92:NewResolution.pdf
+/Length 15136
 >>
 stream
 q
@@ -944,66 +932,35 @@ BT
 1 0 0 -1 312 72 Tm
 /F2+0 7.98 Tf
 9.576 TL
-<<<<<<< HEAD:poppyBackend/app/NewResolution.pdf
-(123\040Main\040St) Tj
-=======
 (9240\040Old\040Redwood\040Hwy\040Ste\040200) Tj
->>>>>>> c4fec049b83b1178cde4995f85f28176cc0e0f92:NewResolution.pdf
 T*
 ET
 BT
 1 0 0 -1 312 82 Tm
 /F2+0 7.98 Tf
 9.576 TL
-<<<<<<< HEAD:poppyBackend/app/NewResolution.pdf
-(Santa\040Rosa\054\040CA\04094949) Tj
-=======
 (Windsor\054\040CA\04095492) Tj
->>>>>>> c4fec049b83b1178cde4995f85f28176cc0e0f92:NewResolution.pdf
 T*
 ET
 BT
 1 0 0 -1 38 173 Tm
 /F2+0 7.98 Tf
 9.576 TL
-<<<<<<< HEAD:poppyBackend/app/NewResolution.pdf
-(Billy\040Bob) Tj
-=======
 (Kevin\040Tyler) Tj
->>>>>>> c4fec049b83b1178cde4995f85f28176cc0e0f92:NewResolution.pdf
-T*
-ET
-BT
-1 0 0 -1 172 196.5 Tm
-/F2+0 7.98 Tf
-9.576 TL
-<<<<<<< HEAD:poppyBackend/app/NewResolution.pdf
-(12\055345676) Tj
-=======
-(46\0551228206) Tj
->>>>>>> c4fec049b83b1178cde4995f85f28176cc0e0f92:NewResolution.pdf
 T*
 ET
 BT
 1 0 0 -1 27.5 208 Tm
 /F2+0 7.98 Tf
 9.576 TL
-<<<<<<< HEAD:poppyBackend/app/NewResolution.pdf
-(Curtain\040Project) Tj
-=======
 (Oakmont\040Management\040Group\040LLC) Tj
->>>>>>> c4fec049b83b1178cde4995f85f28176cc0e0f92:NewResolution.pdf
 T*
 ET
 BT
 1 0 0 -1 41 350 Tm
 /F2+0 7.98 Tf
 9.576 TL
-<<<<<<< HEAD:poppyBackend/app/NewResolution.pdf
-(Billy\040Bob\055COO) Tj
-=======
 (Kevin\040Tyler\055CFO\040\046\040CIO) Tj
->>>>>>> c4fec049b83b1178cde4995f85f28176cc0e0f92:NewResolution.pdf
 T*
 ET
 BT
@@ -3531,6 +3488,93 @@ endobj
 /FontWeight 400
 /ItalicAngle 0
 /StemV 88
+/Type /FontDescriptor
+/XHeight 1000
+>>
+endobj
+55 0 obj
+<<
+/BitsPerComponent 1
+/Filter /FlateDecode
+/Height 29
+/ImageMask true
+/Subtype /Image
+/Type /XObject
+/Width 48
+/Length 28
+>>
+stream
+hﬁ˙ˇÅÅÅ¡˛ˇÁˇˇˇV‚B0	` jFç7
+endstream
+endobj
+xref
+0 56
+0000000000 65535 f 
+0000000009 00000 n 
+0000000080 00000 n 
+0000000120 00000 n 
+0000000526 00000 n 
+0000000909 00000 n 
+0000001052 00000 n 
+0000001101 00000 n 
+0000016290 00000 n 
+0000016374 00000 n 
+0000016520 00000 n 
+0000016547 00000 n 
+0000016744 00000 n 
+0000016819 00000 n 
+0000017117 00000 n 
+0000017202 00000 n 
+0000027891 00000 n 
+0000028214 00000 n 
+0000028653 00000 n 
+0000028927 00000 n 
+0000034815 00000 n 
+0000035231 00000 n 
+0000035515 00000 n 
+0000042137 00000 n 
+0000042606 00000 n 
+0000042884 00000 n 
+0000052466 00000 n 
+0000052909 00000 n 
+0000053182 00000 n 
+0000059475 00000 n 
+0000059928 00000 n 
+0000060188 00000 n 
+0000060657 00000 n 
+0000060935 00000 n 
+0000070520 00000 n 
+0000070628 00000 n 
+0000071958 00000 n 
+0000072193 00000 n 
+0000105607 00000 n 
+0000106397 00000 n 
+0000106624 00000 n 
+0000106661 00000 n 
+0000109359 00000 n 
+0000139357 00000 n 
+0000139757 00000 n 
+0000140026 00000 n 
+0000144929 00000 n 
+0000145037 00000 n 
+0000146367 00000 n 
+0000146602 00000 n 
+0000180016 00000 n 
+0000180806 00000 n 
+0000183722 00000 n 
+0000183946 00000 n 
+0000184292 00000 n 
+0000184537 00000 n 
+trailer
+<<
+/Size 56
+/Root 6 0 R
+/Info 2 0 R
+>>
+startxref
+184725
+%%EOF
+8
 /Type /FontDescriptor
 /XHeight 1000
 >>
