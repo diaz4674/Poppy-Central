@@ -33,115 +33,131 @@ def generateSigCard():
 
     # Load the JSON to a Python list & dump it back out as formatted JSON
     data = json.loads(my_json)
+    totalSigners = len(data) - 1
+
+    AccountInfo = data[0]
+
+    signer1 = data[1]
+    signer2 = {}
+    signer3 = {}
+    signer4 = {}
+
+    if totalSigners > 1:
+        signer2 = data[2]
+    if totalSigners > 2:
+        signer3 = data[3]
+    if totalSigners > 3:
+        signer4 = data[4]
     # print(data["Type"], "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAaaa")
-    AccountInfo = {
-        "Type": data["Type"],
-        "Ownership": data["Ownership"],
-        "Benificiary": data["Benificiary"],
-        "BeneficiaryDetails": data["BeneficiaryDetails"],
-        "totalSigners": data["totalSigners"],
-        "BusinessName": data["BusinessName"],
-        "Prefix": data["Prefix"],
-        "PrefixName": data["PrefixName"],
-        "AnotherName": data["AnotherName"],
-        "EIN": data["EIN"],
-        "Street": data["Street"],
-        "City": data["City"],
-        "AccountType1": data["AccountType1"],
-        "AccountNumber1": data["AccountNumber1"]
-    }
+    # AccountInfo = {
+    #     "Type": "Business",
+    #     "Ownership": "CCorp",
+    #     "Benificiary": "",
+    #     "BeneficiaryDetails": "",
+    #     "totalSigners": 4,
+    #     "BusinessName":  "Oakmont Management Group Agent",
+    #     "Prefix": "FBO",
+    #     "PrefixName": "Oakmont of Varenna",
+    #     "AnotherName": "",
+    #     "PrefixEIN": "11-111111",
+    #     "EIN": "12-344556",
+    #     "Street": "123 Main St",
+    #     "City":  "Santa Rosa, CA 94949",
+    #     "AccountType1": "Business Checking",
+    #     "AccountNumber1": "01-200003-2"
+    # }
 
-    signer1 = {
-        "Name": 'Bobby Brown',
-        "Relationship": 'Owners',
-        "Street": "123 Happy Dr",
-        "City": "Petaluma, CA 94952",
-        "MailingAddress": "PO Box 123, Petaluma CA 94954",
-        "PrimaryIDType": "Drivers License",
-        "Number": "D234354 CA",
-        "IssueDate1": "10/07/2017",
-        "ExpirationDate1": "10/18/2022",
-        "OtherID": "Credit Card",
-        "OtherDesc": "Visa",
-        "Expires": "02/28/2023",
-        "Employer": "Poppy Bank",
-        "Title": "New Accounts/CSR-Poppy Bank",
-        "email": "diaz1234@gmail.com",
-        "WorkPhone": "",
-        "HomePhone": "(707) 778-7756",
-        "Cell": "(123) 456-7890",
-        "DOB": "10/18/1991",
-        "SSN": "123-34-2134"
-    }
+    # signer1 = {
+    #     "Name": 'Bobby Brown',
+    #     "Relationship": 'Owners',
+    #     "Street": "123 Happy Dr",
+    #     "City": "Petaluma, CA 94952",
+    #     "MailingAddress": "PO Box 123, Petaluma CA 94954",
+    #     "PrimaryIDType": "Drivers License",
+    #     "Number": "D234354 CA",
+    #     "IssueDate1": "10/07/2017",
+    #     "ExpirationDate1": "10/18/2022",
+    #     "OtherID": "Credit Card",
+    #     "OtherDesc": "Visa",
+    #     "Expires": "02/28/2023",
+    #     "Employer": "Poppy Bank",
+    #     "Title": "New Accounts/CSR-Poppy Bank",
+    #     "email": "diaz1234@gmail.com",
+    #     "WorkPhone": "",
+    #     "HomePhone": "(707) 778-7756",
+    #     "Cell": "(123) 456-7890",
+    #     "DOB": "10/18/1991",
+    #     "SSN": "123-34-2134"
+    # }
 
-    signer2 = {
-        "Name": 'James Brown',
-        "Relationship": 'Owners',
-        "Street": "123 Happy Dr",
-        "City": "Petaluma, CA 94952",
-        "MailingAddress": "PO Box 123, Petaluma CA 94954",
-        "PrimaryIDType": "Drivers License",
-        "Number": "D234354 CA",
-        "IssueDate1": "10/07/2017",
-        "ExpirationDate1": "10/18/2022",
-        "OtherID": "Credit Card",
-        "OtherDesc": "Visa",
-        "Expires": "02/28/2023",
-        "Employer": "Poppy Bank",
-        "Title": "New Accounts/CSR-Poppy Bank",
-        "email": "diaz1234@gmail.com",
-        "WorkPhone": "(707) 778-7756",
-        "HomePhone": "(707) 778-7756",
-        "Cell": "(123) 456-7890",
-        "DOB": "10/18/1991",
-        "SSN": "123-34-2134"
-    }
+    # signer2 = {
+    #     "Name": 'James Brown',
+    #     "Relationship": 'Owners',
+    #     "Street": "123 Happy Dr",
+    #     "City": "Petaluma, CA 94952",
+    #     "MailingAddress": "PO Box 123, Petaluma CA 94954",
+    #     "PrimaryIDType": "Drivers License",
+    #     "Number": "D234354 CA",
+    #     "IssueDate1": "10/07/2017",
+    #     "ExpirationDate1": "10/18/2022",
+    #     "OtherID": "Credit Card",
+    #     "OtherDesc": "Visa",
+    #     "Expires": "02/28/2023",
+    #     "Employer": "Poppy Bank",
+    #     "Title": "New Accounts/CSR-Poppy Bank",
+    #     "email": "diaz1234@gmail.com",
+    #     "WorkPhone": "(707) 778-7756",
+    #     "HomePhone": "(707) 778-7756",
+    #     "Cell": "(123) 456-7890",
+    #     "DOB": "10/18/1991",
+    #     "SSN": "123-34-2134"
+    # }
 
-    signer3 = {
-        "Name": 'Jimmy Neutron',
-        "Relationship": 'Owners',
-        "Street": "123 Happy Dr",
-        "City": "Petaluma, CA 94952",
-        "MailingAddress": "PO Box 123, Petaluma CA 94954",
-        "PrimaryIDType": "Drivers License",
-        "Number": "D234354 CA",
-        "IssueDate1": "10/07/2017",
-        "ExpirationDate1": "10/18/2022",
-        "OtherID": "Credit Card",
-        "OtherDesc": "Visa",
-        "Expires": "02/28/2023",
-        "Employer": "Poppy Bank",
-        "Title": "New Accounts/CSR-Poppy Bank",
-        "email": "diaz1234@gmail.com",
-        "WorkPhone": "(707) 778-7756",
-        "HomePhone": "(707) 778-7756",
-        "Cell": "(123) 456-7890",
-        "DOB": "10/18/1991",
-        "SSN": "123-34-2134"
-    }
-    signer4 = {
-        "Name": 'Timmy Turner',
-        "Relationship": 'Owners',
-        "Street": "123 Happy Dr",
-        "City": "Petaluma, CA 94952",
-        "MailingAddress": "PO Box 123, Petaluma CA 94954",
-        "PrimaryIDType": "Drivers License",
-        "Number": "D234354 CA",
-        "IssueDate1": "10/07/2017",
-        "ExpirationDate1": "10/18/2022",
-        "OtherID": "Credit Card",
-        "OtherDesc": "Visa",
-        "Expires": "02/28/2023",
-        "Employer": "Poppy Bank",
-        "Title": "New Accounts/CSR-Poppy Bank",
-        "email": "diaz1234@gmail.com",
-        "WorkPhone": "(707) 778-7756",
-        "HomePhone": "(707) 778-7756",
-        "Cell": "(123) 456-7890",
-        "DOB": "10/18/1991",
-        "SSN": "123-34-2134"
+    # signer3 = {
+    #     "Name": 'Jimmy Neutron',
+    #     "Relationship": 'Owners',
+    #     "Street": "123 Happy Dr",
+    #     "City": "Petaluma, CA 94952",
+    #     "MailingAddress": "PO Box 123, Petaluma CA 94954",
+    #     "PrimaryIDType": "Drivers License",
+    #     "Number": "D234354 CA",
+    #     "IssueDate1": "10/07/2017",
+    #     "ExpirationDate1": "10/18/2022",
+    #     "OtherID": "Credit Card",
+    #     "OtherDesc": "Visa",
+    #     "Expires": "02/28/2023",
+    #     "Employer": "Poppy Bank",
+    #     "Title": "New Accounts/CSR-Poppy Bank",
+    #     "email": "diaz1234@gmail.com",
+    #     "WorkPhone": "(707) 778-7756",
+    #     "HomePhone": "(707) 778-7756",
+    #     "Cell": "(123) 456-7890",
+    #     "DOB": "10/18/1991",
+    #     "SSN": "123-34-2134"
+    # }
+    # signer4 = {
+    #     "Name": 'Timmy Turner',
+    #     "Relationship": 'Owners',
+    #     "Street": "123 Happy Dr",
+    #     "City": "Petaluma, CA 94952",
+    #     "MailingAddress": "PO Box 123, Petaluma CA 94954",
+    #     "PrimaryIDType": "Drivers License",
+    #     "Number": "D234354 CA",
+    #     "IssueDate1": "10/07/2017",
+    #     "ExpirationDate1": "10/18/2022",
+    #     "OtherID": "Credit Card",
+    #     "OtherDesc": "Visa",
+    #     "Expires": "02/28/2023",
+    #     "Employer": "Poppy Bank",
+    #     "Title": "New Accounts/CSR-Poppy Bank",
+    #     "email": "diaz1234@gmail.com",
+    #     "WorkPhone": "(707) 778-7756",
+    #     "HomePhone": "(707) 778-7756",
+    #     "Cell": "(123) 456-7890",
+    #     "DOB": "10/18/1991",
+    #     "SSN": "123-34-2134"
 
-    }
+    # }
     # BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
     # reportlab.rl_config.TTFSearchPath.append(str(settings.BASE_DIR) + '/app/lib/reportlabs/fonts')
@@ -192,7 +208,7 @@ def generateSigCard():
                 can.drawString(299, 116, signer1["City"])
 
     can.drawString(364, 41, AccountInfo["AccountNumber1"])
-    print(AccountInfo["Type"])
+
     # Business Account Titling Box
     if AccountInfo["Type"] == "Business":
         can.drawString(299, 66.5, AccountInfo["BusinessName"])
@@ -239,10 +255,12 @@ def generateSigCard():
     can.drawString(476, 461, signer1["DOB"])
 
     # Checking to see if more signers need to sign
-    if signer2:
+    if signer2 != {}:
         can.drawString(342, 510, signer2["Name"])
         can.drawString(342, 520, signer2["SSN"])
         can.drawString(476, 520, signer2["DOB"])
+    else:
+        can.drawString(334, 510, "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 
     if signer3 == {}:
         can.drawString(334, 550, "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
@@ -279,6 +297,12 @@ def generateSigCard():
     page2.setFont('Arial', 7.98)
 
     #  Signer 2 Information Box
+
+    # Add primary business to sig card
+    page2.drawString(371, 34.5, AccountInfo["BusinessName"])
+
+    page2.drawString(312, 188, AccountInfo["EIN"])
+
     if signer2 != {}:
         page2.drawString(83.5, 35, signer2["Name"])
         page2.drawString(83.5, 46.5, signer2["Relationship"])
@@ -353,8 +377,10 @@ def generateSigCard():
         page2.drawString(55, 614, signer4["DOB"])
         page2.drawString(188, 614, signer4["SSN"])
 
-    page2.drawString(423, 442.5, AccountInfo["EIN"])
-    print(AccountInfo["EIN"])
+    if AccountInfo["Prefix"] == "FBO":
+        page2.drawString(423, 442.5, AccountInfo["PrefixEIN"])
+    else:
+        page2.drawString(423, 442.5, AccountInfo["EIN"])
     page2.drawString(299, 227, AccountInfo["AccountType1"])
     page2.drawString(393, 227, AccountInfo["AccountNumber1"])
 
@@ -389,7 +415,7 @@ def generateSigCard():
     return send_file('newSigCard.pdf', attachment_filename='newSigCard.pdf')
 
 
-@app.route('/resolution', methods=['GET', 'POST', 'DELETE'])
+@ app.route('/resolution', methods=['GET', 'POST', 'DELETE'])
 def generateResolution():
     my_bytes_value = request.data
 
@@ -401,120 +427,133 @@ def generateResolution():
 
     # Load the JSON to a Python list & dump it back out as formatted JSON
     data = json.loads(my_json)
-    # print(data["Type"], "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAaaa")
+    AccountInfo = data[0]
 
-    AccountInfo = {
-        "Type": data["Type"],
-        "Ownership": data["Ownership"],
-        "Benificiary": data["Benificiary"],
-        "BeneficiaryDetails": data["BeneficiaryDetails"],
-        "totalSigners": data["totalSigners"],
-        "BusinessName": data["BusinessName"],
-        "Prefix": data["Prefix"],
-        "PrefixName": data["PrefixName"],
-        "AnotherName": data["AnotherName"],
-        "EIN": data["EIN"],
-        "Street": data["Street"],
-        "City": data["City"],
-        "AccountType1": data["AccountType1"],
-        "AccountNumber1": data["AccountNumber1"]
-    }
+    totalSigners = len(data) - 1
 
-    signer1 = {
-        "Name": 'Bobby Brown',
-        "Relationship": 'Owners',
-        "Position": "COO",
-        "Street": "123 Happy Dr",
-        "City": "Petaluma, CA 94952",
-        "MailingAddress": "PO Box 123, Petaluma CA 94954",
-        "PrimaryIDType": "Drivers License",
-        "Number": "D234354 CA",
-        "IssueDate1": "10/07/2017",
-        "ExpirationDate1": "10/18/2022",
-        "OtherID": "Credit Card",
-        "OtherDesc": "Visa",
-        "Expires": "02/28/2023",
-        "Employer": "Poppy Bank",
-        "Title": "New Accounts/CSR-Poppy Bank",
-        "email": "diaz1234@gmail.com",
-        "WorkPhone": "",
-        "HomePhone": "(707) 778-7756",
-        "Cell": "(123) 456-7890",
-        "DOB": "10/18/1991",
-        "SSN": "123-34-2134"
-    }
+    signer1 = data[1]
+    signer2 = {}
+    signer3 = {}
+    signer4 = {}
 
-    signer2 = {
-        "Name": 'James Brown',
-        "Relationship": 'Owners',
-        "Position": "COO",
-        "Street": "123 Happy Dr",
-        "City": "Petaluma, CA 94952",
-        "MailingAddress": "PO Box 123, Petaluma CA 94954",
-        "PrimaryIDType": "Drivers License",
-        "Number": "D234354 CA",
-        "IssueDate1": "10/07/2017",
-        "ExpirationDate1": "10/18/2022",
-        "OtherID": "Credit Card",
-        "OtherDesc": "Visa",
-        "Expires": "02/28/2023",
-        "Employer": "Poppy Bank",
-        "Title": "New Accounts/CSR-Poppy Bank",
-        "email": "diaz1234@gmail.com",
-        "WorkPhone": "(707) 778-7756",
-        "HomePhone": "(707) 778-7756",
-        "Cell": "(123) 456-7890",
-        "DOB": "10/18/1991",
-        "SSN": "123-34-2134"
-    }
+    if totalSigners > 1:
+        signer2 = data[2]
+    if totalSigners > 2:
+        signer3 = data[3]
+    if totalSigners > 3:
+        signer4 = data[4]
+    # AccountInfo = {
+    #     "Type": BusinessInfo["Type"],
+    #     "Ownership": BusinessInfo["Ownership"],
+    #     "Benificiary": BusinessInfo["Benificiary"],
+    #     "BeneficiaryDetails": BusinessInfo["BeneficiaryDetails"],
+    #     "totalSigners": BusinessInfo["totalSigners"],
+    #     "BusinessName": BusinessInfo["BusinessName"],
+    #     "Prefix": BusinessInfo["Prefix"],
+    #     "PrefixName": BusinessInfo["PrefixName"],
+    #     "AnotherName": BusinessInfo["AnotherName"],
+    #     "EIN": BusinessInfo["EIN"],
+    #     "Street": BusinessInfo["Street"],
+    #     "City": BusinessInfo["City"],
+    #     "AccountType1": BusinessInfo["AccountType1"],
+    #     "AccountNumber1": BusinessInfo["AccountNumber1"]
+    # }
 
-    signer3 = {
-        "Name": 'Jimmy Neutron',
-        "Relationship": 'Owners',
-        "Position": "COO",
-        "Street": "123 Happy Dr",
-        "City": "Petaluma, CA 94952",
-        "MailingAddress": "PO Box 123, Petaluma CA 94954",
-        "PrimaryIDType": "Drivers License",
-        "Number": "D234354 CA",
-        "IssueDate1": "10/07/2017",
-        "ExpirationDate1": "10/18/2022",
-        "OtherID": "Credit Card",
-        "OtherDesc": "Visa",
-        "Expires": "02/28/2023",
-        "Employer": "Poppy Bank",
-        "Title": "New Accounts/CSR-Poppy Bank",
-        "email": "diaz1234@gmail.com",
-        "WorkPhone": "(707) 778-7756",
-        "HomePhone": "(707) 778-7756",
-        "Cell": "(123) 456-7890",
-        "DOB": "10/18/1991",
-        "SSN": "123-34-2134"
-    }
-    signer4 = {
-        "Name": 'Timmy Turner',
-        "Relationship": 'Owners',
-        "Street": "123 Happy Dr",
-        "Position": "COO",
-        "City": "Petaluma, CA 94952",
-        "MailingAddress": "PO Box 123, Petaluma CA 94954",
-        "PrimaryIDType": "Drivers License",
-        "Number": "D234354 CA",
-        "IssueDate1": "10/07/2017",
-        "ExpirationDate1": "10/18/2022",
-        "OtherID": "Credit Card",
-        "OtherDesc": "Visa",
-        "Expires": "02/28/2023",
-        "Employer": "Poppy Bank",
-        "Title": "New Accounts/CSR-Poppy Bank",
-        "email": "diaz1234@gmail.com",
-        "WorkPhone": "(707) 778-7756",
-        "HomePhone": "(707) 778-7756",
-        "Cell": "(123) 456-7890",
-        "DOB": "10/18/1991",
-        "SSN": "123-34-2134"
+    # signer1 = {
+    #     "Name": 'Bobby Brown',
+    #     "Relationship": 'Owners',
+    #     "Position": "COO",
+    #     "Street": "123 Happy Dr",
+    #     "City": "Petaluma, CA 94952",
+    #     "MailingAddress": "PO Box 123, Petaluma CA 94954",
+    #     "PrimaryIDType": "Drivers License",
+    #     "Number": "D234354 CA",
+    #     "IssueDate1": "10/07/2017",
+    #     "ExpirationDate1": "10/18/2022",
+    #     "OtherID": "Credit Card",
+    #     "OtherDesc": "Visa",
+    #     "Expires": "02/28/2023",
+    #     "Employer": "Poppy Bank",
+    #     "Title": "New Accounts/CSR-Poppy Bank",
+    #     "email": "diaz1234@gmail.com",
+    #     "WorkPhone": "",
+    #     "HomePhone": "(707) 778-7756",
+    #     "Cell": "(123) 456-7890",
+    #     "DOB": "10/18/1991",
+    #     "SSN": "123-34-2134"
+    # }
 
-    }
+    # signer2 = {
+    #     "Name": 'James Brown',
+    #     "Relationship": 'Owners',
+    #     "Position": "COO",
+    #     "Street": "123 Happy Dr",
+    #     "City": "Petaluma, CA 94952",
+    #     "MailingAddress": "PO Box 123, Petaluma CA 94954",
+    #     "PrimaryIDType": "Drivers License",
+    #     "Number": "D234354 CA",
+    #     "IssueDate1": "10/07/2017",
+    #     "ExpirationDate1": "10/18/2022",
+    #     "OtherID": "Credit Card",
+    #     "OtherDesc": "Visa",
+    #     "Expires": "02/28/2023",
+    #     "Employer": "Poppy Bank",
+    #     "Title": "New Accounts/CSR-Poppy Bank",
+    #     "email": "diaz1234@gmail.com",
+    #     "WorkPhone": "(707) 778-7756",
+    #     "HomePhone": "(707) 778-7756",
+    #     "Cell": "(123) 456-7890",
+    #     "DOB": "10/18/1991",
+    #     "SSN": "123-34-2134"
+    # }
+
+    # signer3 = {
+    #     "Name": 'Jimmy Neutron',
+    #     "Relationship": 'Owners',
+    #     "Position": "COO",
+    #     "Street": "123 Happy Dr",
+    #     "City": "Petaluma, CA 94952",
+    #     "MailingAddress": "PO Box 123, Petaluma CA 94954",
+    #     "PrimaryIDType": "Drivers License",
+    #     "Number": "D234354 CA",
+    #     "IssueDate1": "10/07/2017",
+    #     "ExpirationDate1": "10/18/2022",
+    #     "OtherID": "Credit Card",
+    #     "OtherDesc": "Visa",
+    #     "Expires": "02/28/2023",
+    #     "Employer": "Poppy Bank",
+    #     "Title": "New Accounts/CSR-Poppy Bank",
+    #     "email": "diaz1234@gmail.com",
+    #     "WorkPhone": "(707) 778-7756",
+    #     "HomePhone": "(707) 778-7756",
+    #     "Cell": "(123) 456-7890",
+    #     "DOB": "10/18/1991",
+    #     "SSN": "123-34-2134"
+    # }
+    # signer4 = {
+    #     "Name": 'Timmy Turner',
+    #     "Relationship": 'Owners',
+    #     "Street": "123 Happy Dr",
+    #     "Position": "COO",
+    #     "City": "Petaluma, CA 94952",
+    #     "MailingAddress": "PO Box 123, Petaluma CA 94954",
+    #     "PrimaryIDType": "Drivers License",
+    #     "Number": "D234354 CA",
+    #     "IssueDate1": "10/07/2017",
+    #     "ExpirationDate1": "10/18/2022",
+    #     "OtherID": "Credit Card",
+    #     "OtherDesc": "Visa",
+    #     "Expires": "02/28/2023",
+    #     "Employer": "Poppy Bank",
+    #     "Title": "New Accounts/CSR-Poppy Bank",
+    #     "email": "diaz1234@gmail.com",
+    #     "WorkPhone": "(707) 778-7756",
+    #     "HomePhone": "(707) 778-7756",
+    #     "Cell": "(123) 456-7890",
+    #     "DOB": "10/18/1991",
+    #     "SSN": "123-34-2134"
+
+    # }
     # BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
     # reportlab.rl_config.TTFSearchPath.append(str(settings.BASE_DIR) + '/app/lib/reportlabs/fonts')
@@ -539,17 +578,20 @@ def generateResolution():
             can.drawString(312.5, 61.5, AccountInfo["BusinessName"])
             can.drawString(312, 72, AccountInfo["Street"])
             can.drawString(312, 82, AccountInfo["City"])
-    #  Manger field
+    #  Manager field
     can.drawString(38, 173, signer1["Name"])
 
     #  EIN Field
     can.drawString(172, 196.5, AccountInfo["EIN"])
 
-    # Name FIeld in Paragraph
+    # Name Field in Paragraph
+    print(AccountInfo["Prefix"])
     if AccountInfo["Prefix"] == "FBO":
         can.drawString(27.5, 208, AccountInfo["PrefixName"])
-    else:
-        can.drawString(312.5, 61.5, AccountInfo["BusinessName"])
+    if AccountInfo["Prefix"] == "DBA":
+        can.drawString(27.5, 208, AccountInfo["PrefixName"])
+    if AccountInfo["PrefixName"] == "":
+        can.drawString(27.5, 208, AccountInfo["BusinessName"])
 
     # Adding Signers & Titles
     can.drawString(41, 350, f'{signer1["Name"]}-{signer1["Position"]}')

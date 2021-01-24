@@ -1,19 +1,19 @@
-import React from "react";
-import Radio from "@material-ui/core/Radio";
-import RadioGroup from "@material-ui/core/RadioGroup";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import FormControl from "@material-ui/core/FormControl";
-import "./HeaderAccount.css";
-import InputLabel from "@material-ui/core/InputLabel";
-import MenuItem from "@material-ui/core/MenuItem";
-import Select from "@material-ui/core/Select";
-import { makeStyles } from "@material-ui/core/styles";
-import PropTypes from "prop-types";
-import { withStyles } from "@material-ui/styles";
-import Button from "@material-ui/core/Button";
-import TextField from "@material-ui/core/TextField";
-import AddMembers from "./AddMembers";
-import { withRouter } from "react-router-dom";
+import React from "react"
+import Radio from "@material-ui/core/Radio"
+import RadioGroup from "@material-ui/core/RadioGroup"
+import FormControlLabel from "@material-ui/core/FormControlLabel"
+import FormControl from "@material-ui/core/FormControl"
+import "./HeaderAccount.css"
+import InputLabel from "@material-ui/core/InputLabel"
+import MenuItem from "@material-ui/core/MenuItem"
+import Select from "@material-ui/core/Select"
+import { makeStyles } from "@material-ui/core/styles"
+import PropTypes from "prop-types"
+import { withStyles } from "@material-ui/styles"
+import Button from "@material-ui/core/Button"
+import TextField from "@material-ui/core/TextField"
+import AddMembers from "./AddMembers"
+import { withRouter } from "react-router-dom"
 
 const useStyles = makeStyles((theme) => ({
 	formControl: {
@@ -23,27 +23,27 @@ const useStyles = makeStyles((theme) => ({
 	selectEmpty: {
 		marginTop: theme.spacing(2),
 	},
-}));
+}))
 
 class FormControlLabelPlacement extends React.Component {
 	state = {
 		signers: "",
 		ProjectName: "",
 		type: "",
-	};
+	}
 
 	handleChange = (e) => {
-		let change = (this.state[e.target.name] = e.target.value);
-		this.setState({ ...this.state, change });
-	};
+		let change = (this.state[e.target.name] = e.target.value)
+		this.setState({ ...this.state, change })
+	}
 
 	getMembers = (members) => {
-		this.setState({ ...this.state, teamMembers: members });
-	};
+		this.setState({ ...this.state, teamMembers: members })
+	}
 
 	handleChangeRadio = (e) => {
-		this.setState({ ...this.state, type: e.target.value });
-	};
+		this.setState({ ...this.state, type: e.target.value })
+	}
 
 	render() {
 		return (
@@ -59,7 +59,7 @@ class FormControlLabelPlacement extends React.Component {
 						className="inputBoxes"
 					/>
 					<div className="row" style={{ margin: "15px 0" }}>
-						<RadioGroup
+						{/* <RadioGroup
 							row
 							aria-label="position"
 							name="position"
@@ -81,7 +81,7 @@ class FormControlLabelPlacement extends React.Component {
 								onChange={this.handleChangeRadio}
 								labelPlacement="top"
 							/>
-						</RadioGroup>
+						</RadioGroup> */}
 						<FormControl>
 							<InputLabel id="demo-simple-select-label">
 								Number of Signers
@@ -116,12 +116,12 @@ class FormControlLabelPlacement extends React.Component {
 					</div>
 				</FormControl>
 			</div>
-		);
+		)
 	}
 }
 
 FormControlLabelPlacement.propTypes = {
 	classes: PropTypes.object.isRequired,
-};
+}
 
-export default withRouter(withStyles(useStyles)(FormControlLabelPlacement));
+export default withRouter(withStyles(useStyles)(FormControlLabelPlacement))
