@@ -15,8 +15,8 @@ const initialstate = {
         { label: "Laguna Wayward", value: "Laguna Wayward" },
     ],
     savedProjects: {
-        OMG: [
-            {
+        OMG: {
+            businessInfo: {
                 Type: "Business",
                 Ownership: "LLC",
                 Benificiary: "",
@@ -33,7 +33,7 @@ const initialstate = {
                 AccountType1: "OMG PAYROLL",
                 AccountNumber1: "01-1002451-9",
             },
-            {
+            signer1: {
                 Name: "Kevin Tyler",
                 Relationship: "Auth Signer/Control Party",
                 Street: "572 Lucero Ave",
@@ -57,7 +57,7 @@ const initialstate = {
                 DOB: "01/19/1981",
                 SSN: "071-66-8503",
             },
-            {
+            signer2: {
                 Name: "Courtney Siegel",
                 Relationship: "Authorized Signer",
                 Street: "649 Regency Cir",
@@ -81,7 +81,7 @@ const initialstate = {
                 DOB: "03/18/1983",
                 SSN: "564-85-8403",
             },
-            {
+            signer3: {
                 Name: "Matthew Stevenson",
                 Relationship: "Authorized Signer",
                 Street: "12436 Altura Dr",
@@ -105,7 +105,7 @@ const initialstate = {
                 DOB: "01/20/1981",
                 SSN: "613-32-6511",
             },
-            {
+            signer4: {
                 Name: "James Nicholas Meek",
                 Relationship: "Authorized Signer",
                 Street: "11 Spring Harbor",
@@ -129,7 +129,7 @@ const initialstate = {
                 DOB: "06/17/1982",
                 SSN: "645-28-6234",
             },
-        ],
+        },
     },
     Completed: []
 };
