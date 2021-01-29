@@ -7,12 +7,12 @@ import {
 
 const initialstate = {
     teamMembers: [
-        "Sarah Conners",
-        "Robert Smith",
-        "Wally Borg",
-        "Perry Johnson",
-        "Bob Miller",
-        "Pamella Smith"
+        { label: "Sarah Conners", value: "Sarah Conners" },
+        { label: "Mike Smith", value: "Mike Smith" },
+        { label: "Wally Borg", value: "Whale" },
+        { label: "Cindy Lok", value: "Cindy Lok" },
+        { label: "Kirk Wood", value: "Kirk Wood" },
+        { label: "Laguna Wayward", value: "Laguna Wayward" },
     ],
     savedProjects: {
         OMG: [
