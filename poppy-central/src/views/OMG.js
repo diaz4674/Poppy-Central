@@ -290,11 +290,15 @@ class OMG extends Component {
     //     // console.log(this.state.toggleCheckboxes)
     // }
 
-    // handleChange = (e) => {
-    //     this.state.AccountChanges[0][e.target.name] = e.target.value
-    //     let { AccountInfo } = this.state.AccountChanges[0]
-    //     this.setState({ AccountInfo })
-    // }
+    handleChange = (e) => {
+        // console.log(e.target.name, "ACCCT")
+        // let change = e.target.name
+        // let changeValue = e.target.value
+        this.state.AccountChanges.OMG[e.target.name] = e.target.value
+        let { AccountInfo } = this.state.AccountChanges.OMG
+        // console.log(change)
+        this.setState({ AccountInfo })
+    }
     render() {
         let { AccountChanges } = this.state
 
@@ -320,7 +324,7 @@ class OMG extends Component {
                                 <div>
                                     <TextField
                                         id="outlined-basic"
-                                        // value={this.state.AccountChanges[0].BusinessName}
+                                        value={AccountChanges.BusinessName}
                                         name="BusinessName"
                                         onChange={this.handleChange}
                                         label="Business Name"
@@ -497,7 +501,7 @@ OMG.propTypes = {
 
 const mapStateToProps = state => {
     return {
-        accountInfo: state.OMG
+        accountInfo: state.savedProjects
     };
 };
 

@@ -100,7 +100,7 @@ body {
     padding-bottom: 30px;
 }
 label + .MuiInput-formControl{
-    margin: 0 !important;
+    /* margin: 0 !important; */
 }
 .buttonContainer {
 	width: 100%;

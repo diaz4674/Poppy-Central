@@ -107,8 +107,9 @@ class FormControlLabelPlacement extends React.Component {
                         <Button
                             variant="contained"
                             color="default"
-                            onClick={() =>
-                                this.props.history.push("/app-main/InputSignerData")
+                            onClick={
+                                () =>
+                                    this.props.history.push("/app-main/InputSignerData")
                             }
                             className="submitButton"
                         >
