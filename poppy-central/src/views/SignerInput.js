@@ -67,6 +67,10 @@ class SignerInput extends Component {
 		loading: false,
 	}
 
+	componentDidMount() {
+		this.setState({ ...this.state, signerNumber: this.props.signerNumber })
+	}
+
 	updateCardHandler = () => {
 		this.setState({
 			...this.state.AccountChanges,
@@ -135,9 +139,10 @@ class SignerInput extends Component {
 		await this.setState({ AccountInfo })
 	}
 	stateDone = () => {
-		let signerNumb = this.props.signerNumber
+		// closes panel
 		this.props.onChange()
-		console.log((signerNumb = this.state))
+		// passes state object up
+		this.props.updateSignersFunc(this.state)
 	}
 	render() {
 		let {

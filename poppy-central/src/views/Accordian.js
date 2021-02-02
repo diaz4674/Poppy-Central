@@ -36,12 +36,15 @@ export default function ControlledAccordions(props) {
 	const [allValue, setValues] = React.useState({
 		numSigners: "",
 		accountState: null,
-		signer1: {},
+		totalSigners,
 	})
 
 	useEffect(async () => {
 		totalSigners = props.AccountInfo.Signers.length
-		await setValues({ numSigners: props.AccountInfo.Signers.length })
+		await setValues({
+			...allValue,
+			numSigners: props.AccountInfo.Signers.length,
+		})
 	}, [])
 	const handleChange = (panel) => (event, isExpanded) => {
 		setExpanded(isExpanded ? panel : false)
@@ -51,80 +54,86 @@ export default function ControlledAccordions(props) {
 		console.log(allValue)
 	}
 	const updateSigners = async (e) => {
-		await setValues({
-			...allValue,
-			numSigners: props.AccountInfo.Signers.length,
-		})
+		await setValues((prevState) => ({
+			...prevState,
+			[e.signerNumber]: e,
+		}))
 	}
 	return (
 		<div className={classes.root}>
-			<Accordion
-				expanded={expanded === "panel1"}
-				onChange={handleChange("panel1")}
-			>
-				<AccordionSummary
-					expandIcon={<ExpandMoreIcon />}
-					aria-controls="panel1bh-content"
-					id="panel1bh-header"
-				>
-					<Typography className={classes.header1}>
-						Business Information
-					</Typography>
-				</AccordionSummary>
-				<BusinesInputs />
-			</Accordion>
-			{Array.from(Array(totalSigners)).map((x, index) => (
-				<Accordion
-					key={index}
-					expanded={expanded === `panel${index + 2}`}
-					onChange={handleChange(`panel${index + 2}`)}
-				>
-					<AccordionSummary
-						expandIcon={<ExpandMoreIcon />}
-						aria-controls={`panel${index + 2}bh-content`}
-						id={`panel${index + 2}bh-header`}
+			{allValue.numSigners === "" ? (
+				<p>loading</p>
+			) : (
+				<>
+					<Accordion
+						expanded={expanded === "panel1"}
+						onChange={handleChange("panel1")}
 					>
-						<Typography>Signer {index + 1}</Typography>
-						{allValue.signer1 ? (
-							<img
-								src={checkmark}
-								alt="checkmark"
-								style={{ width: "25px", margin: "0 15px" }}
-							/>
-						) : (
-							<img
-								src={error}
-								alt="checkmark"
-								style={{ width: "25px", margin: "0 15px" }}
-							/>
-						)}
-					</AccordionSummary>
+						<AccordionSummary
+							expandIcon={<ExpandMoreIcon />}
+							aria-controls="panel1bh-content"
+							id="panel1bh-header"
+						>
+							<Typography className={classes.header1}>
+								Business Information
+							</Typography>
+						</AccordionSummary>
+						<BusinesInputs />
+					</Accordion>
+					{Array.from(Array(totalSigners)).map((x, index) => (
+						<Accordion
+							key={index}
+							expanded={expanded === `panel${index + 2}`}
+							onChange={handleChange(`panel${index + 2}`)}
+						>
+							<AccordionSummary
+								expandIcon={<ExpandMoreIcon />}
+								aria-controls={`panel${index + 2}bh-content`}
+								id={`panel${index + 2}bh-header`}
+							>
+								<Typography>Signer {index + 1}</Typography>
+								{"signer" + (index + 1) in allValue ? (
+									<img
+										src={checkmark}
+										alt="checkmark"
+										style={{ width: "25px", margin: "0 15px" }}
+									/>
+								) : (
+									<img
+										src={error}
+										alt="error"
+										style={{ width: "25px", margin: "0 15px" }}
+									/>
+								)}
+							</AccordionSummary>
 
-					<SignerInput
-						updateSignersFunc={updateSigners}
-						signerNumber={"signer" + (index + 1)}
-						onChange={handleChange(`panel${index + 2}`)}
-					/>
-				</Accordion>
-			))}
-			<div className="buttonContainer">
-				<Button
-					variant="contained"
-					color="default"
-					onClick={updateCardHandler}
-					className="submitButton"
-				>
-					{loading ? (
-						<div class="load-3">
-							<div class="line"></div>
-							<div class="line"></div>
-							<div class="line"></div>
-						</div>
-					) : (
-						"Save Project"
-					)}
-				</Button>
-			</div>
+							<SignerInput
+								updateSignersFunc={updateSigners}
+								signerNumber={"signer" + (index + 1)}
+								onChange={handleChange(`panel${index + 2}`)}
+							/>
+						</Accordion>
+					))}
+					<div className="buttonContainer">
+						<Button
+							variant="contained"
+							color="default"
+							onClick={updateCardHandler}
+							className="submitButton"
+						>
+							{loading ? (
+								<div class="load-3">
+									<div class="line"></div>
+									<div class="line"></div>
+									<div class="line"></div>
+								</div>
+							) : (
+								"Save Project"
+							)}
+						</Button>
+					</div>
+				</>
+			)}
 		</div>
 	)
 }
