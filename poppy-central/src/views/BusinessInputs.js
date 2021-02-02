@@ -35,19 +35,19 @@ class OMG extends Component {
 		AccountChanges: [
 			{
 				Type: "Business",
-				Ownership: "",
+				Ownership: "LLC",
 				Benificiary: "",
 				BeneficiaryDetails: "",
 				totalSigners: 3,
-				BusinessName: "",
+				BusinessName: "Example LLC",
 				Prefix: "",
 				PrefixName: "",
 				AnotherName: "",
-				Street: "",
-				City: "",
-				EIN: "",
-				AccountType1: "",
-				AccountNumber1: "",
+				Street: "123 Industrial St",
+				City: "San Francisco CA 94016",
+				EIN: "12-345677",
+				AccountType1: "Business Checking",
+				AccountNumber1: "01-100038-9",
 			},
 		],
 
@@ -382,7 +382,7 @@ class OMG extends Component {
 					/>
 					<TextField
 						id="outlined-basic"
-						label="City"
+						label="City, State, Zip Code"
 						name="City"
 						value={this.state.AccountChanges[0].City}
 						onChange={this.handleChange}

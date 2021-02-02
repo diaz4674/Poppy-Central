@@ -1,25 +1,25 @@
-import "date-fns";
-import React from "react";
-import Grid from "@material-ui/core/Grid";
-import DateFnsUtils from "@date-io/date-fns";
+import "date-fns"
+import React from "react"
+import Grid from "@material-ui/core/Grid"
+import DateFnsUtils from "@date-io/date-fns"
 import {
 	MuiPickersUtilsProvider,
 	KeyboardDatePicker,
-} from "@material-ui/pickers";
-import "./OMG.css";
+} from "@material-ui/pickers"
+import "./OMG.css"
 
 class DateToggler extends React.Component {
 	// The first commit of Material-UI
 	state = {
 		selectedDate: new Date("2014-08-18T21:11:54"),
-	};
+	}
 	// const [selectedDate, setSelectedDate] = React.useState(
 
 	// );
 
 	handleDateChange = (date) => {
-		this.setState({ selectedDate: date });
-	};
+		this.setState({ selectedDate: date })
+	}
 
 	render() {
 		return (
@@ -40,8 +40,8 @@ class DateToggler extends React.Component {
 					/>
 				</Grid>
 			</MuiPickersUtilsProvider>
-		);
+		)
 	}
 }
 
-export default DateToggler;
+export default DateToggler

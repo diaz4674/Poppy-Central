@@ -158,7 +158,7 @@ class InputSignerData extends React.Component {
 								) : null}
 							</div>
 						</div>
-						<Accordian />
+						{ProjectName !== "" ? <Accordian AccountInfo={this.state} /> : null}
 					</div>
 				</div>
 			</div>

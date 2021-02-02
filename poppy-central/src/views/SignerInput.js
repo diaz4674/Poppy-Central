@@ -1,17 +1,17 @@
-import "./OMG.css";
-import PropTypes from "prop-types";
-import { withStyles } from "@material-ui/styles";
-import React, { Component } from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import TextField from "@material-ui/core/TextField";
-import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
-import MenuItem from "@material-ui/core/MenuItem";
-import InputLabel from "@material-ui/core/InputLabel";
-import DateToggler from "./DateToggler";
-import FormGroup from "@material-ui/core/FormGroup";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Checkbox from "@material-ui/core/Checkbox";
+import "./OMG.css"
+import PropTypes from "prop-types"
+import { withStyles } from "@material-ui/styles"
+import React, { Component } from "react"
+import { makeStyles } from "@material-ui/core/styles"
+import TextField from "@material-ui/core/TextField"
+import FormControl from "@material-ui/core/FormControl"
+import Select from "@material-ui/core/Select"
+import MenuItem from "@material-ui/core/MenuItem"
+import InputLabel from "@material-ui/core/InputLabel"
+import DateToggler from "./DateToggler"
+import FormGroup from "@material-ui/core/FormGroup"
+import FormControlLabel from "@material-ui/core/FormControlLabel"
+import Checkbox from "@material-ui/core/Checkbox"
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -28,31 +28,31 @@ const useStyles = makeStyles((theme) => ({
 			maxWidth: 300,
 		},
 	},
-}));
+}))
 
 class SignerInput extends Component {
 	state = {
-		Name: "",
+		Name: "John Doe",
 		Relationship: "Authorized Signer",
-		Street: "",
-		Position: "",
-		City: "",
+		Street: "123 Gold St",
+		Position: "CEO",
+		City: "San Francisco, CA 90416",
 		MailingAddress: "",
-		PrimaryIDType: "",
-		Number: "",
-		IssueDate1: "",
-		ExpirationDate1: "",
-		OtherID: "",
-		OtherDesc: "",
-		Expires: "",
-		Employer: "",
-		Title: "",
-		email: "",
+		PrimaryIDType: "CADL",
+		Number: "D123939",
+		IssueDate1: "05/10/2020",
+		ExpirationDate1: "05/10/2025",
+		OtherID: "Credit Card",
+		OtherDesc: "VISA",
+		Expires: "02/23",
+		Employer: "John Construction",
+		Title: "Manager",
+		email: "john@example.com",
 		WorkPhone: "",
 		HomePhone: "",
-		Cell: "",
-		DOB: "",
-		SSN: "",
+		Cell: "413-345-1345",
+		DOB: "10/28/1991",
+		SSN: "123-43-4234",
 		emailClient: "",
 		prefix: false,
 
@@ -64,27 +64,27 @@ class SignerInput extends Component {
 			inputBoxes: "",
 		},
 		loading: false,
-	};
+	}
 
 	updateCardHandler = () => {
 		this.setState({
 			...this.state.AccountChanges,
 			loading: true,
-		});
-		console.log(this.state);
-	};
+		})
+		console.log(this.state)
+	}
 
 	handleCheckboxChange = (e) => {
 		this.state.toggleCheckboxes[e.target.name] = !this.state.toggleCheckboxes[
 			e.target.name
-		];
-		let { toggleCheckboxes } = this.state;
+		]
+		let { toggleCheckboxes } = this.state
 		if (this.state.toggleCheckboxes.prefix === false) {
-			this.state["PrefixName"] = "";
-			let { AccountInfo } = this.state;
-			this.setState({ ...this.state, AccountInfo });
+			this.state["PrefixName"] = ""
+			let { AccountInfo } = this.state
+			this.setState({ ...this.state, AccountInfo })
 		}
-		this.setState({ ...this.state, toggleCheckboxes });
+		this.setState({ ...this.state, toggleCheckboxes })
 
 		if (e.target.name === "prefix") {
 			if (toggleCheckboxes.prefix) {
@@ -96,14 +96,14 @@ class SignerInput extends Component {
 						inputBoxes: "inputBoxes",
 						addLineOption: "addLineOption",
 					},
-				});
+				})
 			} else {
 				this.setState({
 					...this.state,
 					toggleCheckboxes: {
 						prefixClass: "",
 					},
-				});
+				})
 			}
 		} else {
 			if (toggleCheckboxes.addLine) {
@@ -114,7 +114,7 @@ class SignerInput extends Component {
 						addLineClass: "addLineClass",
 						inputBoxes: "inputBoxes",
 					},
-				});
+				})
 			} else {
 				this.setState({
 					...this.state,
@@ -122,17 +122,17 @@ class SignerInput extends Component {
 						...this.state.toggleCheckboxes,
 						addLineClass: "",
 					},
-				});
+				})
 			}
 		}
-		console.log(this.state.toggleCheckboxes);
-	};
+		console.log(this.state.toggleCheckboxes)
+	}
 
 	handleChange = (e) => {
-		this.state[e.target.name] = e.target.value;
-		let { AccountInfo } = this.state;
-		this.setState({ AccountInfo });
-	};
+		this.state[e.target.name] = e.target.value
+		let { AccountInfo } = this.state
+		this.setState({ AccountInfo })
+	}
 	render() {
 		let {
 			prefixClass,
@@ -141,8 +141,8 @@ class SignerInput extends Component {
 			addLineOption,
 			addLine,
 			addLineClass,
-		} = this.state.toggleCheckboxes;
-		const { classes } = this.props;
+		} = this.state.toggleCheckboxes
+		const { classes } = this.props
 
 		return (
 			<div className="container">
@@ -361,6 +361,16 @@ class SignerInput extends Component {
 								/>
 								<TextField
 									id="outlined-basic"
+									label="Position in Company"
+									name={"Position"}
+									placeholder="CEO"
+									value={this.state.Position}
+									onChange={this.handleChange}
+									variant="outlined"
+									className="twoRows"
+								/>
+								<TextField
+									id="outlined-basic"
 									label="Street"
 									multiline
 									name="Street"
@@ -372,7 +382,7 @@ class SignerInput extends Component {
 								/>
 								<TextField
 									id="outlined-basic"
-									label="City"
+									label="City, State, Zip Code"
 									name="City"
 									value={this.state.City}
 									onChange={this.handleChange}
@@ -424,12 +434,12 @@ class SignerInput extends Component {
 					) : null}
 				</div>
 			</div>
-		);
+		)
 	}
 }
 
 SignerInput.propTypes = {
 	classes: PropTypes.object.isRequired,
-};
+}
 
-export default withStyles(useStyles)(SignerInput);
+export default withStyles(useStyles)(SignerInput)
