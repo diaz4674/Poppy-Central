@@ -12,6 +12,7 @@ import DateToggler from "./DateToggler"
 import FormGroup from "@material-ui/core/FormGroup"
 import FormControlLabel from "@material-ui/core/FormControlLabel"
 import Checkbox from "@material-ui/core/Checkbox"
+import Button from "@material-ui/core/Button"
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -128,10 +129,15 @@ class SignerInput extends Component {
 		console.log(this.state.toggleCheckboxes)
 	}
 
-	handleChange = (e) => {
+	handleChange = async (e) => {
 		this.state[e.target.name] = e.target.value
 		let { AccountInfo } = this.state
-		this.setState({ AccountInfo })
+		await this.setState({ AccountInfo })
+	}
+	stateDone = () => {
+		let signerNumb = this.props.signerNumber
+		this.props.onChange()
+		console.log((signerNumb = this.state))
 	}
 	render() {
 		let {
@@ -430,6 +436,16 @@ class SignerInput extends Component {
 									className="twoRows"
 								/>
 							</div>
+							<Button
+								style={{
+									margin: "25px 0",
+								}}
+								variant="contained"
+								onClick={this.stateDone}
+								color="primary"
+							>
+								All Set!
+							</Button>
 						</>
 					) : null}
 				</div>

@@ -8,6 +8,8 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore"
 import BusinesInputs from "./BusinessInputs"
 import SignerInput from "./SignerInput"
 import Button from "@material-ui/core/Button"
+import checkmark from "./check.svg"
+import error from "./close.svg"
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -34,6 +36,7 @@ export default function ControlledAccordions(props) {
 	const [allValue, setValues] = React.useState({
 		numSigners: "",
 		accountState: null,
+		signer1: {},
 	})
 
 	useEffect(async () => {
@@ -82,10 +85,25 @@ export default function ControlledAccordions(props) {
 						id={`panel${index + 2}bh-header`}
 					>
 						<Typography>Signer {index + 1}</Typography>
+						{allValue.signer1 ? (
+							<img
+								src={checkmark}
+								alt="checkmark"
+								style={{ width: "25px", margin: "0 15px" }}
+							/>
+						) : (
+							<img
+								src={error}
+								alt="checkmark"
+								style={{ width: "25px", margin: "0 15px" }}
+							/>
+						)}
 					</AccordionSummary>
+
 					<SignerInput
 						updateSignersFunc={updateSigners}
 						signerNumber={"signer" + (index + 1)}
+						onChange={handleChange(`panel${index + 2}`)}
 					/>
 				</Accordion>
 			))}
