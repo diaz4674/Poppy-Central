@@ -11,7 +11,8 @@ import Button from "@material-ui/core/Button"
 import checkmark from "./check.svg"
 import error from "./close.svg"
 import axios from "axios"
-import download from "downloadjs"
+import { generateDocs } from "../actions"
+import { connect } from "react-redux"
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -31,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
 
 let totalSigners
 
-export default function ControlledAccordions(props) {
+const ControlledAccordions = (props) => {
 	const classes = useStyles()
 	const [expanded, setExpanded] = React.useState("panel1")
 	const [loading, setLoading] = React.useState(false)
@@ -42,11 +43,12 @@ export default function ControlledAccordions(props) {
 	})
 
 	useEffect(async () => {
-		totalSigners = props.AccountInfo.Signers.length
+		totalSigners = props.AccountInfo.numSigners
+
 		await setValues({
 			...allValue,
-			totalSigners: props.AccountInfo.Signers.length,
-			numSigners: props.AccountInfo.Signers.length,
+			totalSigners,
+			numSigners: totalSigners,
 		})
 	}, [])
 	const handleChange = (panel) => (event, isExpanded) => {
@@ -57,52 +59,16 @@ export default function ControlledAccordions(props) {
 			AccountInfo: allValue.AccountInfo,
 			totalSigners: allValue.totalSigners,
 		}
-
 		for (let i = 1; i < totalSigners + 1; i++) {
 			if (allValue[`signer${+i}`] === undefined) {
 				return alert("Sorry looks like your still missing some info")
 			}
 			payload[`signer${+i}`] = allValue[`signer${+i}`]
 		}
-		console.log(payload)
-		await axios
-			.post(
-				// "https://5000-e5a921ea-4111-473a-ad9b-1474a7910719.ws-us03.gitpod.io/",
-				"http://127.0.0.1:5000/signatureCard",
-				payload,
-				{ responseType: "blob" } // had to add this one here
-			)
-			.then((res) => {
-				download(
-					res.data,
-					`${payload.AccountInfo.BusinessName} - Sig Card`,
-					res.content
-				)
-
-				console.log(res)
-				return res
-			})
-			.catch((error) => console.log(error))
-		await axios
-			.post(
-				// "https://5000-e5a921ea-4111-473a-ad9b-1474a7910719.ws-us03.gitpod.io/resolution",
-				"http://127.0.0.1:5000/resolution",
-				payload,
-				{ responseType: "blob" } // had to add this one here
-			)
-			.then((res) => {
-				download(
-					res.data,
-					`${payload.AccountInfo.BusinessName} - Resolution`,
-					res.content
-				)
-				console.log(res)
-				return res
-			})
-			.catch((error) =>
-				alert("Oops! Something funny happened. Try again or contact the admin.")
-			)
+		await props.generateDocs(payload)
 	}
+
+	const saveProject = () => {}
 
 	const updateSigners = async (e) => {
 		if (e.signerNumber !== undefined) {
@@ -192,7 +158,7 @@ export default function ControlledAccordions(props) {
 						<Button
 							variant="contained"
 							color="default"
-							onClick={updateCardHandler}
+							onClick={saveProject}
 							className="submitButton"
 						>
 							{loading ? (
@@ -205,9 +171,29 @@ export default function ControlledAccordions(props) {
 								"Save Project"
 							)}
 						</Button>
+						<Button
+							variant="contained"
+							color="default"
+							onClick={updateCardHandler}
+							className="submitButton"
+						>
+							{loading ? (
+								<div class="load-3">
+									<div class="line"></div>
+									<div class="line"></div>
+									<div class="line"></div>
+								</div>
+							) : (
+								"Download Documents"
+							)}
+						</Button>
 					</div>
 				</>
 			)}
 		</div>
 	)
 }
+
+const mapStateToProps = (state) => {}
+
+export default connect(mapStateToProps, { generateDocs })(ControlledAccordions)
