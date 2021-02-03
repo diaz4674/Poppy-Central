@@ -28,6 +28,7 @@ import contract from "./contract.svg"
 import ImageIcon from "@material-ui/icons/Image"
 import Toaster from "./Toaster"
 import { connect } from "react-redux"
+import { withRouter } from "react-router-dom"
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -48,8 +49,16 @@ class Home extends Component {
 
 	componentDidMount() {
 		this.setState({ newItem: true })
-		console.log(this.props.accountInfo)
+		// console.log(this.props.accountInfo)
 	}
+
+	toggleView(e) {
+		this.props.history.push({
+			pathname: "/app-main/omg",
+			state: { savedProject: e },
+		})
+	}
+
 	render() {
 		return (
 			<div className="container">
@@ -112,17 +121,18 @@ class Home extends Component {
 							<p className="mediumTitle" style={{ color: "#595a59" }}>
 								Saved Projects:
 							</p>
-							{this.props.accountInfo.map((project) => {
+							{this.props.accountInfo.map((project, index) => {
 								return (
 									<div className="specialBox">
 										<div
+											key={index}
 											style={{
 												display: "flex",
 												flexDirection: "row",
 												justifyContent: "space-between",
 												alignItems: "center",
 											}}
-											onClick={() => this.props.history.push("/app-main/omg")}
+											onClick={() => this.toggleView(project)}
 										>
 											{/* Start of the saved projects  */}
 											{this.props.accountInfo.map((project) => {
@@ -204,4 +214,6 @@ const mapStateToProps = (state) => {
 	}
 }
 
-export default withStyles(useStyles)(connect(mapStateToProps, {})(Home))
+export default withRouter(
+	withStyles(useStyles)(connect(mapStateToProps, {})(Home))
+)

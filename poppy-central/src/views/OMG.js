@@ -168,7 +168,6 @@ class OMG extends Component {
 	}
 
 	async componentDidMount() {
-		console.log(this.props.accountInfo)
 		await this.setState({ AccountChanges: this.props.accountInfo })
 	}
 	// updateCardHandler = () => {
@@ -297,10 +296,7 @@ class OMG extends Component {
 		this.setState({ AccountInfo })
 	}
 	render() {
-		let { AccountChanges } = this.state
-
-		let business = AccountChanges[0]
-		console.log(AccountChanges)
+		// let business = AccountChanges[0]
 		let {
 			prefixClass,
 			inputBoxes,
@@ -311,189 +307,7 @@ class OMG extends Component {
 		} = this.state.toggleCheckboxes
 
 		const { classes } = this.props
-		return (
-			<div className="container">
-				<div>
-					{AccountChanges.length === 0 ? (
-						<h1>LOADING</h1>
-					) : (
-						<div>
-							<TextField
-								id="outlined-basic"
-								value={AccountChanges.BusinessName}
-								name="BusinessName"
-								onChange={this.handleChange}
-								label="Business Name"
-								variant="outlined"
-								className="inputBoxes"
-							/>
-							<FormGroup
-								aria-label="position"
-								className="checkBoxDiv"
-								row
-								style={{ padding: "0 53px" }}
-							>
-								<FormControlLabel
-									value={prefix}
-									control={<Checkbox />}
-									style={{ color: "grey" }}
-									label="Prefix"
-									name="prefix"
-									onChange={this.handleCheckboxChange}
-									labelPlacement="start"
-									className="checkBox"
-								/>
-								<FormControl
-									className={classes.formControl}
-									id="prefixContainer"
-								>
-									<InputLabel
-										className={`noShow ${prefixClass}`}
-										id="prefixLabel"
-									>
-										Prefix Type
-									</InputLabel>
-									<Select
-										labelId="demo-simple-select-label"
-										id="demo-simple-select"
-										name="Prefix"
-										// value={this.state.AccountChanges[0].Prefix}
-										onChange={this.handleChange}
-										style={{ width: "150px", marginLeft: "25px" }}
-										className={`noShow ${prefixClass}`}
-									>
-										<MenuItem value={"DBA"}>DBA</MenuItem>
-										<MenuItem value={"FBO"}>FBO</MenuItem>
-									</Select>
-								</FormControl>
-								<TextField
-									id="outlined-basic"
-									label="Prefix EIN"
-									name="PrefixEIN"
-									// value={this.state.AccountChanges[0].PrefixEIN}
-									onChange={this.handleChange}
-									variant="outlined"
-									className={`noShow ${prefixClass} ${inputBoxes} prefixEIN`}
-									style={{ width: "200px", marginLeft: "20px" }}
-								/>
-							</FormGroup>
-							{/* Prefix Check  */}
-							<TextField
-								id="outlined-basic"
-								label="Prefix Name"
-								name="PrefixName"
-								// value={this.state.AccountChanges[0].PrefixName}
-								onChange={this.handleChange}
-								variant="outlined"
-								className={`noShow ${prefixClass} ${inputBoxes}`}
-							/>
-							<FormGroup
-								aria-label="position"
-								className="checkBoxDiv"
-								row
-								style={{
-									display: "flex",
-									justifyContent: "flex-start",
-									padding: "0 35px",
-								}}
-							>
-								<FormControlLabel
-									value={addLine}
-									control={<Checkbox />}
-									name="addLine"
-									style={{ color: "grey" }}
-									onChange={this.handleCheckboxChange}
-									label="Add Line"
-									labelPlacement="start"
-									row
-									className={`noShow ${addLineOption}`}
-								/>
-								<TextField
-									id="outlined-basic"
-									label="Add Another Name"
-									name="AnotherName"
-									// value={this.state.AccountChanges[0].AnotherName}
-									onChange={this.handleChange}
-									style={{ width: "280px", paddingLeft: "18px !important" }}
-									variant="outlined"
-									className={`noShow ${addLineClass} ${inputBoxes}`}
-								/>
-							</FormGroup>
-							<TextField
-								id="outlined-basic"
-								name="EIN"
-								// value={this.state.AccountChanges[0].EIN}
-								onChange={this.handleChange}
-								label="EIN"
-								variant="outlined"
-								className="inputBoxes"
-							/>
-							<TextField
-								id="outlined-basic"
-								label="Account Number"
-								name={"AccountNumber1"}
-								// value={this.state.AccountChanges[0].AccountNumber1}
-								onChange={this.handleChange}
-								multiline
-								variant="outlined"
-								className="inputBoxes"
-							/>
-							<TextField
-								id="outlined-basic"
-								label="Account Type"
-								name={"AccountType1"}
-								placeholder="Business Checking"
-								// value={this.state.AccountChanges[0].AccountType1}
-								onChange={this.handleChange}
-								variant="outlined"
-								className="inputBoxes"
-							/>
-							<TextField
-								id="outlined-basic"
-								label="Street"
-								multiline
-								name="Street"
-								// value={this.state.AccountChanges[0].Street}
-								onChange={this.handleChange}
-								placeholder="123 Happy St."
-								variant="outlined"
-								className="inputBoxes"
-							/>
-							<TextField
-								id="outlined-basic"
-								label="City"
-								name="City"
-								// value={this.state.AccountChanges[0].City}
-								onChange={this.handleChange}
-								multiline
-								placeholder="Santa Rosa, CA 94949"
-								variant="outlined"
-								className="inputBoxes"
-							/>
-							{/* <button onClick={this.updateCardHandler}>Change Sigs</button> */}
-							<div className="buttonContainer">
-								<Button
-									variant="contained"
-									color="default"
-									onClick={this.updateCardHandler}
-									className="submitButton"
-								>
-									{this.state.loading ? (
-										<div class="load-3">
-											<div class="line"></div>
-											<div class="line"></div>
-											<div class="line"></div>
-										</div>
-									) : (
-										"Generate Docs"
-									)}
-								</Button>
-							</div>
-						</div>
-					)}
-				</div>
-			</div>
-		)
+		return <div className="container"></div>
 	}
 }
 

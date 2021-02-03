@@ -46,6 +46,7 @@ class SpecialProjects extends Component {
 	}
 
 	render() {
+		console.log(this.props.location.state.savedProject)
 		let {
 			prefixClass,
 			inputBoxes,
@@ -85,12 +86,4 @@ SpecialProjects.propTypes = {
 	classes: PropTypes.object.isRequired,
 }
 
-const mapStateToProps = (state) => {
-	return {
-		accountInfo: state.savedProjects,
-	}
-}
-
-export default withStyles(useStyles)(
-	connect(mapStateToProps, {})(SpecialProjects)
-)
+export default withStyles(useStyles)(SpecialProjects)
