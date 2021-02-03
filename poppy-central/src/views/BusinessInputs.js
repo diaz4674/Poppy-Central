@@ -42,6 +42,7 @@ class OMG extends Component {
 				BusinessName: "Example LLC",
 				Prefix: "",
 				PrefixName: "",
+				PrefixEIN: "",
 				AnotherName: "",
 				Street: "123 Industrial St",
 				City: "San Francisco CA 94016",
@@ -173,6 +174,14 @@ class OMG extends Component {
 		let { AccountInfo } = this.state.AccountChanges[0]
 		this.setState({ AccountInfo })
 	}
+
+	stateDone = () => {
+		// closes panel
+		this.props.onChange()
+		// passes state object up
+		this.props.updateSignersFunc(this.state.AccountChanges)
+	}
+
 	render() {
 		let {
 			prefixClass,
@@ -392,6 +401,16 @@ class OMG extends Component {
 						className="inputBoxes"
 					/>
 				</div>
+				<Button
+					style={{
+						margin: "25px 0",
+					}}
+					variant="contained"
+					onClick={this.stateDone}
+					color="primary"
+				>
+					All Set!
+				</Button>
 			</div>
 		)
 	}

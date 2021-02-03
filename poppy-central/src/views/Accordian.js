@@ -10,6 +10,8 @@ import SignerInput from "./SignerInput"
 import Button from "@material-ui/core/Button"
 import checkmark from "./check.svg"
 import error from "./close.svg"
+import axios from "axios"
+import download from "downloadjs"
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -43,21 +45,82 @@ export default function ControlledAccordions(props) {
 		totalSigners = props.AccountInfo.Signers.length
 		await setValues({
 			...allValue,
+			totalSigners: props.AccountInfo.Signers.length,
 			numSigners: props.AccountInfo.Signers.length,
 		})
 	}, [])
 	const handleChange = (panel) => (event, isExpanded) => {
 		setExpanded(isExpanded ? panel : false)
 	}
-	const updateCardHandler = () => {
-		// setLoading(true);
-		console.log(allValue)
+	const updateCardHandler = async () => {
+		let payload = {
+			AccountInfo: allValue.AccountInfo,
+			totalSigners: allValue.totalSigners,
+		}
+
+		for (let i = 1; i < totalSigners + 1; i++) {
+			if (allValue[`signer${+i}`] === undefined) {
+				return alert("Sorry looks like your still missing some info")
+			}
+			payload[`signer${+i}`] = allValue[`signer${+i}`]
+		}
+		console.log(payload)
+		await axios
+			.post(
+				// "https://5000-e5a921ea-4111-473a-ad9b-1474a7910719.ws-us03.gitpod.io/",
+				"http://127.0.0.1:5000/signatureCard",
+				payload,
+				{ responseType: "blob" } // had to add this one here
+			)
+			.then((res) => {
+				download(
+					res.data,
+					`${payload.AccountInfo.BusinessName} - Sig Card`,
+					res.content
+				)
+
+				console.log(res)
+				return res
+			})
+			.catch((error) => console.log(error))
+		//     axios
+		//         .post(
+		//             // "https://5000-e5a921ea-4111-473a-ad9b-1474a7910719.ws-us03.gitpod.io/resolution",
+		//             "http://127.0.0.1:5000/resolution",
+		//             this.state.AccountChanges,
+		//             { responseType: "blob" } // had to add this one here
+		//         )
+		//         .then((res) => {
+		//             download(
+		//                 res.data,
+		//                 `${this.state.AccountChanges[0].BusinessName} - Resolution`,
+		//                 res.content
+		//             )
+		//             this.setState({ ...this.state, loading: false })
+		//             console.log(res)
+		//             return res
+		//         })
+		//         .catch(
+		//             (error) => (
+		//                 alert(
+		//                     "Oops! Something funny happened. Try again or contact the admin."
+		//                 ),
+		//                 this.setState({ ...this.state, loading: false })
+		//             )
+		//         )
 	}
 	const updateSigners = async (e) => {
-		await setValues((prevState) => ({
-			...prevState,
-			[e.signerNumber]: e,
-		}))
+		if (e.signerNumber !== undefined) {
+			await setValues((prevState) => ({
+				...prevState,
+				[e.signerNumber]: e,
+			}))
+		} else {
+			await setValues((prevState) => ({
+				...prevState,
+				AccountInfo: e[0],
+			}))
+		}
 	}
 	return (
 		<div className={classes.root}>
@@ -77,8 +140,24 @@ export default function ControlledAccordions(props) {
 							<Typography className={classes.header1}>
 								Business Information
 							</Typography>
+							{"AccountInfo" in allValue ? (
+								<img
+									src={checkmark}
+									alt="checkmark"
+									style={{ width: "25px", margin: "0 15px" }}
+								/>
+							) : (
+								<img
+									src={error}
+									alt="error"
+									style={{ width: "25px", margin: "0 15px" }}
+								/>
+							)}
 						</AccordionSummary>
-						<BusinesInputs />
+						<BusinesInputs
+							updateSignersFunc={updateSigners}
+							onChange={handleChange(`panel1bh-header`)}
+						/>
 					</Accordion>
 					{Array.from(Array(totalSigners)).map((x, index) => (
 						<Accordion
