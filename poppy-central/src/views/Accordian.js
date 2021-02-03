@@ -83,32 +83,27 @@ export default function ControlledAccordions(props) {
 				return res
 			})
 			.catch((error) => console.log(error))
-		//     axios
-		//         .post(
-		//             // "https://5000-e5a921ea-4111-473a-ad9b-1474a7910719.ws-us03.gitpod.io/resolution",
-		//             "http://127.0.0.1:5000/resolution",
-		//             this.state.AccountChanges,
-		//             { responseType: "blob" } // had to add this one here
-		//         )
-		//         .then((res) => {
-		//             download(
-		//                 res.data,
-		//                 `${this.state.AccountChanges[0].BusinessName} - Resolution`,
-		//                 res.content
-		//             )
-		//             this.setState({ ...this.state, loading: false })
-		//             console.log(res)
-		//             return res
-		//         })
-		//         .catch(
-		//             (error) => (
-		//                 alert(
-		//                     "Oops! Something funny happened. Try again or contact the admin."
-		//                 ),
-		//                 this.setState({ ...this.state, loading: false })
-		//             )
-		//         )
+		await axios
+			.post(
+				// "https://5000-e5a921ea-4111-473a-ad9b-1474a7910719.ws-us03.gitpod.io/resolution",
+				"http://127.0.0.1:5000/resolution",
+				payload,
+				{ responseType: "blob" } // had to add this one here
+			)
+			.then((res) => {
+				download(
+					res.data,
+					`${payload.AccountInfo.BusinessName} - Resolution`,
+					res.content
+				)
+				console.log(res)
+				return res
+			})
+			.catch((error) =>
+				alert("Oops! Something funny happened. Try again or contact the admin.")
+			)
 	}
+
 	const updateSigners = async (e) => {
 		if (e.signerNumber !== undefined) {
 			await setValues((prevState) => ({
