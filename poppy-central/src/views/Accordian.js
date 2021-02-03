@@ -10,7 +10,6 @@ import SignerInput from "./SignerInput"
 import Button from "@material-ui/core/Button"
 import checkmark from "./check.svg"
 import error from "./close.svg"
-import axios from "axios"
 import { generateDocs } from "../actions"
 import { connect } from "react-redux"
 
@@ -43,17 +42,22 @@ const ControlledAccordions = (props) => {
 	})
 
 	useEffect(async () => {
+		console.log(props)
 		totalSigners = props.AccountInfo.numSigners
 
 		await setValues({
 			...allValue,
 			totalSigners,
 			numSigners: totalSigners,
+			TeamMembers: props.AccountInfo.TeamMembers,
+			ProjectName: props.AccountInfo.ProjectName,
 		})
 	}, [])
+
 	const handleChange = (panel) => (event, isExpanded) => {
 		setExpanded(isExpanded ? panel : false)
 	}
+
 	const updateCardHandler = async () => {
 		let payload = {
 			AccountInfo: allValue.AccountInfo,
@@ -83,6 +87,7 @@ const ControlledAccordions = (props) => {
 			}))
 		}
 	}
+
 	return (
 		<div className={classes.root}>
 			{allValue.numSigners === "" ? (
