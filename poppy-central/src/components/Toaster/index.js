@@ -7,9 +7,9 @@ import { withRouter } from "react-router-dom"
 //modules
 //components
 //style
-import "./Toaster.css"
-import closeIcon from "../assets/closeIcon.svg"
-import Notification from "../assets/notification.svg"
+import "./style.css"
+import closeIcon from "../../assets/closeIcon.svg"
+import Notification from "../../assets/notification.svg"
 
 class Toaster extends Component {
 	state = {

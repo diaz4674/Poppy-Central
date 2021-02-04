@@ -1,12 +1,12 @@
 // imports
-import React from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import React from "react"
+import { BrowserRouter as Router, Route } from "react-router-dom"
 // pages
-import Home from "./views/Home";
-import SpecialProjects from "./views/SpecialProjects";
-import CompletedProjects from "./views/CompletedProjects";
-import SignerChanges from "./views/SignerChanges";
-import InputSignerData from "./views/InputSignerData";
+import Home from "./views/Home/index"
+import SpecialProjects from "./views/SpecialProjects/index"
+import CompletedProjects from "./views/CompletedProjects/index"
+import SignerChanges from "./components/SignerChanges/index"
+import InputSignerData from "./components/InputSignerData/index"
 
 export default () => (
 	<Router>
@@ -20,4 +20,4 @@ export default () => (
 		/>
 		<Route path="/app-main/InputSignerData" exact component={InputSignerData} />
 	</Router>
-);
+)

@@ -1,18 +1,14 @@
-import logo from "./logo-mobile.svg"
-import "./OMG.css"
+import "../../global.css"
 import PropTypes from "prop-types"
 import { withStyles } from "@material-ui/styles"
 import React, { Component } from "react"
 import axios from "axios"
 import { makeStyles } from "@material-ui/core/styles"
 import TextField from "@material-ui/core/TextField"
-import CloudUploadIcon from "@material-ui/icons/CloudUpload"
 import Button from "@material-ui/core/Button"
 import download from "downloadjs"
 import Checkbox from "@material-ui/core/Checkbox"
 import FormControlLabel from "@material-ui/core/FormControlLabel"
-import FormControl from "@material-ui/core/FormControl"
-import FormLabel from "@material-ui/core/FormLabel"
 import FormGroup from "@material-ui/core/FormGroup"
 import Select from "@material-ui/core/Select"
 import MenuItem from "@material-ui/core/MenuItem"
@@ -30,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 }))
 
-class OMG extends Component {
+class BusinesInputs extends Component {
 	state = {
 		AccountChanges: [
 			{
@@ -416,8 +412,8 @@ class OMG extends Component {
 	}
 }
 
-OMG.propTypes = {
+BusinesInputs.propTypes = {
 	classes: PropTypes.object.isRequired,
 }
 
-export default withStyles(useStyles)(OMG)
+export default withStyles(useStyles)(BusinesInputs)

@@ -6,7 +6,7 @@ import {
 	MuiPickersUtilsProvider,
 	KeyboardDatePicker,
 } from "@material-ui/pickers"
-import "./OMG.css"
+import "../../global.css"
 
 class DateToggler extends React.Component {
 	// The first commit of Material-UI

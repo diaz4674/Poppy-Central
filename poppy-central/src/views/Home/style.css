@@ -1,0 +1,98 @@
+body,
+html {
+	height: 100%;
+	margin: 0;
+}
+
+body {
+	position: relative;
+	padding: 0;
+	font-family: "Titillium Web";
+	width: 100%;
+	height: 100%;
+	background-image: url("../../assets/AbstractWhite.jpg");
+	background-repeat: no-repeat;
+	background-position: top center;
+	background-size: 100%;
+	background-attachment: fixed;
+	transition: 0.1s ease;
+}
+
+.grayCircle {
+	background: gray;
+	border-radius: 60%;
+	width: 55px;
+}
+.MuiAvatar-root {
+	width: 25px !important;
+	height: 25px !important;
+}
+@media only screen and (max-width: 1460px) {
+	body {
+		background-size: 200%;
+	}
+}
+@media only screen and (max-width: 460px) {
+	body {
+		height: 400%;
+	}
+}
+
+.InputBox {
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-content: center;
+	width: 500px;
+	margin: 100px auto;
+	background: #ffffff;
+	box-shadow: 0px 3px 15px #e1e9f1;
+	border-radius: 10px;
+	padding: 35px 0;
+}
+
+.SpecialProjects {
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-content: center;
+	margin: 15px auto;
+	width: 80%;
+	background: #ffffff;
+	box-shadow: 0px 3px 15px #e1e9f1;
+	border-radius: 10px;
+	padding: 15px 15px;
+}
+
+.specialBox {
+	cursor: pointer;
+	transition: 0.3s ease;
+}
+
+.specialBox:hover {
+	transform: scale(1.03);
+}
+
+.mediumTitle {
+	display: flex;
+	justify-content: flex-start;
+	font-family: "Roboto", sans-serif;
+	align-content: flex-start;
+	font-size: 18px;
+}
+.logo {
+	width: 60px;
+	border-radius: 10%;
+	display: flex;
+	justify-content: center;
+}
+
+.Line {
+	border: none;
+	height: 1px;
+	margin: 0;
+	flex-shrink: 0;
+	background-color: rgba(0, 0, 0, 0.12);
+}
