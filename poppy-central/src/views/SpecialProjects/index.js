@@ -6,6 +6,7 @@ import React, { Component } from "react"
 import { makeStyles } from "@material-ui/core/styles"
 import OMG from "../../components/OMG"
 import Signers from "../../components/Signers"
+import { iterateSigners } from "../../modules/iterateSigners"
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -31,38 +32,63 @@ class SpecialProjects extends Component {
 		loading: false,
 	}
 
-	render() {
-		console.log(this.props.location.state.savedProject)
+	async componentDidMount() {
 		let {
-			prefixClass,
-			inputBoxes,
-			prefix,
-			addLineOption,
-			addLine,
-			addLineClass,
-		} = this.state.toggleCheckboxes
+			TeamMembers,
+			ProjectName,
+			totalSigners,
+		} = this.props.history.location.state.savedProject
+
+		let accountSigners = iterateSigners(
+			totalSigners,
+			this.props.history.location.state.savedProject
+		)
+
+		await this.setState({
+			...this.state,
+			ProjectName,
+			totalSigners,
+			TeamMembers,
+			accountSigners,
+		})
+	}
+	render() {
+		let {
+			TeamMembers,
+			ProjectName,
+			accountSigners,
+			// signers
+		} = this.state
+
 		return (
 			<div className="container">
-				<div className="InputBox">
-					<div
-						style={{
-							width: "100%",
-							display: "flex",
-							justifyContent: "center",
-						}}
-					>
-						<img
-							src={logo}
-							className="logo"
-							onClick={() => this.props.history.push("/")}
+				{accountSigners === undefined ? (
+					<p1>loading</p1>
+				) : (
+					<div className="InputBox">
+						<div
+							style={{
+								width: "100%",
+								display: "flex",
+								justifyContent: "center",
+							}}
+						>
+							<img
+								src={logo}
+								className="logo"
+								onClick={() => this.props.history.push("/")}
+							/>
+						</div>
+						<h1 style={{ fontFamily: "Roboto sans-serif", color: "#595a59" }}>
+							{ProjectName}
+						</h1>
+						<Signers
+							accountSigners={accountSigners}
+							TeamMembers={TeamMembers}
 						/>
+						{/* <OMG /> */}
 					</div>
-					<h1 style={{ fontFamily: "Roboto sans-serif", color: "#595a59" }}>
-						Oakmont Management Group
-					</h1>
-					<Signers />
-					<OMG />
-				</div>
+				)}
 			</div>
 		)
 	}

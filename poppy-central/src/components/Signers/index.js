@@ -38,109 +38,106 @@ class Signers extends Component {
 			},
 		],
 		toggleSigners: false,
-		TeamMembers: [
-			{
-				name: "Sarah Conners",
-			},
-			{
-				name: "Miggy Smallz",
-			},
-			{
-				name: "Jamie Smith",
-			},
-		],
+		TeamMembers: [],
 	}
+	async componentDidMount() {
+		let { TeamMembers, accountSigners } = this.props
+		await this.setState({ ...this.state, TeamMembers, accountSigners })
+	}
+
 	render() {
+		let { TeamMembers, accountSigners } = this.state
 		return (
 			<div
 				className="SpecialProjects"
 				style={{ display: "flex", flexDirection: "column" }}
 			>
-				<p className="mediumTitle" style={{ color: "#595a59" }}>
-					Signers:
-				</p>
+				{accountSigners === undefined ? (
+					<p>loading</p>
+				) : (
+					<>
+						<p className="mediumTitle" style={{ color: "#595a59" }}>
+							Signers:
+						</p>
 
-				<div
-					style={{
-						display: "flex",
-						flexDirection: "column",
-						justifyContent: "space-between",
-						alignItems: "flex-start",
-					}}
-				>
-					{this.state.Signers.map((signer) => {
-						return (
+						<div
+							style={{
+								display: "flex",
+								flexDirection: "column",
+								justifyContent: "space-between",
+								alignItems: "flex-start",
+							}}
+						>
+							{Object.values(accountSigners).map((signer, index) => {
+								return (
+									<div
+										key={index}
+										style={{
+											display: "flex",
+											flexDirection: "row",
+											justifyContent: "flex-start",
+											alignItems: "center",
+										}}
+									>
+										<img
+											src={checkmark}
+											alt="checkmark"
+											style={{ width: "25px" }}
+										/>
+										<ListItem>
+											<ListItemText primary={signer.Name} />
+											<div className="Line" />
+										</ListItem>
+									</div>
+								)
+							})}
+							{/* <div className="specialBox"> */}
 							<div
-								div
 								style={{
 									display: "flex",
 									flexDirection: "row",
-									justifyContent: "flex-start",
+									justifyContent: "space-between",
 									alignItems: "center",
 								}}
 							>
-								<img
-									src={checkmark}
-									alt="checkmark"
-									style={{ width: "25px" }}
-								/>
-								<ListItem>
-									<ListItemText primary={signer.name} />
-									<div className="Line" />
-								</ListItem>
-							</div>
-						)
-					})}
-					{/* <div className="specialBox"> */}
-					<div
-						style={{
-							display: "flex",
-							flexDirection: "row",
-							justifyContent: "space-between",
-							alignItems: "center",
-						}}
-					>
-						<p
-							className="mediumTitle"
-							style={{ color: "#595a59", paddingRight: "15px" }}
-						>
-							Team Members Involved:
-						</p>
-						<div
-							onMouseEnter={() =>
-								this.setState({ ...this.state, toggleSigners: true })
-							}
-							onMouseLeave={() =>
-								this.setState({ ...this.state, toggleSigners: false })
-							}
-						>
-							{this.state.toggleSigners ? (
-								<div className="teamMemberBox">
-									<div className="showSigners">
-										{this.state.TeamMembers.map((member) => {
-											return <p>{member.name} </p>
-										})}
-									</div>
+								<p
+									className="mediumTitle"
+									style={{ color: "#595a59", paddingRight: "15px" }}
+								>
+									Team Members Involved:
+								</p>
+								<div
+									onMouseEnter={() =>
+										this.setState({ ...this.state, toggleSigners: true })
+									}
+									onMouseLeave={() =>
+										this.setState({ ...this.state, toggleSigners: false })
+									}
+								>
+									{this.state.toggleSigners ? (
+										<div className="teamMemberBox">
+											<div className="showSigners">
+												{TeamMembers.map((member) => {
+													return <p>{member.value} </p>
+												})}
+											</div>
+										</div>
+									) : null}
+									<AvatarGroup max={TeamMembers.length}>
+										{TeamMembers.map((member, index) => (
+											<Avatar
+												key={index}
+												alt={member.value}
+												// src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+											/>
+										))}
+									</AvatarGroup>
+									{/* </div> */}
 								</div>
-							) : null}
-							<AvatarGroup max={4}>
-								<Avatar
-									alt="Sarah Lincoln"
-									src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-								/>
-								<Avatar
-									alt="Miguel Smallz"
-									src="https://images.pexels.com/photos/2830332/pexels-photo-2830332.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-								/>
-								<Avatar
-									alt="Tina Smith"
-									src="https://images.pexels.com/photos/1858175/pexels-photo-1858175.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-								/>
-							</AvatarGroup>
-							{/* </div> */}
+							</div>
 						</div>
-					</div>
-				</div>
+					</>
+				)}
 			</div>
 		)
 	}

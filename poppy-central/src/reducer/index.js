@@ -16,6 +16,7 @@ const initialstate = {
 	savedProjects: [
 		{
 			ProjectName: "Oakmont Management Group",
+			totalSigners: 4,
 			TeamMembers: [
 				{ label: "Sarah Conners", value: "Sarah Conners" },
 				{ label: "Mike Smith", value: "Mike Smith" },
