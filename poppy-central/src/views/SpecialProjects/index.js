@@ -7,6 +7,8 @@ import { makeStyles } from "@material-ui/core/styles"
 import OMG from "../../components/OMG"
 import Signers from "../../components/Signers"
 import { iterateSigners } from "../../modules/iterateSigners"
+import { generateDocs } from "../../actions"
+import Button from "@material-ui/core/Button"
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -37,6 +39,7 @@ class SpecialProjects extends Component {
 			TeamMembers,
 			ProjectName,
 			totalSigners,
+			businessInfo,
 		} = this.props.history.location.state.savedProject
 
 		let accountSigners = iterateSigners(
@@ -49,9 +52,32 @@ class SpecialProjects extends Component {
 			ProjectName,
 			totalSigners,
 			TeamMembers,
+			businessInfo,
 			accountSigners,
 		})
 	}
+
+	downloadDocs = async (e) => {
+		console.log(this.state)
+		let { businessInfo, totalSigners, accountSigners } = this.state
+
+		let payload = {
+			AccountInfo: businessInfo,
+			totalSigners,
+		}
+
+		for (let i = 1; i < totalSigners + 1; i++) {
+			if (accountSigners[`signer${+i}`] === undefined) {
+				return alert("Sorry looks like your still missing some info")
+			}
+			payload[`signer${+i}`] = accountSigners[`signer${+i}`]
+		}
+
+		console.log(payload)
+
+		await generateDocs(payload)
+	}
+
 	render() {
 		let {
 			TeamMembers,
@@ -82,11 +108,30 @@ class SpecialProjects extends Component {
 						<h1 style={{ fontFamily: "Roboto sans-serif", color: "#595a59" }}>
 							{ProjectName}
 						</h1>
-						<Signers
-							accountSigners={accountSigners}
-							TeamMembers={TeamMembers}
-						/>
-						{/* <OMG /> */}
+						<div className="SpecialProjects">
+							<Signers
+								accountSigners={accountSigners}
+								TeamMembers={TeamMembers}
+							/>
+							<div style={{ width: "100%", margin: "0 0 25px 0" }}>
+								<Button
+									variant="contained"
+									color="default"
+									onClick={this.downloadDocs}
+									className="submitButton"
+								>
+									{this.loading ? (
+										<div class="load-3">
+											<div class="line"></div>
+											<div class="line"></div>
+											<div class="line"></div>
+										</div>
+									) : (
+										"Download Documents"
+									)}
+								</Button>
+							</div>
+						</div>
 					</div>
 				)}
 			</div>

@@ -8,6 +8,8 @@ import { withStyles } from "@material-ui/styles"
 import Avatar from "@material-ui/core/Avatar"
 import AvatarGroup from "@material-ui/lab/AvatarGroup"
 import "./style.css"
+import edit from "../../assets/edit.svg"
+import { withRouter } from "react-router-dom"
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -23,20 +25,6 @@ const useStyles = makeStyles((theme) => ({
 
 class Signers extends Component {
 	state = {
-		Signers: [
-			{
-				name: "Kevin Tyler",
-			},
-			{
-				name: "Courtney Siegel",
-			},
-			{
-				name: "Matthew Stevenson",
-			},
-			{
-				name: "James Meek",
-			},
-		],
 		toggleSigners: false,
 		TeamMembers: [],
 	}
@@ -44,22 +32,38 @@ class Signers extends Component {
 		let { TeamMembers, accountSigners } = this.props
 		await this.setState({ ...this.state, TeamMembers, accountSigners })
 	}
-
 	render() {
 		let { TeamMembers, accountSigners } = this.state
 		return (
-			<div
-				className="SpecialProjects"
-				style={{ display: "flex", flexDirection: "column" }}
-			>
+			<div style={{ display: "flex", flexDirection: "column" }}>
 				{accountSigners === undefined ? (
 					<p>loading</p>
 				) : (
 					<>
-						<p className="mediumTitle" style={{ color: "#595a59" }}>
-							Signers:
-						</p>
+						<div
+							style={{
+								display: "flex",
+								alignContent: "center",
+								justifyContent: "space-between",
+								width: "90%",
+							}}
+						>
+							<p className="mediumTitle" style={{ color: "#595a59" }}>
+								Signers:
+							</p>
 
+							<img
+								src={edit}
+								alt="edit"
+								className="edit"
+								onClick={() =>
+									this.props.history.push({
+										pathname: "/app-main/InputSignerData",
+										state: { inputData: this.state },
+									})
+								}
+							/>
+						</div>
 						<div
 							style={{
 								display: "flex",
@@ -147,4 +151,4 @@ Signers.propTypes = {
 	classes: PropTypes.object.isRequired,
 }
 
-export default withStyles(useStyles)(Signers)
+export default withRouter(withStyles(useStyles)(Signers))
