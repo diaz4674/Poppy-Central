@@ -8,6 +8,7 @@ import Accordian from "../Accordian"
 import logo from "../../assets/logo-mobile.svg"
 import Avatar from "@material-ui/core/Avatar"
 import AvatarGroup from "@material-ui/lab/AvatarGroup"
+import "./style.css"
 
 const useStyles = makeStyles((theme) => ({
 	formControl: {
@@ -78,7 +79,7 @@ class InputSignerData extends React.Component {
 			<div className="container">
 				<div
 					className="InputBox"
-					style={{ padding: "35px 20px", width: "900px" }}
+					style={{ padding: "35px 20px", width: "800px" }}
 				>
 					<div
 						style={{

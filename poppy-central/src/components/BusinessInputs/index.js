@@ -62,10 +62,10 @@ class BusinesInputs extends Component {
 		if ((await this.props.businessEdit) === undefined) {
 			console.log("nothing here")
 		} else {
-			let { savedProject } = this.props.businessEdit
+			let { AccountInfo } = this.props.businessEdit
 			this.setState({
 				...this.state,
-				AccountChanges: [this.props.businessEdit.businessInfo],
+				AccountChanges: [AccountInfo],
 			})
 		}
 	}
@@ -88,7 +88,6 @@ class BusinesInputs extends Component {
 					`${this.state.AccountChanges[0].BusinessName} - Sig Card`,
 					res.content
 				)
-
 				console.log(res)
 				return res
 			})
@@ -201,6 +200,7 @@ class BusinesInputs extends Component {
 
 		const { classes } = this.props
 
+		console.log(this.state)
 		return (
 			<div className="container" style={{ margin: "0 0 15px" }}>
 				<div
@@ -417,7 +417,7 @@ class BusinesInputs extends Component {
 					onClick={this.stateDone}
 					color="primary"
 				>
-					All Set!
+					Save
 				</Button>
 			</div>
 		)

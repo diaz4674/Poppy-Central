@@ -13,6 +13,7 @@ import FormGroup from "@material-ui/core/FormGroup"
 import FormControlLabel from "@material-ui/core/FormControlLabel"
 import Checkbox from "@material-ui/core/Checkbox"
 import Button from "@material-ui/core/Button"
+import "./style.css"
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -79,13 +80,14 @@ class SignerInput extends Component {
 			this.setState({
 				...this.state,
 				person,
+				signerNumber: this.props.signerNumber,
 			})
 		}
 	}
 
 	updateCardHandler = () => {
 		this.setState({
-			...this.state.AccountChanges,
+			...this.state.person,
 		})
 	}
 
@@ -147,6 +149,13 @@ class SignerInput extends Component {
 		let { AccountInfo } = this.state.person
 		await this.setState({ AccountInfo })
 	}
+
+	handleChangeEmail = async (e) => {
+		this.state[e.target.name] = e.target.value
+		let { AccountInfo } = this.state
+		await this.setState({ AccountInfo })
+	}
+
 	stateDone = () => {
 		// closes panel
 		this.props.onChange()
@@ -189,7 +198,6 @@ class SignerInput extends Component {
 					<FormGroup
 						aria-label="position"
 						className="checkBoxDiv"
-						row
 						style={{ padding: "0 35px", margin: "25px 0" }}
 					>
 						<FormControlLabel
@@ -208,7 +216,7 @@ class SignerInput extends Component {
 							name="emailClient"
 							label="Email"
 							value={this.state.emailClient}
-							onChange={this.handleChange}
+							onChange={this.handleChangeEmail}
 							style={{ width: "150px", marginLeft: "25px" }}
 							className={`noShow ${prefixClass}`}
 						/>
@@ -479,7 +487,7 @@ class SignerInput extends Component {
 								onClick={this.stateDone}
 								color="primary"
 							>
-								All Set!
+								Save!
 							</Button>
 						</>
 					) : null}

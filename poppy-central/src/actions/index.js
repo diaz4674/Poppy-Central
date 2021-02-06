@@ -1,23 +1,6 @@
 import axios from "axios"
 import download from "downloadjs"
-import {
-	ADD_BANKS_SUCCESS,
-	DELETE_BANK_SUCCESS,
-	ADD_STORE_SUCCESS,
-	DELETE_STORE_SUCCESS,
-	ADD_PERSONAL_SITE_SUCCESS,
-	DELETE_SITE_SUCCESS,
-	LOGIN_SUCCESS,
-	LOGIN_FAIL,
-	SET_FINANCIAL_SUCCESS,
-	SET_FINANCIAL_FAIL,
-	SET_STORES_SUCCESS,
-	SET_STORES_FAIL,
-	SET_PERSONAL_SUCCESS,
-	SET_PERSONAL_FAIL,
-	GET_FINANCIAL_SUCCESS,
-	GET_FINANCIAL_FAIL,
-} from "./types"
+import { SAVE_PROJECT, UPDATE_PROJECT } from "./types"
 // import { getTokenId } from "../components/common/UserId"
 
 //Sends the financial information inputted from the onboarding section to the array of financial data that displays as options for users to select.
@@ -62,9 +45,14 @@ export const generateDocs = (data) => (dispatch) => {
 		)
 }
 
-// export const deleteBank = (deleteBank) => (dispatch) => {
-// 	dispatch({ type: DELETE_BANK_SUCCESS, payload: deleteBank })
-// }
+export const saveProjectToStore = (projectData) => (dispatch) => {
+	console.log("actoin")
+	dispatch({ type: SAVE_PROJECT, payload: projectData })
+}
+
+export const updateProjectToStore = (projectData) => (dispatch) => {
+	dispatch({ type: UPDATE_PROJECT, payload: projectData })
+}
 
 // //Sends the store information inputted from the onboarding section to the array of data that displays as options for users to select.
 // export const addStore = (Store) => (dispatch) => {

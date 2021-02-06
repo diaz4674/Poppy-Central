@@ -9,8 +9,14 @@ import SignerInput from "../SignerInput"
 import Button from "@material-ui/core/Button"
 import checkmark from "../../assets/check.svg"
 import error from "../../assets/close.svg"
-import { generateDocs } from "../../actions"
+import {
+	generateDocs,
+	saveProjectToStore,
+	updateProjectToStore,
+} from "../../actions"
 import { connect } from "react-redux"
+import { withRouter } from "react-router-dom"
+import "./style.css"
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -81,13 +87,43 @@ const ControlledAccordions = (props) => {
 		await props.generateDocs(payload)
 	}
 
-	const saveProject = () => {}
+	const saveProject = () => {
+		// Check to see if this project is being edited or new
+		if (allValue.savedProject === undefined) {
+			// check to see if business info saved
+			if (allValue.AccountInfo === undefined) {
+				alert("Please save business information.")
+			}
+			// check to see if signer info has been saved
+			for (let i = 1; i < totalSigners + 1; i++) {
+				if (allValue[`signer${+i}`] === undefined) {
+					return alert("Please save signer data")
+				}
+			}
+			props.saveProjectToStore(allValue)
+			props.history.push("/")
+		} else {
+			props.updateProjectToStore(allValue)
+			props.history.push("/")
+		}
+
+		console.log("success")
+	}
 
 	const updateSigners = async (e) => {
+		// checks to see if this is being edited
+		if (allValue.savedProject !== undefined) {
+			// needed to change error to checkmark img
+			await setValues((prevState) => ({
+				...prevState,
+				[e.signerNumber]: e.person,
+			}))
+		}
+
 		if (e.signerNumber !== undefined) {
 			await setValues((prevState) => ({
 				...prevState,
-				[e.signerNumber]: e,
+				[e.signerNumber]: e.person,
 			}))
 		} else {
 			await setValues((prevState) => ({
@@ -170,7 +206,7 @@ const ControlledAccordions = (props) => {
 							/>
 						</Accordion>
 					))}
-					<div className="buttonContainer">
+					<div className="buttonDiv">
 						<Button
 							variant="contained"
 							color="default"
@@ -212,4 +248,10 @@ const ControlledAccordions = (props) => {
 
 const mapStateToProps = (state) => {}
 
-export default connect(mapStateToProps, { generateDocs })(ControlledAccordions)
+export default withRouter(
+	connect(mapStateToProps, {
+		generateDocs,
+		saveProjectToStore,
+		updateProjectToStore,
+	})(ControlledAccordions)
+)

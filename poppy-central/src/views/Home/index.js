@@ -32,9 +32,7 @@ class Home extends Component {
 	}
 
 	componentDidMount() {
-		console.log("hiiii")
 		this.setState({ newItem: true })
-		// console.log(this.props.accountInfo)
 	}
 
 	toggleView(e) {
@@ -120,30 +118,30 @@ class Home extends Component {
 											onClick={() => this.toggleView(project)}
 										>
 											{/* Start of the saved projects  */}
-											{this.props.accountInfo.map((project) => {
+											{/* {this.props.accountInfo.map((project) => {
 												return (
-													<>
-														<ListItem>
-															<ListItemText
-																primary={project.ProjectName}
-																secondary="Signer Changes"
+													<> */}
+											<ListItem>
+												<ListItemText
+													primary={project.ProjectName}
+													secondary="Signer Changes"
+												/>
+											</ListItem>
+											<AvatarGroup max={project.TeamMembers.length}>
+												{project.TeamMembers.map((member) => {
+													return (
+														<>
+															<Avatar
+																alt={member.value}
+																// src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
 															/>
-														</ListItem>
-														<AvatarGroup max={project.TeamMembers.length}>
-															{project.TeamMembers.map((member) => {
-																return (
-																	<>
-																		<Avatar
-																			alt={member.value}
-																			// src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-																		/>
-																	</>
-																)
-															})}
-														</AvatarGroup>
-													</>
+														</>
+													)
+												})}
+											</AvatarGroup>
+											{/* </>
 												)
-											})}
+											})} */}
 										</div>
 										<div className="Line" />
 									</div>
