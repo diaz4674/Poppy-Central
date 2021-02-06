@@ -33,28 +33,31 @@ const useStyles = makeStyles((theme) => ({
 
 class SignerInput extends Component {
 	state = {
-		Name: "John Doe",
-		Relationship: "Authorized Signer",
-		Street: "123 Gold St",
-		Position: "CEO",
-		City: "San Francisco, CA 90416",
-		MailingStreet: "",
-		MailingCity: "",
-		PrimaryIDType: "CADL",
-		Number: "D123939",
-		IssueDate1: "05/10/2020",
-		ExpirationDate1: "05/10/2025",
-		OtherID: "Credit Card",
-		OtherDesc: "VISA",
-		Expires: "02/23",
-		Employer: "John Construction",
-		Title: "Manager",
-		email: "john@example.com",
-		WorkPhone: "",
-		HomePhone: "",
-		Cell: "413-345-1345",
-		DOB: "10/28/1991",
-		SSN: "123-43-4234",
+		person: {
+			Name: "John Doe",
+			Relationship: "Authorized Signer",
+			Street: "123 Gold St",
+			Position: "CEO",
+			City: "San Francisco, CA 90416",
+			MailingStreet: "",
+			MailingCity: "",
+			PrimaryIDType: "Drivers License",
+			Number: "D123939",
+			IssueDate1: "05/10/2020",
+			ExpirationDate1: "05/10/2025",
+			OtherID: "Credit Card",
+			OtherDesc: "VISA",
+			Expires: "02/23",
+			Employer: "John Construction",
+			Title: "Manager",
+			email: "john@example.com",
+			WorkPhone: "",
+			HomePhone: "",
+			Cell: "413-345-1345",
+			DOB: "10/28/1991",
+			SSN: "123-43-4234",
+		},
+
 		emailClient: "",
 		prefix: false,
 
@@ -65,19 +68,25 @@ class SignerInput extends Component {
 			addLineClass: "",
 			inputBoxes: "",
 		},
-		loading: false,
 	}
 
-	componentDidMount() {
-		this.setState({ ...this.state, signerNumber: this.props.signerNumber })
+	async componentDidMount() {
+		if ((await this.props.signerInfo) === undefined) {
+			this.setState({ ...this.state, signerNumber: this.props.signerNumber })
+		} else {
+			let { signerNumber } = this.props
+			let person = this.props.signerInfo[signerNumber]
+			this.setState({
+				...this.state,
+				person,
+			})
+		}
 	}
 
 	updateCardHandler = () => {
 		this.setState({
 			...this.state.AccountChanges,
-			loading: true,
 		})
-		console.log(this.state)
 	}
 
 	handleCheckboxChange = (e) => {
@@ -131,12 +140,11 @@ class SignerInput extends Component {
 				})
 			}
 		}
-		console.log(this.state.toggleCheckboxes)
 	}
 
 	handleChange = async (e) => {
-		this.state[e.target.name] = e.target.value
-		let { AccountInfo } = this.state
+		this.state.person[e.target.name] = e.target.value
+		let { AccountInfo } = this.state.person
 		await this.setState({ AccountInfo })
 	}
 	stateDone = () => {
@@ -155,6 +163,25 @@ class SignerInput extends Component {
 			addLineClass,
 		} = this.state.toggleCheckboxes
 		const { classes } = this.props
+
+		let {
+			Name,
+			DOB,
+			email,
+			PrimaryIDType,
+			Number,
+			OtherID,
+			OtherDesc,
+			SSN,
+			Employer,
+			Title,
+			Position,
+			Street,
+			City,
+			HomePhone,
+			WorkPhone,
+			Cell,
+		} = this.state.person
 
 		return (
 			<div className="container">
@@ -198,7 +225,7 @@ class SignerInput extends Component {
 							>
 								<TextField
 									id="outlined-basic"
-									value={this.state.Name}
+									value={Name}
 									name="Name"
 									onChange={this.handleChange}
 									label="Full Name"
@@ -207,7 +234,7 @@ class SignerInput extends Component {
 								/>
 								<TextField
 									id="outlined-basic"
-									value={this.state.DOB}
+									value={DOB}
 									name="DOB"
 									onChange={this.handleChange}
 									label="Date of Birth"
@@ -216,7 +243,7 @@ class SignerInput extends Component {
 								/>
 								<TextField
 									id="outlined-basic"
-									value={this.state.email}
+									value={email}
 									name="email"
 									onChange={this.handleChange}
 									label="Email"
@@ -225,7 +252,7 @@ class SignerInput extends Component {
 								/>
 								<TextField
 									id="outlined-basic"
-									value={this.state.DOB}
+									value={DOB}
 									name="DOB"
 									onChange={this.handleChange}
 									label="Date of Birth"
@@ -254,12 +281,14 @@ class SignerInput extends Component {
 										labelId="demo-simple-select-label"
 										id="demo-simple-select"
 										name="PrimaryIDType"
-										value={this.state.PrimaryIDType}
+										value={PrimaryIDType}
 										onChange={this.handleChange}
 										style={{ width: "150px", marginLeft: "0" }}
 										className={`prefixClas`}
 									>
-										<MenuItem value={"CADL"}>Drivers License</MenuItem>
+										<MenuItem value={"Drivers License"}>
+											Drivers License
+										</MenuItem>
 										<MenuItem value={"Passport"}>Passport</MenuItem>
 										<MenuItem value={"CAID"}>State ID</MenuItem>
 									</Select>
@@ -268,7 +297,7 @@ class SignerInput extends Component {
 									id="outlined-basic"
 									label="Number"
 									name={"Number"}
-									value={this.state.Number}
+									value={Number}
 									onChange={this.handleChange}
 									multiline
 									variant="outlined"
@@ -305,7 +334,7 @@ class SignerInput extends Component {
 										labelId="demo-simple-select-label"
 										id="demo-simple-select"
 										name="OtherID"
-										value={this.state.OtherID}
+										value={OtherID}
 										onChange={this.handleChange}
 										style={{ width: "150px", marginLeft: "0" }}
 										className={`prefixClas`}
@@ -319,7 +348,7 @@ class SignerInput extends Component {
 									id="outlined-basic"
 									label="OtherDesc"
 									name={"OtherDesc"}
-									value={this.state.OtherDesc}
+									value={OtherDesc}
 									onChange={this.handleChange}
 									multiline
 									variant="outlined"
@@ -335,7 +364,7 @@ class SignerInput extends Component {
 								<TextField
 									id="outlined-basic"
 									name="SSN"
-									value={this.state.SSN}
+									value={SSN}
 									onChange={this.handleChange}
 									label="SSN"
 									variant="outlined"
@@ -355,7 +384,7 @@ class SignerInput extends Component {
 									id="outlined-basic"
 									label="Employer"
 									name={"Employer"}
-									value={this.state.Employer}
+									value={Employer}
 									onChange={this.handleChange}
 									multiline
 									variant="outlined"
@@ -366,7 +395,7 @@ class SignerInput extends Component {
 									label="Occupation"
 									name={"Title"}
 									placeholder="CEO/Customer Service"
-									value={this.state.Title}
+									value={Title}
 									onChange={this.handleChange}
 									variant="outlined"
 									className="twoRows"
@@ -376,7 +405,7 @@ class SignerInput extends Component {
 									label="Position in Company"
 									name={"Position"}
 									placeholder="CEO"
-									value={this.state.Position}
+									value={Position}
 									onChange={this.handleChange}
 									variant="outlined"
 									className="twoRows"
@@ -386,7 +415,7 @@ class SignerInput extends Component {
 									label="Street"
 									multiline
 									name="Street"
-									value={this.state.Street}
+									value={Street}
 									onChange={this.handleChange}
 									placeholder="123 Happy St."
 									variant="outlined"
@@ -396,7 +425,7 @@ class SignerInput extends Component {
 									id="outlined-basic"
 									label="City, State, Zip Code"
 									name="City"
-									value={this.state.City}
+									value={City}
 									onChange={this.handleChange}
 									multiline
 									placeholder="Santa Rosa, CA 94949"
@@ -416,7 +445,7 @@ class SignerInput extends Component {
 									id="outlined-basic"
 									label="Home Phone"
 									name={"HomePhone"}
-									value={this.state.HomePhone}
+									value={HomePhone}
 									onChange={this.handleChange}
 									multiline
 									variant="outlined"
@@ -426,7 +455,7 @@ class SignerInput extends Component {
 									id="outlined-basic"
 									label="Work Phone"
 									name={"WorkPhone"}
-									value={this.state.WorkPhone}
+									value={WorkPhone}
 									onChange={this.handleChange}
 									variant="outlined"
 									className="twoRows"
@@ -436,7 +465,7 @@ class SignerInput extends Component {
 									label="Cell"
 									multiline
 									name="Cell"
-									value={this.state.Cell}
+									value={Cell}
 									onChange={this.handleChange}
 									variant="outlined"
 									className="twoRows"

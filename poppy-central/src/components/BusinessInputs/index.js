@@ -59,18 +59,14 @@ class BusinesInputs extends Component {
 	}
 
 	async componentDidMount() {
-		console.log(this.props.businessEdit)
-
 		if ((await this.props.businessEdit) === undefined) {
 			console.log("nothing here")
 		} else {
 			let { savedProject } = this.props.businessEdit
-			console.log(this.props.businessEdit.businessInfo)
 			this.setState({
 				...this.state,
-				AccountChanges: this.props.businessEdit.businessInfo,
+				AccountChanges: [this.props.businessEdit.businessInfo],
 			})
-			console.log("theres stuff")
 		}
 	}
 
@@ -79,7 +75,6 @@ class BusinesInputs extends Component {
 			...this.state.AccountChanges,
 			loading: true,
 		})
-		console.log(this.state.AccountChanges)
 		axios
 			.post(
 				// "https://5000-c85a660f-3dbe-4fc9-9c8c-83ea85769df5.ws-us02.gitpod.io/",

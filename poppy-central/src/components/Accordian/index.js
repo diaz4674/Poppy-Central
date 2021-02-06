@@ -163,6 +163,7 @@ const ControlledAccordions = (props) => {
 							</AccordionSummary>
 
 							<SignerInput
+								signerInfo={allValue.savedProject}
 								updateSignersFunc={updateSigners}
 								signerNumber={"signer" + (index + 1)}
 								onChange={handleChange(`panel${index + 2}`)}
