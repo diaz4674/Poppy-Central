@@ -41,16 +41,26 @@ const ControlledAccordions = (props) => {
 	})
 
 	useEffect(async () => {
-		console.log(props)
 		totalSigners = props.AccountInfo.numSigners
-
-		await setValues({
-			...allValue,
-			totalSigners,
-			numSigners: totalSigners,
-			TeamMembers: props.AccountInfo.TeamMembers,
-			ProjectName: props.AccountInfo.ProjectName,
-		})
+		let { savedProject } = props
+		if (savedProject === undefined) {
+			await setValues({
+				...allValue,
+				totalSigners,
+				numSigners: totalSigners,
+				TeamMembers: props.AccountInfo.TeamMembers,
+				ProjectName: props.AccountInfo.ProjectName,
+			})
+		} else {
+			await setValues({
+				...allValue,
+				totalSigners,
+				numSigners: savedProject.totalSigners,
+				TeamMembers: savedProject.TeamMembers,
+				ProjectName: savedProject.ProjectName,
+				savedProject,
+			})
+		}
 	}, [])
 
 	const handleChange = (panel) => (event, isExpanded) => {
@@ -120,6 +130,7 @@ const ControlledAccordions = (props) => {
 							)}
 						</AccordionSummary>
 						<BusinesInputs
+							businessEdit={allValue.savedProject}
 							updateSignersFunc={updateSigners}
 							onChange={handleChange(`panel1bh-header`)}
 						/>

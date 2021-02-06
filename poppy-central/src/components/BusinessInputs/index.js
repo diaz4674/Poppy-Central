@@ -58,6 +58,22 @@ class BusinesInputs extends Component {
 		loading: false,
 	}
 
+	async componentDidMount() {
+		console.log(this.props.businessEdit)
+
+		if ((await this.props.businessEdit) === undefined) {
+			console.log("nothing here")
+		} else {
+			let { savedProject } = this.props.businessEdit
+			console.log(this.props.businessEdit.businessInfo)
+			this.setState({
+				...this.state,
+				AccountChanges: this.props.businessEdit.businessInfo,
+			})
+			console.log("theres stuff")
+		}
+	}
+
 	updateCardHandler = () => {
 		this.setState({
 			...this.state.AccountChanges,
@@ -189,6 +205,7 @@ class BusinesInputs extends Component {
 		} = this.state.toggleCheckboxes
 
 		const { classes } = this.props
+
 		return (
 			<div className="container" style={{ margin: "0 0 15px" }}>
 				<div

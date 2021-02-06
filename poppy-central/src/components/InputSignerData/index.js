@@ -39,13 +39,24 @@ class InputSignerData extends React.Component {
 	}
 
 	async componentDidMount() {
-		let { inputData } = await this.props.location.state
-		this.setState({
-			...this.state,
-			ProjectName: inputData.ProjectName,
-			TeamMembers: inputData.teamMembers,
-			numSigners: inputData.signers,
-		})
+		if ((await this.props.location.state.savedProject) === undefined) {
+			let { inputData } = await this.props.location.state
+			this.setState({
+				...this.state,
+				ProjectName: inputData.ProjectName,
+				TeamMembers: inputData.teamMembers,
+				numSigners: inputData.signers,
+			})
+		} else {
+			let { savedProject, TeamMembers } = await this.props.location.state
+			this.setState({
+				...this.state,
+				ProjectName: savedProject.ProjectName,
+				TeamMembers: TeamMembers,
+				numSigners: savedProject.totalSigners,
+				savedProject,
+			})
+		}
 	}
 
 	handleChange = (e) => {
@@ -62,7 +73,7 @@ class InputSignerData extends React.Component {
 	}
 
 	render() {
-		let { ProjectName, TeamMembers } = this.state
+		let { ProjectName, TeamMembers, savedProject } = this.state
 		return (
 			<div className="container">
 				<div
@@ -148,7 +159,9 @@ class InputSignerData extends React.Component {
 								) : null}
 							</div>
 						</div>
-						{ProjectName !== "" ? <Accordian AccountInfo={this.state} /> : null}
+						{ProjectName !== "" ? (
+							<Accordian savedProject={savedProject} AccountInfo={this.state} />
+						) : null}
 					</div>
 				</div>
 			</div>

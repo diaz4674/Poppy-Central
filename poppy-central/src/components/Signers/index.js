@@ -10,6 +10,7 @@ import AvatarGroup from "@material-ui/lab/AvatarGroup"
 import "./style.css"
 import edit from "../../assets/edit.svg"
 import { withRouter } from "react-router-dom"
+import createHistory from "history/createBrowserHistory"
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -24,13 +25,38 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 class Signers extends Component {
-	state = {
-		toggleSigners: false,
-		TeamMembers: [],
+	constructor(props) {
+		super(props)
+		this.state = {
+			toggleSigners: false,
+			TeamMembers: [],
+		}
 	}
+
 	async componentDidMount() {
+		let { savedProject } = this.props.location.state
 		let { TeamMembers, accountSigners } = this.props
-		await this.setState({ ...this.state, TeamMembers, accountSigners })
+		await this.setState({
+			...this.state,
+			TeamMembers,
+			accountSigners,
+			savedProject,
+		})
+	}
+
+	async toggleView(e) {
+		e.preventDefault()
+		let { history } = this.props
+		let state = { ...history.location.state }
+
+		delete state.inputData
+		delete state.AccountInfo
+		let AccountInfo = this.state
+
+		history.push({
+			pathname: "/app-main/InputSignerData",
+			state: AccountInfo,
+		})
 	}
 	render() {
 		let { TeamMembers, accountSigners } = this.state
@@ -56,12 +82,7 @@ class Signers extends Component {
 								src={edit}
 								alt="edit"
 								className="edit"
-								onClick={() =>
-									this.props.history.push({
-										pathname: "/app-main/InputSignerData",
-										state: { inputData: this.state },
-									})
-								}
+								onClick={(e) => this.toggleView(e)}
 							/>
 						</div>
 						<div
