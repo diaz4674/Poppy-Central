@@ -9,6 +9,7 @@ import Signers from "../../components/Signers"
 import { iterateSigners } from "../../modules/iterateSigners"
 import { generateDocs } from "../../actions"
 import Button from "@material-ui/core/Button"
+import { connect } from "react-redux"
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -58,11 +59,11 @@ class SpecialProjects extends Component {
 	}
 
 	downloadDocs = async (e) => {
-		console.log(this.state)
-		let { businessInfo, totalSigners, accountSigners } = this.state
+		let { totalSigners, accountSigners } = this.state
+		let { AccountInfo } = this.props.location.state.savedProject
 
 		let payload = {
-			AccountInfo: businessInfo,
+			AccountInfo,
 			totalSigners,
 		}
 
@@ -72,10 +73,7 @@ class SpecialProjects extends Component {
 			}
 			payload[`signer${+i}`] = accountSigners[`signer${+i}`]
 		}
-
-		console.log(payload)
-
-		await generateDocs(payload)
+		await this.props.generateDocs(payload)
 	}
 
 	render() {
@@ -143,4 +141,8 @@ SpecialProjects.propTypes = {
 	classes: PropTypes.object.isRequired,
 }
 
-export default withStyles(useStyles)(SpecialProjects)
+const mapStateToProps = (state) => {}
+
+export default connect(mapStateToProps, {
+	generateDocs,
+})(SpecialProjects)
