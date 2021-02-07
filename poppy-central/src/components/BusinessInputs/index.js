@@ -200,7 +200,6 @@ class BusinesInputs extends Component {
 
 		const { classes } = this.props
 
-		console.log(this.state)
 		return (
 			<div className="container" style={{ margin: "0 0 15px" }}>
 				<div

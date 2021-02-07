@@ -9,7 +9,7 @@ export const generateDocs = (data) => (dispatch) => {
 	axios
 		.post(
 			// "https://5000-e5a921ea-4111-473a-ad9b-1474a7910719.ws-us03.gitpod.io/",
-			"http://127.0.0.1:5000/signatureCard",
+			"https://poppy-central.herokuapp.com/signatureCard",
 			data,
 			{ responseType: "blob" } // had to add this one here
 		)
@@ -27,7 +27,7 @@ export const generateDocs = (data) => (dispatch) => {
 	axios
 		.post(
 			// "https://5000-e5a921ea-4111-473a-ad9b-1474a7910719.ws-us03.gitpod.io/resolution",
-			"http://127.0.0.1:5000/resolution",
+			"https://poppy-central.herokuapp.com/resolution",
 			data,
 			{ responseType: "blob" } // had to add this one here
 		)
