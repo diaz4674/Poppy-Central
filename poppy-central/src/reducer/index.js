@@ -18,7 +18,7 @@ const initialstate = {
 				{ label: "Mike Smith", value: "Mike Smith" },
 				{ label: "Wally Borg", value: "Whale" },
 			],
-			businessInfo: {
+			AccountInfo: {
 				Type: "Business",
 				Ownership: "LLC",
 				Benificiary: "",
