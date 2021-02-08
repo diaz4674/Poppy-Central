@@ -40,20 +40,20 @@ def generateSigCard():
     # Load the JSON to a Python list & dump it back out as formatted JSON
 
     data = json.loads(my_json)
-    totalSigners = len(data) - 1
-    AccountInfo = data[0]
+    totalSigners = data['totalSigners']
+    AccountInfo = data["AccountInfo"]
 
-    signer1 = data[1]
+    signer1 = data["signer1"]
     signer2 = {}
     signer3 = {}
     signer4 = {}
 
     if totalSigners > 1:
-        signer2 = data[2]
+        signer2 = data["signer2"]
     if totalSigners > 2:
-        signer3 = data[3]
+        signer3 = data["signer3"]
     if totalSigners > 3:
-        signer4 = data[4]
+        signer4 = data["signer4"]
     # print(data["Type"], "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAaaa")
         # print("String could not be converted to JSON")
     # print(my_json)
@@ -273,7 +273,7 @@ def generateSigCard():
         can.drawString(342, 520, signer2["SSN"])
         can.drawString(476, 520, signer2["DOB"])
     else:
-        can.drawString(334, 510, "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+        can.drawString(334, 490, "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 
     if signer3 == {}:
         can.drawString(334, 550, "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
@@ -447,21 +447,20 @@ def generateResolution():
     # print('- ' * 20)
     # Load the JSON to a Python list & dump it back out as formatted JSON
     data = json.loads(my_json)
-    totalSigners = len(data) - 1
-    print(totalSigners, "TOTAAAAAAAAAAAAAAAAL")
-    AccountInfo = data[0]
+    totalSigners = data['totalSigners']
+    AccountInfo = data["AccountInfo"]
 
-    signer1 = data[1]
+    signer1 = data["signer1"]
     signer2 = {}
     signer3 = {}
     signer4 = {}
 
     if totalSigners > 1:
-        signer2 = data[2]
+        signer2 = data["signer2"]
     if totalSigners > 2:
-        signer3 = data[3]
+        signer3 = data["signer3"]
     if totalSigners > 3:
-        signer4 = data[4]
+        signer4 = data["signer4"]
     # print(data, "DAAATTTTTAAAAAAAAAAAAAAAAAAAA")
     # print(data["Type"], "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAaaa")
         # print("String could not be converted to JSON")
