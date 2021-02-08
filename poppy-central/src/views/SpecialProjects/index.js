@@ -7,7 +7,7 @@ import { makeStyles } from "@material-ui/core/styles"
 import OMG from "../../components/OMG"
 import Signers from "../../components/Signers"
 import { iterateSigners } from "../../modules/iterateSigners"
-import { generateDocs } from "../../actions"
+import { generateDocs, loadingAnimation } from "../../actions"
 import Button from "@material-ui/core/Button"
 import { connect } from "react-redux"
 
@@ -25,17 +25,11 @@ const useStyles = makeStyles((theme) => ({
 
 class SpecialProjects extends Component {
 	state = {
-		toggleCheckboxes: {
-			prefix: false,
-			addLine: false,
-			prefixClass: "",
-			addLineClass: "",
-			inputBoxes: "",
-		},
-		loading: false,
+		loadingBeingSent: false,
 	}
 
 	async componentDidMount() {
+		console.log(this.props)
 		let {
 			TeamMembers,
 			ProjectName,
@@ -59,6 +53,9 @@ class SpecialProjects extends Component {
 	}
 
 	downloadDocs = async (e) => {
+		// Initializes loading animation
+		this.props.loadingAnimation()
+
 		let { totalSigners, accountSigners } = this.state
 		let { AccountInfo } = this.props.location.state.savedProject
 
@@ -73,16 +70,14 @@ class SpecialProjects extends Component {
 			}
 			payload[`signer${+i}`] = accountSigners[`signer${+i}`]
 		}
+
 		await this.props.generateDocs(payload)
 	}
 
 	render() {
-		let {
-			TeamMembers,
-			ProjectName,
-			accountSigners,
-			// signers
-		} = this.state
+		let { TeamMembers, ProjectName, accountSigners } = this.state
+
+		let { loading } = this.props
 
 		return (
 			<div className="container">
@@ -118,15 +113,14 @@ class SpecialProjects extends Component {
 									onClick={this.downloadDocs}
 									className="submitButton"
 								>
-									{this.loading ? (
+									{loading && (
 										<div class="load-3">
 											<div class="line"></div>
 											<div class="line"></div>
 											<div class="line"></div>
 										</div>
-									) : (
-										"Download Documents"
 									)}
+									{!loading && "Download Documents"}
 								</Button>
 							</div>
 						</div>
@@ -141,8 +135,11 @@ SpecialProjects.propTypes = {
 	classes: PropTypes.object.isRequired,
 }
 
-const mapStateToProps = (state) => {}
+const mapStateToProps = (state) => {
+	return { loading: state.isFetching }
+}
 
 export default connect(mapStateToProps, {
 	generateDocs,
+	loadingAnimation,
 })(SpecialProjects)

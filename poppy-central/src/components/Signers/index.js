@@ -10,19 +10,6 @@ import AvatarGroup from "@material-ui/lab/AvatarGroup"
 import "./style.css"
 import edit from "../../assets/edit.svg"
 import { withRouter } from "react-router-dom"
-import createHistory from "history/createBrowserHistory"
-
-const useStyles = makeStyles((theme) => ({
-	root: {
-		"& > *": {
-			margin: theme.spacing(1),
-			width: "25ch",
-		},
-		button: {
-			margin: theme.spacing(1),
-		},
-	},
-}))
 
 class Signers extends Component {
 	constructor(props) {
@@ -172,4 +159,4 @@ Signers.propTypes = {
 	classes: PropTypes.object.isRequired,
 }
 
-export default withRouter(withStyles(useStyles)(Signers))
+export default withRouter(withStyles()(Signers))

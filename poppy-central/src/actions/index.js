@@ -1,11 +1,18 @@
 import axios from "axios"
 import download from "downloadjs"
-import { SAVE_PROJECT, UPDATE_PROJECT } from "./types"
+import { LOADING, SAVE_PROJECT, UPDATE_PROJECT } from "./types"
 // import { getTokenId } from "../components/common/UserId"
+
+export const loadingAnimation = () => (dispatch) => {
+	dispatch({ type: LOADING })
+}
+
+// export const saveProjectToStore = (projectData) => (dispatch) => {
+// 	dispatch({ type: SAVE_PROJECT, payload: projectData })
+// }
 
 //Sends the financial information inputted from the onboarding section to the array of financial data that displays as options for users to select.
 export const generateDocs = (data) => (dispatch) => {
-	console.log(data)
 	axios
 		.post(
 			// "https://5000-e5a921ea-4111-473a-ad9b-1474a7910719.ws-us03.gitpod.io/",
@@ -38,6 +45,7 @@ export const generateDocs = (data) => (dispatch) => {
 				res.content
 			)
 			console.log(res)
+			dispatch({ type: SAVE_PROJECT })
 			return res
 		})
 		.catch((error) =>
@@ -46,7 +54,6 @@ export const generateDocs = (data) => (dispatch) => {
 }
 
 export const saveProjectToStore = (projectData) => (dispatch) => {
-	console.log("actoin")
 	dispatch({ type: SAVE_PROJECT, payload: projectData })
 }
 

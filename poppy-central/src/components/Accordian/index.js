@@ -11,6 +11,7 @@ import checkmark from "../../assets/check.svg"
 import error from "../../assets/close.svg"
 import {
 	generateDocs,
+	loadingAnimation,
 	saveProjectToStore,
 	updateProjectToStore,
 } from "../../actions"
@@ -74,6 +75,9 @@ const ControlledAccordions = (props) => {
 	}
 
 	const updateCardHandler = async () => {
+		// Initializes loading animation
+		props.loadingAnimation()
+
 		let payload = {
 			AccountInfo: allValue.AccountInfo,
 			totalSigners: allValue.totalSigners,
@@ -229,15 +233,14 @@ const ControlledAccordions = (props) => {
 							onClick={updateCardHandler}
 							className="submitButton"
 						>
-							{loading ? (
+							{props.loading && (
 								<div class="load-3">
 									<div class="line"></div>
 									<div class="line"></div>
 									<div class="line"></div>
 								</div>
-							) : (
-								"Download Documents"
 							)}
+							{!props.loading && "Download Documents"}
 						</Button>
 					</div>
 				</>
@@ -246,12 +249,15 @@ const ControlledAccordions = (props) => {
 	)
 }
 
-const mapStateToProps = (state) => {}
+const mapStateToProps = (state) => {
+	return { loading: state.isFetching }
+}
 
 export default withRouter(
 	connect(mapStateToProps, {
 		generateDocs,
 		saveProjectToStore,
+		loadingAnimation,
 		updateProjectToStore,
 	})(ControlledAccordions)
 )

@@ -1,6 +1,7 @@
-import { SAVE_PROJECT, UPDATE_PROJECT } from "../actions/types"
+import { LOADING, SAVE_PROJECT, UPDATE_PROJECT } from "../actions/types"
 
 const initialstate = {
+	isFetching: false,
 	teamMembers: [
 		{ label: "Sarah Conners", value: "Sarah Conners" },
 		{ label: "Mike Smith", value: "Mike Smith" },
@@ -138,12 +139,15 @@ const initialstate = {
 
 export const reducer = (state = initialstate, action) => {
 	switch (action.type) {
+		case LOADING:
+			return Object.assign({}, state, {
+				isFetching: true,
+			})
 		case SAVE_PROJECT:
 			// Adds inputed financial name and wesite to the array of banks so it may be viewed by the user as a selection to add.
-			state.savedProjects.push(action.payload)
-			return {
-				...state,
-			}
+			return Object.assign({}, state, {
+				isFetching: false,
+			})
 		case UPDATE_PROJECT:
 			state.savedProjects[action.payload.ProjectName] = action.payload
 			return {
