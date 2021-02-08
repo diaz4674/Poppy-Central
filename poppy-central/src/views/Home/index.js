@@ -1,7 +1,5 @@
 import logo from "../../assets/logo-mobile.svg"
 import "./style.css"
-import PropTypes from "prop-types"
-import { withStyles } from "@material-ui/styles"
 import React, { Component } from "react"
 import { makeStyles } from "@material-ui/core/styles"
 import ListItem from "@material-ui/core/ListItem"
@@ -128,14 +126,13 @@ class Home extends Component {
 												/>
 											</ListItem>
 											<AvatarGroup max={project.TeamMembers.length}>
-												{project.TeamMembers.map((member) => {
+												{project.TeamMembers.map((member, index) => {
 													return (
-														<>
-															<Avatar
-																alt={member.value}
-																// src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-															/>
-														</>
+														<Avatar
+															key={index}
+															alt={member.value}
+															// src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+														/>
 													)
 												})}
 											</AvatarGroup>
@@ -187,16 +184,10 @@ class Home extends Component {
 	}
 }
 
-Home.propTypes = {
-	classes: PropTypes.object.isRequired,
-}
-
 const mapStateToProps = (state) => {
 	return {
 		accountInfo: state.savedProjects,
 	}
 }
 
-export default withRouter(
-	withStyles(useStyles)(connect(mapStateToProps, {})(Home))
-)
+export default withRouter(connect(mapStateToProps, {})(Home))

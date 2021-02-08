@@ -48,8 +48,7 @@ const ControlledAccordions = (props) => {
 
 	useEffect(async () => {
 		totalSigners = props.AccountInfo.numSigners
-		let { savedProject } = props
-		if (savedProject === undefined) {
+		if (props.savedProject === undefined) {
 			await setValues({
 				...allValue,
 				totalSigners,
@@ -58,6 +57,7 @@ const ControlledAccordions = (props) => {
 				ProjectName: props.AccountInfo.ProjectName,
 			})
 		} else {
+			let { savedProject } = props
 			await setValues({
 				...allValue,
 				totalSigners,

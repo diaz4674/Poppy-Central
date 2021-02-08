@@ -34,8 +34,7 @@ class FormControlLabelPlacement extends React.Component {
 	}
 
 	handleChange = (e) => {
-		let change = (this.state[e.target.name] = e.target.value)
-		this.setState({ ...this.state, change })
+		this.setState({ ...this.state, [e.target.name]: e.target.value })
 	}
 
 	getMembers = (members) => {

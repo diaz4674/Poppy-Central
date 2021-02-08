@@ -12,9 +12,11 @@ import * as serviceWorker from "./serviceWorker"
 const store = createStore(reducer, applyMiddleware(thunk, logger))
 
 ReactDOM.render(
-	<Provider store={store}>
-		<Router />
-	</Provider>,
+	<React.StrictMode>
+		<Provider store={store}>
+			<Router />
+		</Provider>
+	</React.StrictMode>,
 	document.getElementById("root")
 )
 serviceWorker.unregister()

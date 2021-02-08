@@ -40,6 +40,7 @@ class InputSignerData extends React.Component {
 	}
 
 	async componentDidMount() {
+		console.log("hi")
 		if ((await this.props.location.state.savedProject) === undefined) {
 			let { inputData } = await this.props.location.state
 			this.setState({

@@ -1,7 +1,5 @@
 import logo from "../../assets/logo-mobile.svg"
 import "./style.css"
-import PropTypes from "prop-types"
-import { withStyles } from "@material-ui/styles"
 import React, { Component } from "react"
 import { makeStyles } from "@material-ui/core/styles"
 import HeaderAccountInfo from "../HeaderAccountInfo"
@@ -60,8 +58,4 @@ class SignerChanges extends Component {
 	}
 }
 
-SignerChanges.propTypes = {
-	classes: PropTypes.object.isRequired,
-}
-
-export default withStyles(useStyles)(SignerChanges)
+export default SignerChanges
