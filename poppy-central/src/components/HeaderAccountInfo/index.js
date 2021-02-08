@@ -34,7 +34,8 @@ class FormControlLabelPlacement extends React.Component {
 	}
 
 	handleChange = (e) => {
-		this.setState({ ...this.state, [e.target.name]: e.target.value })
+		let change = (this.state[e.target.name] = e.target.value)
+		this.setState({ ...this.state, change })
 	}
 
 	getMembers = (members) => {
@@ -47,20 +48,19 @@ class FormControlLabelPlacement extends React.Component {
 
 	render() {
 		return (
-			<React.Fragment>
-				<div style={{ padding: "15px", height: "auto" }}>
-					<FormControl component="fieldset">
-						<TextField
-							id="outlined-basic"
-							value={this.state.ProjectName}
-							name="ProjectName"
-							onChange={this.handleChange}
-							label="Project Name"
-							variant="outlined"
-							className="inputBoxes"
-						/>
-						<div className="row" style={{ margin: "15px 0" }}>
-							{/* <RadioGroup
+			<div style={{ padding: "15px", height: "auto" }}>
+				<FormControl component="fieldset">
+					<TextField
+						id="outlined-basic"
+						value={this.state.ProjectName}
+						name="ProjectName"
+						onChange={this.handleChange}
+						label="Project Name"
+						variant="outlined"
+						className="inputBoxes"
+					/>
+					<div className="row" style={{ margin: "15px 0" }}>
+						{/* <RadioGroup
 							row
 							aria-label="position"
 							name="position"
@@ -83,44 +83,43 @@ class FormControlLabelPlacement extends React.Component {
 								labelPlacement="top"
 							/>
 						</RadioGroup> */}
-							<FormControl>
-								<InputLabel id="demo-simple-select-label">
-									Number of Signers
-								</InputLabel>
-								<Select
-									labelId="demo-simple-select-label"
-									id="demo-simple-select"
-									value={this.state.signers}
-									name="signers"
-									onChange={this.handleChange}
-									style={{ width: "200px" }}
-								>
-									<MenuItem value={1}>1</MenuItem>
-									<MenuItem value={2}>2</MenuItem>
-									<MenuItem value={3}>3</MenuItem>
-									<MenuItem value={4}>4</MenuItem>
-								</Select>
-							</FormControl>
-						</div>
-						<AddMembers getMembers={this.getMembers} />
-						<div className="buttonContainer">
-							<Button
-								variant="contained"
-								color="default"
-								onClick={() =>
-									this.props.history.push({
-										pathname: "/app-main/InputSignerData",
-										state: { inputData: this.state },
-									})
-								}
-								className="submitButton"
+						<FormControl>
+							<InputLabel id="demo-simple-select-label">
+								Number of Signers
+							</InputLabel>
+							<Select
+								labelId="demo-simple-select-label"
+								id="demo-simple-select"
+								value={this.state.signers}
+								name="signers"
+								onChange={this.handleChange}
+								style={{ width: "200px" }}
 							>
-								Next
-							</Button>
-						</div>
-					</FormControl>
-				</div>
-			</React.Fragment>
+								<MenuItem value={1}>1</MenuItem>
+								<MenuItem value={2}>2</MenuItem>
+								<MenuItem value={3}>3</MenuItem>
+								<MenuItem value={4}>4</MenuItem>
+							</Select>
+						</FormControl>
+					</div>
+					<AddMembers getMembers={this.getMembers} />
+					<div className="buttonContainer">
+						<Button
+							variant="contained"
+							color="default"
+							onClick={() =>
+								this.props.history.push({
+									pathname: "/app-main/InputSignerData",
+									state: { inputData: this.state },
+								})
+							}
+							className="submitButton"
+						>
+							Next
+						</Button>
+					</div>
+				</FormControl>
+			</div>
 		)
 	}
 }

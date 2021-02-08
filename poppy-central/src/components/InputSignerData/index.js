@@ -10,15 +10,15 @@ import Avatar from "@material-ui/core/Avatar"
 import AvatarGroup from "@material-ui/lab/AvatarGroup"
 import "./style.css"
 
-const useStyles = makeStyles((theme) => ({
-	formControl: {
-		margin: theme.spacing(1),
-		minWidth: 120,
-	},
-	selectEmpty: {
-		marginTop: theme.spacing(2),
-	},
-}))
+// const useStyles = makeStyles((theme) => ({
+// 	formControl: {
+// 		margin: theme.spacing(1),
+// 		minWidth: 120,
+// 	},
+// 	selectEmpty: {
+// 		marginTop: theme.spacing(2),
+// 	},
+// }))
 
 class InputSignerData extends React.Component {
 	state = {
@@ -175,4 +175,4 @@ InputSignerData.propTypes = {
 	classes: PropTypes.object.isRequired,
 }
 
-export default withRouter(withStyles(useStyles)(InputSignerData))
+export default withRouter(withStyles()(InputSignerData))

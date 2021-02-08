@@ -9,16 +9,6 @@ import { withStyles } from "@material-ui/styles"
 import AddMembersInput from "../AddMembersInput"
 import "./style.css"
 
-const useStyles = makeStyles((theme) => ({
-	formControl: {
-		margin: theme.spacing(1),
-		minWidth: 120,
-	},
-	selectEmpty: {
-		marginTop: theme.spacing(2),
-	},
-}))
-
 const PurpleSwitch = withStyles({
 	switchBase: {
 		color: "gray",
@@ -80,4 +70,4 @@ SwitchesGroup.propTypes = {
 	classes: PropTypes.object.isRequired,
 }
 
-export default withStyles(useStyles)(SwitchesGroup)
+export default withStyles()(SwitchesGroup)

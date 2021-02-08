@@ -14,24 +14,6 @@ import FormControlLabel from "@material-ui/core/FormControlLabel"
 import Checkbox from "@material-ui/core/Checkbox"
 import Button from "@material-ui/core/Button"
 import "./style.css"
-
-const useStyles = makeStyles((theme) => ({
-	root: {
-		"& > *": {
-			margin: theme.spacing(1),
-			width: "25ch",
-		},
-		button: {
-			margin: theme.spacing(1),
-		},
-		formControl: {
-			margin: theme.spacing(1),
-			minWidth: 120,
-			maxWidth: 300,
-		},
-	},
-}))
-
 class SignerInput extends Component {
 	state = {
 		person: {
@@ -497,8 +479,4 @@ class SignerInput extends Component {
 	}
 }
 
-SignerInput.propTypes = {
-	classes: PropTypes.object.isRequired,
-}
-
-export default withStyles(useStyles)(SignerInput)
+export default withStyles()(SignerInput)

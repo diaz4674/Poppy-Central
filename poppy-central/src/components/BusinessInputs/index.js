@@ -14,18 +14,6 @@ import Select from "@material-ui/core/Select"
 import MenuItem from "@material-ui/core/MenuItem"
 import InputLabel from "@material-ui/core/InputLabel"
 
-const useStyles = makeStyles((theme) => ({
-	root: {
-		"& > *": {
-			margin: theme.spacing(1),
-			width: "25ch",
-		},
-		button: {
-			margin: theme.spacing(1),
-		},
-	},
-}))
-
 class BusinesInputs extends Component {
 	state = {
 		AccountChanges: [
@@ -427,4 +415,4 @@ BusinesInputs.propTypes = {
 	classes: PropTypes.object.isRequired,
 }
 
-export default withStyles(useStyles)(BusinesInputs)
+export default withStyles()(BusinesInputs)
