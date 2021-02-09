@@ -1,10 +1,10 @@
 import axios from "axios"
 import download from "downloadjs"
-import { LOADING, SAVE_PROJECT, UPDATE_PROJECT } from "./types"
+import { LOADING, SAVE_PROJECT, UPDATE_PROJECT, UPDATE_LOADING } from "./types"
 // import { getTokenId } from "../components/common/UserId"
 
 export const loadingAnimation = () => (dispatch) => {
-	dispatch({ type: LOADING })
+    dispatch({ type: LOADING })
 }
 
 // export const saveProjectToStore = (projectData) => (dispatch) => {
@@ -13,52 +13,52 @@ export const loadingAnimation = () => (dispatch) => {
 
 //Sends the financial information inputted from the onboarding section to the array of financial data that displays as options for users to select.
 export const generateDocs = (data) => (dispatch) => {
-	axios
-		.post(
-			// "https://5000-e5a921ea-4111-473a-ad9b-1474a7910719.ws-us03.gitpod.io/",
-			"https://poppy-central.herokuapp.com/signatureCard",
-			data,
-			{ responseType: "blob" } // had to add this one here
-		)
-		.then((res) => {
-			download(
-				res.data,
-				`${data.AccountInfo.BusinessName} - Sig Card`,
-				res.content
-			)
+    axios
+        .post(
+            // "https://5000-e5a921ea-4111-473a-ad9b-1474a7910719.ws-us03.gitpod.io/",
+            "https://poppy-central.herokuapp.com/signatureCard",
+            data,
+            { responseType: "blob" } // had to add this one here
+        )
+        .then((res) => {
+            download(
+                res.data,
+                `${data.AccountInfo.BusinessName} - Sig Card`,
+                res.content
+            )
 
-			console.log(res)
-			return res
-		})
-		.catch((error) => console.log(error))
-	axios
-		.post(
-			// "https://5000-e5a921ea-4111-473a-ad9b-1474a7910719.ws-us03.gitpod.io/resolution",
-			"https://poppy-central.herokuapp.com/resolution",
-			data,
-			{ responseType: "blob" } // had to add this one here
-		)
-		.then((res) => {
-			download(
-				res.data,
-				`${data.AccountInfo.BusinessName} - Resolution`,
-				res.content
-			)
-			console.log(res)
-			dispatch({ type: SAVE_PROJECT })
-			return res
-		})
-		.catch((error) =>
-			alert("Oops! Something funny happened. Try again or contact the admin.")
-		)
+            console.log(res)
+            return res
+        })
+        .catch((error) => console.log(error))
+    axios
+        .post(
+            // "https://5000-e5a921ea-4111-473a-ad9b-1474a7910719.ws-us03.gitpod.io/resolution",
+            "https://poppy-central.herokuapp.com/resolution",
+            data,
+            { responseType: "blob" } // had to add this one here
+        )
+        .then((res) => {
+            download(
+                res.data,
+                `${data.AccountInfo.BusinessName} - Resolution`,
+                res.content
+            )
+            console.log(res)
+            dispatch({ type: UPDATE_LOADING })
+            return res
+        })
+        .catch((error) =>
+            alert("Oops! Something funny happened. Try again or contact the admin.")
+        )
 }
 
 export const saveProjectToStore = (projectData) => (dispatch) => {
-	dispatch({ type: SAVE_PROJECT, payload: projectData })
+    dispatch({ type: SAVE_PROJECT, payload: projectData })
 }
 
 export const updateProjectToStore = (projectData) => (dispatch) => {
-	dispatch({ type: UPDATE_PROJECT, payload: projectData })
+    dispatch({ type: UPDATE_PROJECT, payload: projectData })
 }
 
 // //Sends the store information inputted from the onboarding section to the array of data that displays as options for users to select.
