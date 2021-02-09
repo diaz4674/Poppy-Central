@@ -7,10 +7,6 @@ export const loadingAnimation = () => (dispatch) => {
     dispatch({ type: LOADING })
 }
 
-// export const saveProjectToStore = (projectData) => (dispatch) => {
-// 	dispatch({ type: SAVE_PROJECT, payload: projectData })
-// }
-
 //Sends the financial information inputted from the onboarding section to the array of financial data that displays as options for users to select.
 export const generateDocs = (data) => (dispatch) => {
     axios
