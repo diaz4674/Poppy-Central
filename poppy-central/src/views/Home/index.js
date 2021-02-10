@@ -11,6 +11,7 @@ import contract from "../../assets/contract.svg"
 import Toaster from "../../components/Toaster"
 import { connect } from "react-redux"
 import { withRouter } from "react-router-dom"
+import axios from "axios"
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -29,9 +30,18 @@ class Home extends Component {
         newItem: false,
     }
 
-    componentDidMount() {
+    async componentDidMount() {
         this.setState({ newItem: true })
-        console.log(this.props.completed, "COMPLETED")
+        // Spins up server, because heroku takes a while to boot up...
+        await axios
+            .get("https://poppy-central.herokuapp.com/")
+            .then((res) => {
+                console.log("Welcome!")
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+
     }
 
     toggleView(e) {
