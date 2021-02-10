@@ -53,8 +53,6 @@ class SpecialProjects extends Component {
     }
 
     downloadDocs = async (e) => {
-        // Initializes loading animation
-        this.props.loadingAnimation()
 
         let { totalSigners, accountSigners } = this.state
         let { AccountInfo } = this.props.location.state.savedProject
@@ -70,6 +68,8 @@ class SpecialProjects extends Component {
             }
             payload[`signer${+i}`] = accountSigners[`signer${+i}`]
         }
+        // Initializes loading animation
+        this.props.loadingAnimation()
 
         await this.props.generateDocs(payload)
     }

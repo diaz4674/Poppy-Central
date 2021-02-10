@@ -44,8 +44,9 @@ export const generateDocs = (data) => (dispatch) => {
             dispatch({ type: UPDATE_LOADING })
             return res
         })
-        .catch((error) =>
-            alert("Oops! Something funny happened. Try again or contact the admin.")
+        .catch((error) => (
+
+            alert("Oops! Something funny happened. Try again or contact the admin."), dispatch({ type: UPDATE_LOADING }))
         )
 }
 

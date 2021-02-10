@@ -44,60 +44,31 @@ class CompletedProjects extends Component {
         )
 
         await this.setState({ ...this.state, accountSigners })
+        console.log(this.state)
     }
 
-    updateCardHandler = () => {
-        this.setState({
-            ...this.state.AccountChanges,
-            loading: true,
-        })
-        axios
-            .post(
-                // "https://5000-c85a660f-3dbe-4fc9-9c8c-83ea85769df5.ws-us02.gitpod.io/",
-                "http://127.0.0.1:5000/signatureCard",
-                this.state.AccountChanges,
-                { responseType: "blob" } // had to add this one here
-            )
-            .then((res) => {
-                download(
-                    res.data,
-                    `${this.state.AccountChanges[0].BusinessName} - Sig Card`,
-                    res.content
-                )
+    downloadDocs = async () => {
 
-                console.log(res)
-                return res
-            })
-            .catch((error) => console.log(error))
-        axios
-            .post(
-                // "https://5000-c85a660f-3dbe-4fc9-9c8c-83ea85769df5.ws-us02.gitpod.io/",
-                "http://127.0.0.1:5000/resolution",
-                this.state.AccountChanges,
-                { responseType: "blob" } // had to add this one here
-            )
-            .then((res) => {
-                download(
-                    res.data,
-                    `${this.state.AccountChanges[0].BusinessName} - Resolution`,
-                    res.content
-                )
-                this.setState({ ...this.state, loading: false })
-                console.log(res)
-                return res
-            })
-            .catch(
-                (error) => (
-                    alert(
-                        "Oops! Something funny happened. Try again or contact the admin."
-                    ),
-                    this.setState({ ...this.state, loading: false })
-                )
-            )
-        this.setState({
-            ...this.state,
-            loading: false,
-        })
+
+        let { accountSigners } = this.state
+        let { totalSigners, AccountInfo } = this.state.AccountChanges[0]
+
+        let payload = {
+            AccountInfo,
+            totalSigners,
+        }
+
+        for (let i = 1; i < totalSigners + 1; i++) {
+            if (accountSigners[`signer${+i}`] === undefined) {
+                return alert("Sorry looks like your still missing some info")
+            }
+            payload[`signer${+i}`] = accountSigners[`signer${+i}`]
+        }
+
+        // Initializes loading animation
+        this.props.loadingAnimation()
+
+        await this.props.generateDocs(payload)
     }
 
     render() {
@@ -112,6 +83,7 @@ class CompletedProjects extends Component {
         let { AccountChanges } = this.state
 
         let { loading } = this.props
+
         return (
             <div className="container">
                 <div className="InputBox">
