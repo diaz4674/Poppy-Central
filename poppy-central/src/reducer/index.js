@@ -137,7 +137,7 @@ const initialstate = {
     Completed: [
         {
             ProjectName: "Nordby Construction Company",
-            totalSigners: 4,
+            totalSigners: 2,
             TeamMembers: [
                 { label: "Sarah Conners", value: "Sarah Conners" },
                 { label: "Mike Smith", value: "Mike Smith" },

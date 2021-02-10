@@ -31,6 +31,7 @@ class Home extends Component {
 
     componentDidMount() {
         this.setState({ newItem: true })
+        console.log(this.props.completed, "COMPLETED")
     }
 
     toggleView(e) {
@@ -156,7 +157,10 @@ class Home extends Component {
                                         alignItems: "center",
                                     }}
                                     onClick={() =>
-                                        this.props.history.push("/app-main/completedproject")
+                                        this.props.history.push({
+                                            pathname: "/app-main/completedproject",
+                                            state: { completedProject: this.props.completed },
+                                        })
                                     }
                                 >
                                     <img
@@ -184,6 +188,7 @@ class Home extends Component {
 const mapStateToProps = (state) => {
     return {
         accountInfo: state.savedProjects,
+        completed: state.Completed
     }
 }
 
