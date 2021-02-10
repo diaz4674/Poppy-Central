@@ -55,7 +55,7 @@ class Home extends Component {
         return (
             <div className="container">
                 <div className="InputBox">
-                    <Toaster />
+                    <Toaster completedProject={this.props.completed} />
                     <div
                         style={{
                             display: "flex",
