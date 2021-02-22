@@ -2,6 +2,7 @@ import { LOADING, SAVE_PROJECT, UPDATE_PROJECT, UPDATE_LOADING } from "../action
 
 const initialstate = {
     isFetching: false,
+    // dummy data
     teamMembers: [
         { label: "Sarah Conners", value: "Sarah Conners" },
         { label: "Mike Smith", value: "Mike Smith" },
@@ -215,15 +216,16 @@ export const reducer = (state = initialstate, action) => {
     switch (action.type) {
         case LOADING:
             return Object.assign({}, state, {
+                // toggles loading and sends value back to component
                 isFetching: true,
             })
         case UPDATE_LOADING:
             return Object.assign({}, state, {
+                // toggles loading and sends value back to component
                 isFetching: false,
             })
         case SAVE_PROJECT:
             state.savedProjects.push(action.payload)
-            // Adds inputed financial name and wesite to the array of banks so it may be viewed by the user as a selection to add.
             return { ...state, }
         case UPDATE_PROJECT:
             state.savedProjects[action.payload.ProjectName] = action.payload
