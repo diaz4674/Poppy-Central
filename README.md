@@ -12,6 +12,7 @@ A banking application to quickly generate banking PDF documents for clients to s
 ## Tech Stack
 + [React](https://reactjs.org/) is used for UI.
 + [Material-UI](https://material-ui.com/) assisted in quickly producing components, and styles.
++ [Redux](https://redux.js.org/) utilized to store saved projects locally, and add more to them.
 
 ### Website
 https://poppy-central.netlify.app/ 
