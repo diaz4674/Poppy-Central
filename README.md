@@ -4,8 +4,10 @@ A banking application to quickly generate banking PDF documents for clients to s
 
 [Deployed website](https://liftquestapp.com/)
 
-### Table of Contents
-- [Tech Stack](#tech-stack)
+### Features
+1. Ability to create a project PDF 
+2. Save projects, and view them as a lift, with ability to generate documents as PDF's.
+3. Update/edit saved projects
 
 ## Tech Stack
 + [React](https://reactjs.org/) is used for UI.
